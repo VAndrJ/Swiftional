@@ -26,3 +26,7 @@ func f4(_ a : Int, _ b : Int, _ c: Int, _ d: Int) -> Int {
 func f5(_ a : Int, _ b : Int, _ c: Int, _ d: Int, _ e: Int) -> Int {
     a + b + c + d + e
 }
+
+func getString(_ a: Any) -> String {
+    "\(a)"
+}
