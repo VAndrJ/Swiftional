@@ -54,3 +54,11 @@ func mul(_ a: Int) -> Int {
 func mult(_ a: Int) throws -> Int {
     mul(a)
 }
+
+func getInt() -> Int {
+    42
+}
+
+func getIntt() throws -> Int {
+    getInt()
+}

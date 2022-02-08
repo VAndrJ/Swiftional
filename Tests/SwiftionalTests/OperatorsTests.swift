@@ -93,4 +93,56 @@ class OperatorsTest: XCTestCase {
         let result = try mult <| input
         XCTAssertEqual(expected, result)
     }
+
+    func test_functionComposition_argumentApplyResult() {
+        let input = 2
+        let expected = getString(mul(input))
+        let mulString = mul >>> getString
+        XCTAssertEqual(expected, mulString(input))
+    }
+
+    func test_functionVoidComposition_argumentApplyResult() {
+        let expected = getString(getInt())
+        let intString = getInt >>> getString
+        XCTAssertEqual(expected, intString())
+    }
+
+    func test_functionVoidCompositionFirstThrowable_argumentApplyResult() throws {
+        let expected = getString(try getIntt())
+        let intString = getIntt >>> getString
+        XCTAssertEqual(expected, try intString())
+    }
+
+    func test_functionVoidCompositionSecondThrowable_argumentApplyResult() throws {
+        let expected = try mult(getInt())
+        let intMul = getInt >>> mult
+        XCTAssertEqual(expected, try intMul())
+    }
+
+    func test_functionVoidCompositionFirstSecondThrowable_argumentApplyResult() throws {
+        let expected = try mult(try getIntt())
+        let intMul = getIntt >>> mult
+        XCTAssertEqual(expected, try intMul())
+    }
+
+    func test_functionCompositionFirstThrowable_argumentApplyResult() throws {
+        let input = 2
+        let expected = getString(try mult(input))
+        let mulString = mult >>> getString
+        XCTAssertEqual(expected, try mulString(input))
+    }
+
+    func test_functionCompositionSecondThrowable_argumentApplyResult() throws {
+        let input = 2
+        let expected = try mult(mul(input))
+        let mulString = mul >>> mult
+        XCTAssertEqual(expected, try mulString(2))
+    }
+
+    func test_functionCompositionFirstSecondThrowable_argumentApplyResult() throws {
+        let input = 2
+        let expected = try mult(try mult(input))
+        let multMult = mult >>> mult
+        XCTAssertEqual(expected, try multMult(input))
+    }
 }
