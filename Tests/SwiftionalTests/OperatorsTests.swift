@@ -197,4 +197,44 @@ class OperatorsTest: XCTestCase {
         let multMult = mult <<< mult
         XCTAssertEqual(expected, try multMult(input))
     }
+
+    func test_asyncFunctionComposition_success() {
+        let input = 2
+        let first = input |> getIdentityResult
+        let asyncApplied = first ~~> getIdentityResult
+        asyncApplied {
+            switch $0 {
+            case let .success(value):
+                XCTAssertEqual(input, value)
+            case .failure:
+                XCTFail()
+            }
+        }
+    }
+
+    func test_asyncFunctionComposition_firstFunctionError() {
+        let first = 1 |> getErrorResult
+        let asyncApplied = first ~~> getIdentityResult
+        asyncApplied {
+            switch $0 {
+            case .success:
+                XCTFail()
+            case let .failure(error):
+                XCTAssertEqual(TestError.general, error)
+            }
+        }
+    }
+
+    func test_asyncFunctionComposition_secondFunctionError() {
+        let first = 1 |> getIdentityResult
+        let asyncApplied = first ~~> getErrorResult
+        asyncApplied {
+            switch $0 {
+            case .success:
+                XCTFail()
+            case let .failure(error):
+                XCTAssertEqual(TestError.general, error)
+            }
+        }
+    }
 }

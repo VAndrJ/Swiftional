@@ -62,3 +62,15 @@ func getInt() -> Int {
 func getIntt() throws -> Int {
     getInt()
 }
+
+func getErrorResult(_ a: Int, completion: @escaping (Result<Int, TestError>) -> Void) {
+    completion(.failure(.general))
+}
+
+func getIdentityResult(_ a: Int, completion: @escaping (Result<Int, TestError>) -> Void) {
+    completion(.success(a))
+}
+
+enum TestError: Error {
+    case general
+}

@@ -312,3 +312,34 @@ public func <<< <A, B, R>(_ g: @escaping (B) -> R, _ f: @escaping (A) throws -> 
 public func <<< <A, B, R>(_ g: @escaping (B) throws -> R, _ f: @escaping (A) throws -> B) -> (A) throws -> R {
     f >>> g
 }
+
+infix operator ~~>: ForwardComposition
+
+/// Asynchronous function composition
+///
+/// - Parameters:
+///   - f: Left-hand side.
+///   - g: Right-hand side.
+/// - Returns: A function that applies `g` to the output of `f`.
+public func ~~> <A, E, R>(
+    _ f: @escaping (@escaping (Result<A, E>) -> Void) -> Void,
+    _ g: @escaping (A, @escaping (Result<R, E>) -> Void) -> Void
+) -> (@escaping (Result<R, E>) -> Void) -> Void where E: Error {
+    { result in
+        f { fResult in
+            switch fResult {
+            case let .failure(error):
+                result(.failure(error))
+            case let .success(data):
+                g(data) { gResult in
+                    switch gResult {
+                    case let .failure(error):
+                        result(.failure(error))
+                    case let .success(data):
+                        result(.success(data))
+                    }
+                }
+            }
+        }
+    }
+}
