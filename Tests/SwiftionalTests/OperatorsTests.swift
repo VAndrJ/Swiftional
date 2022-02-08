@@ -79,4 +79,18 @@ class OperatorsTest: XCTestCase {
         let result = input |> f5t
         XCTAssertEqual(expected, try result(1, 1, 1, 1))
     }
+
+    func test_pipeBackward_sameResult() {
+        let input = 2
+        let expected = mul(input)
+        let result = mul <| input
+        XCTAssertEqual(expected, result)
+    }
+
+    func test_pipeBackwardThrowing_sameResult() throws {
+        let input = 2
+        let expected = try mult(input)
+        let result = try mult <| input
+        XCTAssertEqual(expected, result)
+    }
 }

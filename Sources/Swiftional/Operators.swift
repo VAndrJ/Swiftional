@@ -12,6 +12,11 @@ precedencegroup ForwardApplication {
     higherThan: AssignmentPrecedence
 }
 
+precedencegroup BackwardApplication {
+    associativity: right
+    higherThan: AssignmentPrecedence
+}
+
 infix operator |>: ForwardApplication
 
 /// Pipe forward. Applies an argument to a function.
@@ -111,4 +116,25 @@ public func |> <A, B, C, D, E, R>(_ a: A, _ f: @escaping (A, B, C, D, E) -> R) -
 /// - Returns: A function with the same behavior of the input function where the first argument is fixed to the value of the provided argument.
 public func |> <A, B, C, D, E, R>(_ a: A, _ f: @escaping (A, B, C, D, E) throws -> R) -> (B, C, D, E) throws -> R {
     { b, c, d, e in try f(a, b, c, d, e) }
+}
+
+infix operator <|: BackwardApplication
+
+/// Pipe backward. Applies a function to an argument.
+///
+/// Example. This:
+/// ```
+/// let result = h(g(f(a)))
+/// ```
+/// Can also be written as:
+/// ```
+/// let result = h <| g <| f <| a
+/// ```
+///
+/// - Parameters:
+///   - f: Function receiving the argument.
+///   - a: Argument to apply.
+/// - Returns: Result of running the function with the argument as input.
+public func <| <A, R>(_ f: (A) throws -> R, _ a: A) rethrows -> R {
+    try f(a)
 }
