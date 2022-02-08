@@ -343,3 +343,15 @@ public func ~~> <A, E, R>(
         }
     }
 }
+
+infix operator >=>: ForwardComposition
+
+/// Effectful function composition
+///
+/// - Parameters:
+///   - g: Left-hand side.
+///   - f: Right-hand side.
+/// - Returns: A function that applies `g` to the output of `f`.
+public func >=> <A, B, R>(_ f: @escaping (A) -> B?, _ g: @escaping (B) -> R?) -> (A) -> R? {
+    { a in f(a).flatMap(g) }
+}

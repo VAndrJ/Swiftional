@@ -237,4 +237,29 @@ class OperatorsTest: XCTestCase {
             }
         }
     }
+
+    func test_effectfulFunctionComposition_sameResult() {
+        func f(_ a: Int) -> Int? {
+            a + a
+        }
+        func g(_ a: Int) -> String? {
+            "\(a)"
+        }
+        let input = 1
+        let expected = g(f(input)!)
+        let fg = f >=> g
+        XCTAssertEqual(expected, fg(input))
+    }
+
+    func test_effectfulFunctionComposition_nilResult() {
+        func f(_ a: Int) -> Int? {
+            nil
+        }
+        func g(_ a: Int) -> String? {
+            "\(a)"
+        }
+        let input = 1
+        let fg = f >=> g
+        XCTAssertNil(fg(input))
+    }
 }
