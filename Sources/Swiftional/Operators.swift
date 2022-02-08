@@ -22,6 +22,11 @@ precedencegroup ForwardComposition {
     higherThan: ForwardApplication
 }
 
+precedencegroup BackwardComposition {
+    associativity: right
+    higherThan: ForwardApplication
+}
+
 infix operator |>: ForwardApplication
 
 /// Pipe forward. Applies an argument to a function.
@@ -224,4 +229,86 @@ public func >>> <A, B, R>(_ f: @escaping (A) -> B, _ g: @escaping (B) throws -> 
 /// - Returns: A function that applies `g` to the output of `f`.
 public func >>> <A, B, R>(_ f: @escaping (A) throws -> B, _ g: @escaping (B) throws -> R) -> (A) throws -> R {
     { a in try g(try f(a)) }
+}
+
+infix operator <<<: BackwardComposition
+
+/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
+///
+/// - Parameters:
+///   - g: Left-hand side.
+///   - f: Right-hand side.
+/// - Returns: A function that applies `g` to the output of `f`.
+public func <<< <A, R>(_ g: @escaping (A) -> R, _ f: @escaping () -> A) -> () -> R {
+    f >>> g
+}
+
+/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
+///
+/// - Parameters:
+///   - g: Left-hand side.
+///   - f: Right-hand side.
+/// - Returns: A function that applies `g` to the output of `f`.
+public func <<< <A, R>(_ g: @escaping (A) throws -> R, _ f: @escaping () -> A) -> () throws -> R {
+    f >>> g
+}
+
+/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
+///
+/// - Parameters:
+///   - g: Left-hand side.
+///   - f: Right-hand side.
+/// - Returns: A function that applies `g` to the output of `f`.
+public func <<< <A, R>(_ g: @escaping (A) -> R, _ f: @escaping () throws -> A) -> () throws -> R {
+    f >>> g
+}
+
+/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
+///
+/// - Parameters:
+///   - g: Left-hand side.
+///   - f: Right-hand side.
+/// - Returns: A function that applies `g` to the output of `f`.
+public func <<< <A, R>(_ g: @escaping (A) throws -> R, _ f: @escaping () throws -> A) -> () throws -> R {
+    f >>> g
+}
+
+/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
+///
+/// - Parameters:
+///   - g: Left-hand side.
+///   - f: Right-hand side.
+/// - Returns: A function that applies `g` to the output of `f`.
+public func <<< <A, B, R>(_ g: @escaping (B) -> R, _ f: @escaping (A) -> B) -> (A) -> R {
+    f >>> g
+}
+
+/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
+///
+/// - Parameters:
+///   - g: Left-hand side.
+///   - f: Right-hand side.
+/// - Returns: A function that applies `g` to the output of `f`.
+public func <<< <A, B, R>(_ g: @escaping (B) throws -> R, _ f: @escaping (A) -> B) -> (A) throws -> R {
+    f >>> g
+}
+
+/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
+///
+/// - Parameters:
+///   - g: Left-hand side.
+///   - f: Right-hand side.
+/// - Returns: A function that applies `g` to the output of `f`.
+public func <<< <A, B, R>(_ g: @escaping (B) -> R, _ f: @escaping (A) throws -> B) -> (A) throws -> R {
+    f >>> g
+}
+
+/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
+///
+/// - Parameters:
+///   - g: Left-hand side.
+///   - f: Right-hand side.
+/// - Returns: A function that applies `g` to the output of `f`.
+public func <<< <A, B, R>(_ g: @escaping (B) throws -> R, _ f: @escaping (A) throws -> B) -> (A) throws -> R {
+    f >>> g
 }

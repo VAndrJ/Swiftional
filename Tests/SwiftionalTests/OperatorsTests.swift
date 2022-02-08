@@ -145,4 +145,56 @@ class OperatorsTest: XCTestCase {
         let multMult = mult >>> mult
         XCTAssertEqual(expected, try multMult(input))
     }
+
+    func test_functionCompositionBackward_argumentApplyResult() {
+        let input = 2
+        let expected = getString(mul(input))
+        let mulString = getString <<< mul
+        XCTAssertEqual(expected, mulString(input))
+    }
+
+    func test_functionVoidCompositionBackward_argumentApplyResult() {
+        let expected = getString(getInt())
+        let intString = getString <<< getInt
+        XCTAssertEqual(expected, intString())
+    }
+
+    func test_functionVoidCompositionBackwardFirstThrowable_argumentApplyResult() throws {
+        let expected = getString(try getIntt())
+        let intString = getString <<< getIntt
+        XCTAssertEqual(expected, try intString())
+    }
+
+    func test_functionVoidCompositionBackwardSecondThrowable_argumentApplyResult() throws {
+        let expected = try mult(getInt())
+        let intMul = mult <<< getInt
+        XCTAssertEqual(expected, try intMul())
+    }
+
+    func test_functionVoidCompositionBackwardFirstSecondThrowable_argumentApplyResult() throws {
+        let expected = try mult(try getIntt())
+        let intMul = mult <<< getIntt
+        XCTAssertEqual(expected, try intMul())
+    }
+
+    func test_functionCompositionBackwardFirstThrowable_argumentApplyResult() throws {
+        let input = 2
+        let expected = getString(try mult(input))
+        let mulString = getString <<< mult
+        XCTAssertEqual(expected, try mulString(input))
+    }
+
+    func test_functionCompositionBackwardSecondThrowable_argumentApplyResult() throws {
+        let input = 2
+        let expected = try mult(mul(input))
+        let mulString = mult <<< mul
+        XCTAssertEqual(expected, try mulString(2))
+    }
+
+    func test_functionCompositionBackwardFirstSecondThrowable_argumentApplyResult() throws {
+        let input = 2
+        let expected = try mult(try mult(input))
+        let multMult = mult <<< mult
+        XCTAssertEqual(expected, try multMult(input))
+    }
 }
