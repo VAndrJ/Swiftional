@@ -15,18 +15,42 @@ func f2(_ a : Int, _ b : Int) -> Int {
     a + b
 }
 
+func f2t(_ a : Int, _ b : Int) throws -> Int {
+    f2(a, b)
+}
+
 func f3(_ a : Int, _ b : Int, _ c: Int) -> Int {
     a + b + c
+}
+
+func f3t(_ a : Int, _ b : Int, _ c: Int) throws -> Int {
+    f3(a, b, c)
 }
 
 func f4(_ a : Int, _ b : Int, _ c: Int, _ d: Int) -> Int {
     a + b + c + d
 }
 
+func f4t(_ a : Int, _ b : Int, _ c: Int, _ d: Int) throws -> Int {
+    f4(a, b, c, d)
+}
+
 func f5(_ a : Int, _ b : Int, _ c: Int, _ d: Int, _ e: Int) -> Int {
     a + b + c + d + e
 }
 
+func f5t(_ a : Int, _ b : Int, _ c: Int, _ d: Int, _ e: Int) throws -> Int {
+    f5(a, b, c, d, e)
+}
+
 func getString(_ a: Any) -> String {
     "\(a)"
+}
+
+func mul(_ a: Int) -> Int {
+    a * a
+}
+
+func mult(_ a: Int) throws -> Int {
+    mul(a)
 }
