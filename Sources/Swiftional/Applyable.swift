@@ -11,7 +11,6 @@ import Foundation
 public protocol Applyable {}
 
 public extension Applyable where Self: AnyObject {
-
     /// Calls the specified closure with Self value as its receiver and returns Self value.
     ///
     /// - Parameter f: Closure to apply.
@@ -32,7 +31,6 @@ public extension Applyable where Self: AnyObject {
 }
 
 public extension Applyable where Self: Any {
-
     /// Calls the specified closure with Self value as its receiver and returns copy of Self value.
     ///
     /// - Parameter f: Closure to apply.
