@@ -149,8 +149,8 @@ infix operator >>>: ForwardComposition
 /// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
 ///
 /// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
+///   - f: Left-hand side.
+///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
 public func >>> <A, R>(_ f: @escaping () -> A, _ g: @escaping (A) -> R) -> () -> R {
     { g(f()) }
@@ -159,8 +159,8 @@ public func >>> <A, R>(_ f: @escaping () -> A, _ g: @escaping (A) -> R) -> () ->
 /// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
 ///
 /// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
+///   - f: Left-hand side.
+///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
 public func >>> <A, R>(_ f: @escaping () throws -> A, _ g: @escaping (A) -> R) -> () throws -> R {
     { g(try f()) }
@@ -169,8 +169,8 @@ public func >>> <A, R>(_ f: @escaping () throws -> A, _ g: @escaping (A) -> R) -
 /// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
 ///
 /// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
+///   - f: Left-hand side.
+///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
 public func >>> <A, R>(_ f: @escaping () -> A, _ g: @escaping (A) throws -> R) -> () throws -> R {
     { try g(f()) }
@@ -179,8 +179,8 @@ public func >>> <A, R>(_ f: @escaping () -> A, _ g: @escaping (A) throws -> R) -
 /// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
 ///
 /// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
+///   - f: Left-hand side.
+///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
 public func >>> <A, R>(_ f: @escaping () throws -> A, _ g: @escaping (A) throws -> R) -> () throws -> R {
     { try g(try f()) }
@@ -189,8 +189,8 @@ public func >>> <A, R>(_ f: @escaping () throws -> A, _ g: @escaping (A) throws 
 /// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
 ///
 /// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
+///   - f: Left-hand side.
+///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
 public func >>> <A, B, R>(_ f: @escaping (A) -> B, _ g: @escaping (B) -> R) -> (A) -> R {
     { a in g(f(a)) }
@@ -199,8 +199,8 @@ public func >>> <A, B, R>(_ f: @escaping (A) -> B, _ g: @escaping (B) -> R) -> (
 /// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
 ///
 /// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
+///   - f: Left-hand side.
+///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
 public func >>> <A, B, R>(_ f: @escaping (A) throws -> B, _ g: @escaping (B) -> R) -> (A) throws -> R {
     { a in g(try f(a)) }
@@ -209,8 +209,8 @@ public func >>> <A, B, R>(_ f: @escaping (A) throws -> B, _ g: @escaping (B) -> 
 /// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
 ///
 /// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
+///   - f: Left-hand side.
+///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
 public func >>> <A, B, R>(_ f: @escaping (A) -> B, _ g: @escaping (B) throws -> R) -> (A) throws -> R {
     { a in try g(f(a)) }
@@ -219,8 +219,8 @@ public func >>> <A, B, R>(_ f: @escaping (A) -> B, _ g: @escaping (B) throws -> 
 /// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
 ///
 /// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
+///   - f: Left-hand side.
+///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
 public func >>> <A, B, R>(_ f: @escaping (A) throws -> B, _ g: @escaping (B) throws -> R) -> (A) throws -> R {
     { a in try g(try f(a)) }
