@@ -15,6 +15,13 @@ class FunctionsTests: XCTestCase {
         XCTAssertEqual(input, identity(input))
     }
 
+    func test_constantVoidFunction_returnValueSameWithConstantInput() {
+        let arr = generateTestIntArray(length: 1)
+        let input = arr[0]
+        let f: () -> Int = constant(input)
+        XCTAssertEqual(input, f())
+    }
+
     func test_constantFunction_returnValueSameWithConstantInputIndependent() {
         let arr = generateTestIntArray(length: 2)
         let const = arr[0]

@@ -17,6 +17,15 @@ public func identity<R>(_ value: R) -> R {
 }
 
 /// The constant combinator function.
+/// Always returns the provided value.
+///
+/// - Parameter value: Constant value to return.
+/// - Returns: Function that constantly return the `value` provided as argument.
+public func constant<R>(_ value: R) -> () -> R {
+    { value }
+}
+
+/// The constant combinator function.
 /// Ignores the function arguments and always returns the provided value.
 ///
 /// - Parameter value: Constant value to return.
