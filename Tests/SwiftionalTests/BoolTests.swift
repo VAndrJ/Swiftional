@@ -22,7 +22,7 @@ class BoolTests: XCTestCase {
         XCTAssertEqual(input, value.fold(constant("fail"), constant(input)))
     }
 
-    func test_BoolFoldRun() {
+    func test_boolFoldRun() {
         false.foldRun({}, { XCTFail() })
         true.foldRun({ XCTFail() }, {})
     }
