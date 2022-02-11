@@ -30,3 +30,11 @@ extension Bool {
         self ? onTrue() : onFalse()
     }
 }
+
+// MARK: - Semigroup
+
+extension Bool: Semigroup {
+    public func combine(_ other: Bool) -> Bool {
+        self || other
+    }
+}
