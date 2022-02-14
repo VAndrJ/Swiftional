@@ -38,3 +38,9 @@ extension Bool: Semigroup {
         self || other
     }
 }
+
+// MARK: - Monoid
+
+extension Bool: Monoid {
+    public static var empty: Bool { false }
+}
