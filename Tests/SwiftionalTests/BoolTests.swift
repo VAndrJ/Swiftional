@@ -72,7 +72,7 @@ class BoolTests: XCTestCase {
     func test_boolMonoidEmpty() {
         XCTAssertFalse(Bool.empty)
     }
-
+    
     func test_boolMonoidCombine_associativeOriginal() {
         XCTAssertTrue(true.combine(Bool.empty))
         XCTAssertFalse(false.combineAll(Bool.empty))
