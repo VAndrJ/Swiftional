@@ -44,3 +44,18 @@ extension Bool: Semigroup {
 extension Bool: Monoid {
     public static var empty: Bool { false }
 }
+
+// MARK: - Either
+
+extension Bool {
+    /// Case analysis for the `Bool` type.
+    /// Applies the provided closures based on the value.
+    ///
+    /// - Parameters:
+    ///   - onFalse: Closure to apply if false.
+    ///   - onTrue: Closure to apply if true.
+    /// - Returns: The result of `Ether` applying the appropriate closure to this value.
+    public func foldEither<L, R>(_ onFalse: () -> L, _ onTrue: () -> R) -> Either<L, R> {
+        self ? .right(onTrue()) : .left(onFalse())
+    }
+}

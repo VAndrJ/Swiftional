@@ -79,4 +79,11 @@ class BoolTests: XCTestCase {
         XCTAssertTrue(Bool.empty.combine(true))
         XCTAssertFalse(Bool.empty.combineAll(false))
     }
+
+    func test_boolFoldEither() {
+        let left = 1
+        let right = "1"
+        XCTAssertEqual(Either<Int, String>.left(left), false.foldEither({ left }, { right }))
+        XCTAssertEqual(Either<Int, String>.right(right), true.foldEither({ left }, { right }))
+    }
 }
