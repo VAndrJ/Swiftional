@@ -149,6 +149,48 @@ public func <| <A, R>(_ f: (A) throws -> R, _ a: A) rethrows -> R {
     try f(a)
 }
 
+infix operator <<|: BackwardApplication
+
+/// Applies a function to an argument an returns callable function.
+///
+/// Example. This:
+/// ```
+/// let result = { a in f(a) }
+/// ```
+/// Can also be written as:
+/// ```
+/// let result = f <<| a
+/// ```
+///
+/// - Parameters:
+///   - f: Function receiving the argument.
+///   - a: Argument to apply.
+/// - Returns: Result of running the function with the argument as input.
+public func <<| <A, R>(_ f: @escaping (A) -> R, _ a: A) -> () -> R {
+    { f(a) }
+}
+
+infix operator |>>: ForwardApplication
+
+/// Applies a function to an argument an returns callable function.
+///
+/// Example. This:
+/// ```
+/// let result = { a in f(a) }
+/// ```
+/// Can also be written as:
+/// ```
+/// let result = a |>> f
+/// ```
+///
+/// - Parameters:
+///   - f: Function receiving the argument.
+///   - a: Argument to apply.
+/// - Returns: Result of running the function with the argument as input.
+public func |>> <A, R>(_ a: A, _ f: @escaping (A) -> R) -> () -> R {
+    { f(a) }
+}
+
 infix operator >>>: ForwardComposition
 
 /// Composes a functions and return a function that is the result of applying `g` to the output of `f`.

@@ -10,6 +10,20 @@ import XCTest
 
 class OperatorsTest: XCTestCase {
 
+    func test_forwardArgumentApplication_sameResult() {
+        let input = 2
+        let expected = mul(input)
+        let result = input |>> mul
+        XCTAssertEqual(expected, result())
+    }
+
+    func test_backwardArgumentApplication_sameResult() {
+        let input = 2
+        let expected = mul(input)
+        let result = mul <<| input
+        XCTAssertEqual(expected, result())
+    }
+
     func test_pipeForwardOneArgument_sameResult() {
         let input = 2
         let expected = mul(input)
