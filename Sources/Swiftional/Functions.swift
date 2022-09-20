@@ -49,3 +49,11 @@ public func flip<A, B, R>(_ f: @escaping (A, B) -> R) -> (B, A) -> R {
 public func with<A, R>(_ a: A, _ f: (A) throws -> R) rethrows -> R {
     try f(a)
 }
+
+/// Ignores the function return and always returns `Void`.
+///
+/// - Parameter fn: Function to ignore return.
+/// - Returns: Function that constantly return the `Void`.
+func ignored<R>(_ fn: @escaping () -> R) -> () -> Void {
+    { _ = fn() }
+}

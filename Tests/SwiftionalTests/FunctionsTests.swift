@@ -43,4 +43,15 @@ class FunctionsTests: XCTestCase {
         let expected = getString(input)
         XCTAssertEqual(expected, with(input, getString(_:)))
     }
+    
+    func test_ignoredFunction() {
+        let expected = "expected"
+        var result = ""
+        func assignExpectedToResult() -> Bool {
+            result = expected
+            return true
+        }
+        ignored(assignExpectedToResult)()
+        XCTAssertEqual(expected, result)
+    }
 }
