@@ -233,6 +233,13 @@ class PartialApplicationTests: XCTestCase {
         let expected = f5(arr[0], arr[1], arr[2], arr[3], arr[4])
         XCTAssertEqual(expected, pf(arr[1], arr[2], arr[3]))
     }
+    
+    func test_partialFiveArgumentsFunctionFirstSecondThirdFourthArgumentsDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 5)
+        let pf = partial(f5, .deferred, .deferred, .deferred, .deferred, arr[4])
+        let expected = f5(arr[0], arr[1], arr[2], arr[3], arr[4])
+        XCTAssertEqual(expected, pf(arr[0], arr[1], arr[2], arr[3]))
+    }
 
     func test_partialFiveArgumentsFunctionSecondFourthArgumentsDeferred_sameResults() {
         let arr = generateTestIntArray(length: 5)

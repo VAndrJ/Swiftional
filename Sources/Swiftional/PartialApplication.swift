@@ -259,6 +259,13 @@ public func partial<A, B, C, D, E, R>(_ f: @escaping (A, B, C, D, E) -> R, _ a: 
     { b, c, d in f(a, b, c, d, e) }
 }
 
+/// Partial application. Applies arguments to a function.
+///
+/// - Returns: Partially applied form of an argument function `f`: (A, B, C, D) -> R
+public func partial<A, B, C, D, E, R>(_ f: @escaping (A, B, C, D, E) -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: Deferred, _ e: E) -> (A, B, C, D) -> R {
+    { a, b, c, d in f(a, b, c, d, e) }
+}
+
 /// Partial application. Applies an argument to a function.
 ///
 /// - Returns: Partially applied form of an argument function `f`: (A, E) -> R
