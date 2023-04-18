@@ -14,7 +14,7 @@ Created for writing Swift code with a slight touch of functional programming.
 ## Functions
 
 
-* <details><summary> `curry`</summary>
+<details><summary> curry</summary>
 Converts an uncurried function to a curried function.
 
 
@@ -27,7 +27,7 @@ becomes
 (A) -> (B) -> R
 ```
 </details>
-* <details><summary> `uncurry`</summary>
+<details><summary> uncurry</summary>
 Converts a curried function into aan uncurried function.
 
 
@@ -40,7 +40,7 @@ becomes
 (A, B) -> R
 ```
 </details>
-* <details><summary> `partial`</summary>
+<details><summary> partial</summary>
 Partial application. Applies an argument to a function.
 
 
@@ -53,15 +53,15 @@ with applied first argument becomes
 (B) -> R
 ```
 </details>
-* <details><summary> `identity`</summary>
+<details><summary> identity</summary>
 Identity combinator function.
 Returns the input without changing it.
 </details>
-* <details><summary> `constant`</summary>
+<details><summary> constant</summary>
 The constant combinator function.
 Ignores the function arguments and always returns the provided value.
 </details>
-* <details><summary> `flip`</summary>
+<details><summary> flip</summary>
 Flips the arguments of a function.
 
 
@@ -74,10 +74,10 @@ becomes
 (B, A) -> R
 ```
 </details>
-* <details><summary> `with`</summary>
+<details><summary> with</summary>
 Calls the specified closure with the given attrubute as its receiver and returns its result.
 </details>
-* <details><summary> `ignored`</summary>
+<details><summary> ignored</summary>
 Ignores the function return and always returns `Void`.
 </details>
 
@@ -85,8 +85,7 @@ Ignores the function return and always returns `Void`.
 ## Extensions
 
 
-* <details>
-<summary> `Bool`</summary>
+<details><summary> Bool</summary>
 * `fold`
 Case analysis for the `Bool` type. Applies the provided closures based on the value.
 
@@ -98,7 +97,7 @@ Runs the provided closures based on the content of this value.
 * `oldEither`
 Case analysis for the `Bool` type. Applies the provided closures based on the value and return `Either`.
 </details>
-* <details><summary> `Optional`</summary>
+<details><summary> Optional</summary>
 * `fold`
 Case analysis for the `Optional` type. Applies the provided closures based on the content of this `Optional` value.
 </details>
@@ -107,7 +106,7 @@ Case analysis for the `Optional` type. Applies the provided closures based on th
 ## Protocols
 
 
-* <details><summary> `Applyable`</summary>
+<details><summary> Applyable</summary>
 * `apply`
 Calls the specified closure with Self value as its receiver and returns Self value.
 
@@ -120,13 +119,13 @@ Calls the specified closure with Self value as its receiver and returns copy of 
 ## Operators
 
 
-* <details><summary> `>>>`</summary>
+<details><summary> >>></summary>
 Composes a functions and return a function that is the result of applying `g` to the output of `f`.
 </details>
-* <details><summary> `<<<`</summary>
+<details><summary> <<< </summary>
 Composes a functions and return a function that is the result of applying `g` to the output of `f`.
 </details>
-* <details><summary> `|>`</summary>
+<details><summary> |></summary>
 Pipe forward. Applies an argument to a function.
 
 
@@ -139,7 +138,7 @@ Can also be written as:
 let result = a |> f |> g |> h
 ```
 </details>
-* <details><summary> `<|`</summary>
+<details><summary> <|</summary>
 Pipe forward. Applies an argument to a function.
 
 
@@ -152,7 +151,7 @@ Can also be written as:
 let result = h <| g <| f <| a
 ```
 </details>
-* <details><summary> `|>>`</summary>
+<details><summary> |>></summary>
 Applies a function to an argument an returns callable function.
 
 
@@ -165,7 +164,7 @@ Can also be written as:
 let result = a |>> f
 ```
 </details>
-* <details><summary> `<<|`</summary>
+<details><summary> <<|</summary>
 Applies a function to an argument an returns callable function.
 
 
@@ -178,10 +177,10 @@ Can also be written as:
 let result = f <<| a
 ```
 </details>
-* <details><summary> `~~>`</summary>
+<details><summary> `~~>`</summary>
 Asynchronous function composition
 </details>
-* <details><summary> `>=>`</summary>
+<details><summary> >=></summary>
 Effectful function composition
 </details>
 
@@ -189,9 +188,9 @@ Effectful function composition
 ## Types
 
 
-* <details><summary> `Either`</summary>
+<details><summary> Either</summary>
 The type `Either` represents a value of one of these types, but not both: `.left(Left)` or `.right(Right)`.
-///
+
 The `Either` type is shifted to the right by convention.
 That is, the `.left` constructor is usually used to hold errors or secondary data,
 while `.right` is used to store a "correct", primary value - one that can be worked on further.
