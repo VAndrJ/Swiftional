@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Swiftional'
-  s.version          = '0.2.6'
+  s.version          = '0.2.7'
   s.summary          = 'Created for writing Swift code with a slight touch of functional programming.'
 
   s.description      = <<-DESC

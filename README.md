@@ -177,11 +177,14 @@ Can also be written as:
 let result = f <<| a
 ```
 </details>
-<details><summary> `~~>`</summary>
+<details><summary> ~~></summary>
 Asynchronous function composition
 </details>
 <details><summary> >=></summary>
 Effectful function composition
+</details>
+<details><summary> ?></summary>
+Weakifying function
 </details>
 
 
