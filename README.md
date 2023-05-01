@@ -184,7 +184,16 @@ Asynchronous function composition
 Effectful function composition
 </details>
 <details><summary> ?></summary>
-Weakifying function
+Weakifying function.
+
+
+Example:
+```
+// Instead of this:
+someObject.onActionClosure = otherObject.someFunc // `otherObject` captured by strong reference
+// Use operator:
+someObject.onActionClosure = otherObject ?> { $0.someFunc() } // `otherObject` is weakified, not captured by strong reference
+```
 </details>
 
 
