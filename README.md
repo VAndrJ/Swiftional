@@ -80,6 +80,18 @@ Calls the specified closure with the given attrubute as its receiver and returns
 <details><summary> ignored</summary>
 Ignores the function return and always returns `Void`.
 </details>
+<details><summary> weakify</summary>
+Weakifying function.
+
+
+Example:
+```
+// Instead of this:
+someObject.onActionClosure = otherObject.someFunc // `otherObject` captured by strong reference
+// Use operator:
+someObject.onActionClosure = weakify(otherObject) { $0.someFunc() } // `otherObject` is weakified, not captured by strong reference
+```
+</details>
 
 
 ## Extensions
