@@ -57,3 +57,42 @@ public func with<A, R>(_ a: A, _ f: (A) throws -> R) rethrows -> R {
 public func ignored<R>(_ fn: @escaping () -> R) -> () -> Void {
     { _ = fn() }
 }
+
+/// Weakifying function.
+///
+/// - Parameters:
+///   - obj: Object to weakify.
+///   - block: Block to apply.
+/// - Returns: A function to apply.
+public func weakify<T: AnyObject>(_ obj: T, _ block: @escaping (T) -> Void) -> () -> Void {
+    return { [weak obj] in
+        guard let obj else { return }
+        block(obj)
+    }
+}
+
+/// Weakifying function.
+///
+/// - Parameters:
+///   - obj: Object to weakify.
+///   - block: Block to apply.
+/// - Returns: A function with argument to ignore.
+public func weakify<T: AnyObject, U>(_ obj: T, _ block: @escaping (T) -> Void) -> (U) -> Void {
+    return { [weak obj] _ in
+        guard let obj else { return }
+        block(obj)
+    }
+}
+
+/// Weakifying function.
+///
+/// - Parameters:
+///   - obj: Object to weakify.
+///   - block: Block to apply.
+/// - Returns: A function with argument to apply.
+public func weakify<T: AnyObject, U>(_ obj: T, _ block: @escaping (T, U) -> Void) -> (U) -> Void {
+    return { [weak obj] in
+        guard let obj else { return }
+        block(obj, $0)
+    }
+}

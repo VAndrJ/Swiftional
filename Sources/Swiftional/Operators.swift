@@ -407,10 +407,7 @@ infix operator ?> : ForwardComposition
 ///   - block: Block to apply.
 /// - Returns: A function to apply.
 public func ?> <T: AnyObject>(_ obj: T, _ block: @escaping (T) -> Void) -> () -> Void {
-    return { [weak obj] in
-        guard let obj else { return }
-        block(obj)
-    }
+    weakify(obj, block)
 }
 
 /// Weakifying function.
@@ -420,10 +417,7 @@ public func ?> <T: AnyObject>(_ obj: T, _ block: @escaping (T) -> Void) -> () ->
 ///   - block: Block to apply.
 /// - Returns: A function with argument to ignore.
 public func ?> <T: AnyObject, U>(_ obj: T, _ block: @escaping (T) -> Void) -> (U) -> Void {
-    return { [weak obj] _ in
-        guard let obj else { return }
-        block(obj)
-    }
+    weakify(obj, block)
 }
 
 /// Weakifying function.
@@ -433,8 +427,5 @@ public func ?> <T: AnyObject, U>(_ obj: T, _ block: @escaping (T) -> Void) -> (U
 ///   - block: Block to apply.
 /// - Returns: A function with argument to apply.
 public func ?> <T: AnyObject, U>(_ obj: T, _ block: @escaping (T, U) -> Void) -> (U) -> Void {
-    return { [weak obj] in
-        guard let obj else { return }
-        block(obj, $0)
-    }
+    weakify(obj, block)
 }
