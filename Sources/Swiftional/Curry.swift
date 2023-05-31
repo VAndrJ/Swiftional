@@ -42,7 +42,7 @@ public func curry<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) -> R) -> (A)
 /// Converts an uncurried function with 6 arguments to a curried function.
 ///
 /// - Parameter fn: Function to be curried.
-/// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> (D) -> (E) -> R
+/// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> (D) -> (E) -> (F) -> R
 public func curry<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) -> R) -> (A) -> (B) -> (C) -> (D) -> (E) -> (F) -> R {
     { a in { b in { c in { d in { e in { f in fn(a, b, c, d, e, f) } } } } } }
 }

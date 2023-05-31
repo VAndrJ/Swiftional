@@ -64,7 +64,7 @@ public func ignored<R>(_ fn: @escaping () -> R) -> () -> Void {
 ///   - obj: Object to weakify.
 ///   - block: Block to apply.
 /// - Returns: A function to apply.
-public func weakify<T: AnyObject>(_ obj: T, _ block: @escaping (T) -> Void) -> () -> Void {
+public func weakify<T: AnyObject>(_ obj: T?, _ block: @escaping (T) -> Void) -> () -> Void {
     return { [weak obj] in
         guard let obj else { return }
         block(obj)
@@ -77,7 +77,7 @@ public func weakify<T: AnyObject>(_ obj: T, _ block: @escaping (T) -> Void) -> (
 ///   - obj: Object to weakify.
 ///   - block: Block to apply.
 /// - Returns: A function with argument to ignore.
-public func weakify<T: AnyObject, U>(_ obj: T, _ block: @escaping (T) -> Void) -> (U) -> Void {
+public func weakify<T: AnyObject, U>(_ obj: T?, _ block: @escaping (T) -> Void) -> (U) -> Void {
     return { [weak obj] _ in
         guard let obj else { return }
         block(obj)
@@ -90,9 +90,97 @@ public func weakify<T: AnyObject, U>(_ obj: T, _ block: @escaping (T) -> Void) -
 ///   - obj: Object to weakify.
 ///   - block: Block to apply.
 /// - Returns: A function with argument to apply.
-public func weakify<T: AnyObject, U>(_ obj: T, _ block: @escaping (T, U) -> Void) -> (U) -> Void {
+public func weakify<T: AnyObject, U>(_ obj: T?, _ block: @escaping (T, U) -> Void) -> (U) -> Void {
     return { [weak obj] in
         guard let obj else { return }
         block(obj, $0)
+    }
+}
+
+/// Weakifying function.
+///
+/// - Parameters:
+///   - obj: Object to weakify.
+///   - block: Block to apply.
+/// - Returns: A function with argument to apply.
+public func weakify<T: AnyObject, U, V>(_ obj: T?, _ block: @escaping (T, U, V) -> Void) -> (U, V) -> Void {
+    return { [weak obj] in
+        guard let obj else { return }
+        block(obj, $0, $1)
+    }
+}
+
+/// Weakifying function.
+///
+/// - Parameters:
+///   - obj: Object to weakify.
+///   - block: Block to apply.
+/// - Returns: A function to apply.
+public func weakify<T: AnyObject, R>(_ obj: T?, _ block: @escaping (T) -> R?) -> () -> R? {
+    return { [weak obj] in
+        guard let obj else {
+            return nil
+        }
+        return block(obj)
+    }
+}
+
+/// Weakifying function.
+///
+/// - Parameters:
+///   - obj: Object to weakify.
+///   - block: Block to apply.
+/// - Returns: A function with argument to apply.
+public func weakify<T: AnyObject, U, R>(_ obj: T?, _ block: @escaping (T) -> R?) -> (U) -> R? {
+    return { [weak obj] _ in
+        guard let obj else {
+            return nil
+        }
+        return block(obj)
+    }
+}
+
+/// Weakifying function.
+///
+/// - Parameters:
+///   - obj: Object to weakify.
+///   - block: Block to apply.
+/// - Returns: A function with argument to apply.
+public func weakify<T: AnyObject, U, R>(_ obj: T?, _ block: @escaping (T, U) -> R?) -> (U) -> R? {
+    return { [weak obj] in
+        guard let obj else {
+            return nil
+        }
+        return block(obj, $0)
+    }
+}
+
+/// Weakifying function.
+///
+/// - Parameters:
+///   - obj: Object to weakify.
+///   - block: Block to apply.
+/// - Returns: A function with argument to apply.
+public func weakify<T: AnyObject, U, V, R>(_ obj: T?, _ block: @escaping (T, U, V) -> R?) -> (U, V) -> R? {
+    return { [weak obj] in
+        guard let obj else {
+            return nil
+        }
+        return block(obj, $0, $1)
+    }
+}
+
+/// Weakifying function.
+///
+/// - Parameters:
+///   - obj: Object to weakify.
+///   - block: Block to apply.
+/// - Returns: A function with argument to apply.
+public func weakify<T: AnyObject, U, V, R>(_ obj: T?, _ block: @escaping (T) -> R?) -> (U, V) -> R? {
+    return { [weak obj] _, _ in
+        guard let obj else {
+            return nil
+        }
+        return block(obj)
     }
 }

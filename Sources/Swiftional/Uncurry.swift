@@ -42,7 +42,7 @@ public func uncurry<A, B, C, D, E, R>(_ fn: @escaping (A) -> (B) -> (C) -> (D) -
 /// Converts a curried function into a function taking 6 arguments.
 ///
 /// - Parameter fn: Function to uncurry.
-/// - Returns: Uncurried form of an argument function `fn`: (A, B, C, D, E) -> R
+/// - Returns: Uncurried form of an argument function `fn`: (A, B, C, D, E, F) -> R
 public func uncurry<A, B, C, D, E, F, R>(_ fn: @escaping (A) -> (B) -> (C) -> (D) -> (E) -> (F) -> R) -> (A, B, C, D, E, F) -> R {
     { a, b, c, d, e, f in fn(a)(b)(c)(d)(e)(f) }
 }
