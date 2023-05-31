@@ -33,4 +33,10 @@ class CurryTests: XCTestCase {
         let expected = f5(arr[0], arr[1], arr[2], arr[3], arr[4])
         XCTAssertEqual(expected, curry(f5)(arr[0])(arr[1])(arr[2])(arr[3])(arr[4]))
     }
+
+    func test_curryingSixArgumentsFunction_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, curry(f6)(arr[0])(arr[1])(arr[2])(arr[3])(arr[4])(arr[5]))
+    }
 }

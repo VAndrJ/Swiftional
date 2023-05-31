@@ -37,4 +37,11 @@ class UncurryTests: XCTestCase {
         let expected = f5(arr[0], arr[1], arr[2], arr[3], arr[4])
         XCTAssertEqual(expected, uncurry(cf)(arr[0], arr[1], arr[2], arr[3], arr[4]))
     }
+
+    func test_uncurryingSixArgumentsCurriedFunction_sameResults() {
+        let cf = curry(f6)
+        let arr = generateTestIntArray(length: 6)
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, uncurry(cf)(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]))
+    }
 }

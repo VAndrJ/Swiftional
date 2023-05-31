@@ -39,6 +39,10 @@ func f5(_ a : Int, _ b : Int, _ c: Int, _ d: Int, _ e: Int) -> Int {
     a + b + c + d + e
 }
 
+func f6(_ a : Int, _ b : Int, _ c: Int, _ d: Int, _ e: Int, _ f: Int) -> Int {
+    a + b + c + d + e + f
+}
+
 func f5t(_ a : Int, _ b : Int, _ c: Int, _ d: Int, _ e: Int) throws -> Int {
     f5(a, b, c, d, e)
 }
