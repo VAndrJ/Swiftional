@@ -366,4 +366,137 @@ class PartialApplicationTests: XCTestCase {
         let expected = f5(arr[0], arr[1], arr[2], arr[3], arr[4])
         XCTAssertEqual(expected, pf(arr[3], arr[4]))
     }
+
+    func test_partialSixArgumentsFunction12345ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, arr[0], .deferred, .deferred, .deferred, .deferred, .deferred)
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[1], arr[2], arr[3], arr[4], arr[5]))
+    }
+
+    func test_partialSixArgumentsFunction02345ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, .deferred, arr[1], .deferred, .deferred, .deferred, .deferred)
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[0], arr[2], arr[3], arr[4], arr[5]))
+    }
+
+    func test_partialSixArgumentsFunction01345ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, .deferred, .deferred, arr[2], .deferred, .deferred, .deferred)
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[0], arr[1], arr[3], arr[4], arr[5]))
+    }
+
+    func test_partialSixArgumentsFunction01245ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, .deferred, .deferred, .deferred, arr[3], .deferred, .deferred)
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[0], arr[1], arr[2], arr[4], arr[5]))
+    }
+
+    func test_partialSixArgumentsFunction01235ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, .deferred, .deferred, .deferred, .deferred, arr[4], .deferred)
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[0], arr[1], arr[2], arr[3], arr[5]))
+    }
+
+    func test_partialSixArgumentsFunction01234ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, .deferred, .deferred, .deferred, .deferred, .deferred, arr[5])
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[0], arr[1], arr[2], arr[3], arr[4]))
+    }
+
+    func test_partialSixArgumentsFunction2345ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, arr[0], arr[1], .deferred, .deferred, .deferred, .deferred)
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[2], arr[3], arr[4], arr[5]))
+    }
+
+    func test_partialSixArgumentsFunction0345ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, .deferred, arr[1], arr[2], .deferred, .deferred, .deferred)
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[0], arr[3], arr[4], arr[5]))
+    }
+
+    func test_partialSixArgumentsFunction0145ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, .deferred, .deferred, arr[2], arr[3], .deferred, .deferred)
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[0], arr[1], arr[4], arr[5]))
+    }
+
+    func test_partialSixArgumentsFunction0125ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, .deferred, .deferred, .deferred, arr[3], arr[4], .deferred)
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[0], arr[1], arr[2], arr[5]))
+    }
+
+    func test_partialSixArgumentsFunction0123ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, .deferred, .deferred, .deferred, .deferred, arr[4], arr[5])
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[0], arr[1], arr[2], arr[3]))
+    }
+
+    func test_partialSixArgumentsFunction345ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, arr[0], arr[1], arr[2], .deferred, .deferred, .deferred)
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[3], arr[4], arr[5]))
+    }
+
+    func test_partialSixArgumentsFunction45ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, arr[0], arr[1], arr[2], arr[3], .deferred, .deferred)
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[4], arr[5]))
+    }
+
+    func test_partialSixArgumentsFunction5ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, arr[0], arr[1], arr[2], arr[3], arr[4], .deferred)
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[5]))
+    }
+
+    func test_partialSixArgumentsFunction4ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, arr[0], arr[1], arr[2], arr[3], .deferred, arr[5])
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[4]))
+    }
+
+    func test_partialSixArgumentsFunction3ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, arr[0], arr[1], arr[2], .deferred, arr[4], arr[5])
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[3]))
+    }
+
+    func test_partialSixArgumentsFunction2ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, arr[0], arr[1], .deferred, arr[3], arr[4], arr[5])
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[2]))
+    }
+
+    func test_partialSixArgumentsFunction1ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, arr[0], .deferred, arr[2], arr[3], arr[4], arr[5])
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[1]))
+    }
+
+    func test_partialSixArgumentsFunction0ArgumentDeferred_sameResults() {
+        let arr = generateTestIntArray(length: 6)
+        let pf = partial(f6, .deferred, arr[1], arr[2], arr[3], arr[4], arr[5])
+        let expected = f6(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5])
+        XCTAssertEqual(expected, pf(arr[0]))
+    }
 }
