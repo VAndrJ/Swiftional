@@ -31,20 +31,6 @@ extension Bool {
     }
 }
 
-// MARK: - Semigroup
-
-extension Bool: Semigroup {
-    public func combine(_ other: Bool) -> Bool {
-        self || other
-    }
-}
-
-// MARK: - Monoid
-
-extension Bool: Monoid {
-    public static var empty: Bool { false }
-}
-
 // MARK: - Either
 
 extension Bool {

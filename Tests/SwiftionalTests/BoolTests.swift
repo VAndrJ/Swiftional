@@ -27,59 +27,6 @@ class BoolTests: XCTestCase {
         true.foldRun({ XCTFail() }, {})
     }
 
-    func test_boolSemigroupCombine() {
-        XCTAssertTrue(true.combine(false))
-        XCTAssertTrue(true.combine(true))
-        XCTAssertTrue(false.combine(true))
-        XCTAssertFalse(false.combine(false))
-    }
-
-    func test_boolSemigroupCombine_extensionCombineFunction() {
-        XCTAssertTrue(Bool.combine(true, true))
-        XCTAssertTrue(Bool.combine(true, false))
-        XCTAssertTrue(Bool.combine(false, true))
-        XCTAssertFalse(Bool.combine(false, false))
-    }
-
-    func test_boolSemigroupCombine_extensionCombineAllArrayFunction() {
-        XCTAssertTrue(Bool.combineAll(true, [true]))
-        XCTAssertTrue(Bool.combineAll(true, [false]))
-        XCTAssertTrue(Bool.combineAll(false, [true]))
-        XCTAssertFalse(Bool.combineAll(false, [false]))
-    }
-
-    func test_boolSemigroupCombine_extensionCombineAllVariadicFunction() {
-        XCTAssertTrue(Bool.combineAll(true, true))
-        XCTAssertTrue(Bool.combineAll(true, false))
-        XCTAssertTrue(Bool.combineAll(false, true))
-        XCTAssertFalse(Bool.combineAll(false, false))
-    }
-
-    func test_boolSemigroupCombine_extensionAllArrayFunction() {
-        XCTAssertTrue(true.combineAll([true]))
-        XCTAssertTrue(true.combineAll([false]))
-        XCTAssertTrue(false.combineAll([true]))
-        XCTAssertFalse(false.combineAll([false]))
-    }
-
-    func test_boolSemigroupCombine_extensionAllVariadicFunction() {
-        XCTAssertTrue(true.combineAll(true))
-        XCTAssertTrue(true.combineAll(false))
-        XCTAssertTrue(false.combineAll(true))
-        XCTAssertFalse(false.combineAll(false))
-    }
-
-    func test_boolMonoidEmpty() {
-        XCTAssertFalse(Bool.empty)
-    }
-    
-    func test_boolMonoidCombine_associativeOriginal() {
-        XCTAssertTrue(true.combine(Bool.empty))
-        XCTAssertFalse(false.combineAll(Bool.empty))
-        XCTAssertTrue(Bool.empty.combine(true))
-        XCTAssertFalse(Bool.empty.combineAll(false))
-    }
-
     func test_boolFoldEither() {
         let left = 1
         let right = "1"
