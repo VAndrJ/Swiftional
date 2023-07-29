@@ -2,7 +2,7 @@
 //  OptionalTests.swift
 //  
 //
-//  Created by VAndrJ on 20.09.2022.
+//  Created by Volodymyr Andriienko on 20.09.2022.
 //
 
 import XCTest
