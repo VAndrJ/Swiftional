@@ -1,4 +1,6 @@
 # Swiftional
+
+
 Swiftional introduce some functional primitives that complement the Swift standard library.
 
 Created for writing Swift code with a slight touch of functional programming.
@@ -15,6 +17,8 @@ Created for writing Swift code with a slight touch of functional programming.
 
 
 <details><summary> curry</summary>
+
+  
 Converts an uncurried function to a curried function.
 
 
@@ -26,9 +30,15 @@ Example:
 becomes
 (A) -> (B) -> R
 ```
+
+
 </details>
+
+
 <details><summary> uncurry</summary>
-Converts a curried function into aan uncurried function.
+
+  
+Converts a curried function into an uncurried function.
 
 
 Example: 
@@ -39,8 +49,14 @@ Example:
 becomes
 (A, B) -> R
 ```
+
+
 </details>
+
+
 <details><summary> partial</summary>
+
+  
 Partial application. Applies an argument to a function.
 
 
@@ -52,16 +68,34 @@ Example:
 with applied first argument becomes
 (B) -> R
 ```
+
+
 </details>
+
+
 <details><summary> identity</summary>
+
+  
 Identity combinator function.
 Returns the input without changing it.
+
+
 </details>
+
+
 <details><summary> constant</summary>
+
+  
 The constant combinator function.
 Ignores the function arguments and always returns the provided value.
+
+
 </details>
+
+
 <details><summary> flip</summary>
+
+  
 Flips the arguments of a function.
 
 
@@ -73,14 +107,30 @@ Example:
 becomes
 (B, A) -> R
 ```
+
+
 </details>
+
+
 <details><summary> with</summary>
-Calls the specified closure with the given attrubute as its receiver and returns its result.
+
+  
+Calls the specified closure with the given attribute as its receiver and returns its result.
+
+
 </details>
+
+
 <details><summary> ignored</summary>
+
+  
 Ignores the function return and always returns `Void`.
 </details>
+
+
 <details><summary> weakify</summary>
+
+  
 Weakifying function.
 
 
@@ -91,6 +141,8 @@ someObject.onActionClosure = otherObject.someFunc // `otherObject` captured by s
 // Use operator:
 someObject.onActionClosure = weakify(otherObject) { $0.someFunc() } // `otherObject` is weakified, not captured by strong reference
 ```
+
+
 </details>
 
 
@@ -98,19 +150,21 @@ someObject.onActionClosure = weakify(otherObject) { $0.someFunc() } // `otherObj
 
 
 <details><summary> Bool</summary>
-* `fold`
+
+  
+  * `fold`
 Case analysis for the `Bool` type. Applies the provided closures based on the value.
 
 
-* `foldRun`
+  * `foldRun`
 Runs the provided closures based on the content of this value.
 
 
-* `oldEither`
+  * `oldEither`
 Case analysis for the `Bool` type. Applies the provided closures based on the value and return `Either`.
 </details>
 <details><summary> Optional</summary>
-* `fold`
+  * `fold`
 Case analysis for the `Optional` type. Applies the provided closures based on the content of this `Optional` value.
 </details>
 
@@ -119,12 +173,14 @@ Case analysis for the `Optional` type. Applies the provided closures based on th
 
 
 <details><summary> Applyable</summary>
-* `apply`
+
+  
+  * `apply`
 Calls the specified closure with Self value as its receiver and returns Self value.
 
 
-* `applied`
-Calls the specified closure with Self value as its receiver and returns copy of Self value.
+  * `applied`
+Calls the specified closure with Self value as its receiver and returns a copy of Self value.
 </details>
 
 
@@ -132,12 +188,26 @@ Calls the specified closure with Self value as its receiver and returns copy of 
 
 
 <details><summary> >>></summary>
-Composes a functions and return a function that is the result of applying `g` to the output of `f`.
+
+  
+Composes functions and returns a function that is the result of applying `g` to the output of `f`.
+
+
 </details>
+
+
 <details><summary> <<< </summary>
-Composes a functions and return a function that is the result of applying `g` to the output of `f`.
+
+  
+  Composes functions and returns a function that is the result of applying `g` to the output of `f`.
+
+
 </details>
+
+
 <details><summary> |></summary>
+
+  
 Pipe forward. Applies an argument to a function.
 
 
@@ -149,8 +219,14 @@ Can also be written as:
 ```
 let result = a |> f |> g |> h
 ```
+
+
 </details>
+
+
 <details><summary> <|</summary>
+
+  
 Pipe forward. Applies an argument to a function.
 
 
@@ -162,9 +238,15 @@ Can also be written as:
 ```
 let result = h <| g <| f <| a
 ```
+
+
 </details>
+
+
 <details><summary> |>></summary>
-Applies a function to an argument an returns callable function.
+
+  
+Applies a function to an argument and returns a callable function.
 
 
 Example. This:
@@ -175,9 +257,15 @@ Can also be written as:
 ```
 let result = a |>> f
 ```
+
+
 </details>
+
+
 <details><summary> <<|</summary>
-Applies a function to an argument an returns callable function.
+
+  
+Applies a function to an argument and returns a callable function.
 
 
 Example. This:
@@ -188,14 +276,32 @@ Can also be written as:
 ```
 let result = f <<| a
 ```
+
+
 </details>
+
+
 <details><summary> ~~></summary>
+
+  
 Asynchronous function composition
+
+  
 </details>
+
+
 <details><summary> >=></summary>
+
+  
 Effectful function composition
+
+  
 </details>
+
+
 <details><summary> ?></summary>
+
+  
 Weakifying function.
 
 
@@ -206,8 +312,14 @@ someObject.onActionClosure = otherObject.someFunc // `otherObject` captured by s
 // Use operator:
 someObject.onActionClosure = otherObject ?> { $0.someFunc() } // `otherObject` is weakified, not captured by strong reference
 ```
+
+
 </details>
+
+
 <details><summary> ?>></summary>
+
+  
 Weakifying function.
 
 
@@ -218,6 +330,8 @@ someObject.onActionClosure = otherObject.someFunc // `otherObject` captured by s
 // Use operator:
 someObject.onActionClosure = otherObject ?>> { $0.someFunc } // `otherObject` is weakified, not captured by strong reference
 ```
+
+
 </details>
 
 
@@ -225,6 +339,8 @@ someObject.onActionClosure = otherObject ?>> { $0.someFunc } // `otherObject` is
 
 
 <details><summary> Either</summary>
+
+  
 The type `Either` represents a value of one of these types, but not both: `.left(Left)` or `.right(Right)`.
 
 The `Either` type is shifted to the right by convention.
@@ -232,4 +348,6 @@ That is, the `.left` constructor is usually used to hold errors or secondary dat
 while `.right` is used to store a "correct", primary value - one that can be worked on further.
 
 Wordplay: "Right" also means "Correct".
+
+
 </details>
