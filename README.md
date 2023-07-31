@@ -164,6 +164,8 @@ Runs the provided closures based on the content of this value.
 Case analysis for the `Bool` type. Applies the provided closures based on the value and return `Either`.
 </details>
 <details><summary> Optional</summary>
+
+  
   * `fold`
 Case analysis for the `Optional` type. Applies the provided closures based on the content of this `Optional` value.
 </details>
