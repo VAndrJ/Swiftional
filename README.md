@@ -1,6 +1,11 @@
 # Swiftional
 
 
+[![Version](https://img.shields.io/cocoapods/v/Swiftional.svg?style=flat)](https://cocoapods.org/pods/Swiftional)
+[![License](https://img.shields.io/cocoapods/l/Swiftional.svg?style=flat)](https://cocoapods.org/pods/Swiftional)
+[![Platform](https://img.shields.io/cocoapods/p/Swiftional.svg?style=flat)](https://cocoapods.org/pods/Swiftional)
+
+
 Swiftional introduce some functional primitives that complement the Swift standard library.
 
 Created for writing Swift code with a slight touch of functional programming.
@@ -140,6 +145,40 @@ Example:
 someObject.onActionClosure = otherObject.someFunc // `otherObject` captured by strong reference
 // Use operator:
 someObject.onActionClosure = weakify(otherObject) { $0.someFunc() } // `otherObject` is weakified, not captured by strong reference
+```
+
+
+</details>
+
+
+<details><summary> memoize</summary>
+
+  
+Memoization function. Memoize wrapper intercepts calls you send to the function and attempts to reply with results from its internal cache. If it fails to find a cached result, it calls the work function and records the result of the computation in memory. Subsequent calls to the function with the same arguments can then be satisfied by fetching the result from memory, avoiding redundant computations. Memoization is one of the oldest and simplest tricks in computer science, trading memory for CPU cycles.
+
+
+Example:
+```
+let memoizedSomeFunc = memoize(f: someFunc(_:))
+print(memoizedSomeFunc(2))
+print(memoizedSomeFunc(3))
+print(memoizedSomeFunc(2)) // result fetched from memory
+```
+
+
+</details>
+
+
+<details><summary> rmemoize</summary>
+
+  
+Recrsive memoization function. Standard memoization is not very good at memoizing recursive functions. It represented as a primitive recursive function, where the memoization done at each step of the recursion.
+
+
+Example:
+```
+let memoizedFibonacci = rmemoize { fibonacci, n in n < 2 ? 1 : fibonacci(n - 1) + fibonacci(n - 2) }
+print(memoizedFibonacci(42))
 ```
 
 
