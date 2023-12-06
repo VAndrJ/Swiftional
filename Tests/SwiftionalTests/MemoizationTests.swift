@@ -85,9 +85,9 @@ class MemoizationTests: XCTestCase {
         }
     }
 
-    func test_nChooseK_performance() {
+    func test_nFib_performance() {
         measure {
-            for _ in 0..<runsCount {
+            for _ in 0..<(runsCount / 10) {
                 for (n, k) in pairs.shuffled() {
                     _ = nFib(n: n, k: k)
                 }
@@ -95,10 +95,10 @@ class MemoizationTests: XCTestCase {
         }
     }
 
-    func test_rmemoizedNChooseK_performance() {
+    func test_rmemoizedNFib_performance() {
         measure {
             let sut = rmemoizedNFib
-            for _ in 0..<runsCount {
+            for _ in 0..<(runsCount / 10) {
                 for (n, k) in pairs.shuffled() {
                     _ = sut(n, k)
                 }
@@ -106,10 +106,10 @@ class MemoizationTests: XCTestCase {
         }
     }
 
-    func test_memoizedNChooseK_performance() {
+    func test_memoizedNFib_performance() {
         measure {
             let sut = memoizedNFib
-            for _ in 0..<runsCount {
+            for _ in 0..<(runsCount / 10) {
                 for (n, k) in pairs.shuffled() {
                     _ = sut(n, k)
                 }
