@@ -268,7 +268,7 @@ let result = a |> f |> g |> h
 <details><summary> <|</summary>
 
   
-Pipe forward. Applies an argument to a function.
+Pipe backward. Applies an argument to a function.
 
 
 Example. This:
