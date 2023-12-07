@@ -172,7 +172,7 @@ print(memoizedSomeFunc(2)) // result fetched from memory
 <details><summary> rmemoize</summary>
 
   
-Recrsive memoization function. Standard memoization is not very good at memoizing recursive functions. It represented as a primitive recursive function, where the memoization done at each step of the recursion.
+Standard memoization is not very good at memoizing recursive functions. Here is recursive memoization function. It represented as a primitive recursive function, where the memoization done at each step of the recursion.
 
 
 Example:
