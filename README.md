@@ -199,7 +199,7 @@ Case analysis for the `Bool` type. Applies the provided closures based on the va
 Runs the provided closures based on the content of this value.
 
 
-  * `oldEither`
+  * `foldEither`
 Case analysis for the `Bool` type. Applies the provided closures based on the value and return `Either`.
 </details>
 <details><summary> Optional</summary>
