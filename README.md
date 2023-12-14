@@ -3,10 +3,11 @@
 
 [![License](https://img.shields.io/cocoapods/l/Swiftional.svg?style=flat)](https://cocoapods.org/pods/Swiftional)
 [![Platform](https://img.shields.io/cocoapods/p/Swiftional.svg?style=flat)](https://cocoapods.org/pods/Swiftional)
+[![Language](https://img.shields.io/badge/language-Swift-orangered.svg?style=flat)](https://cocoapods.org/pods/Swiftional)
 
 
 [![Version](https://img.shields.io/cocoapods/v/Swiftional.svg?style=flat)](https://cocoapods.org/pods/Swiftional)
-[![SPM](https://img.shields.io/badge/SPM-compatible-green.svg?style=flat)](https://github.com/apple/swift-package-manager)
+[![SPM](https://img.shields.io/badge/SPM-compatible-limegreen.svg?style=flat)](https://github.com/apple/swift-package-manager)
 
 
 Swiftional introduce some functional primitives that complement the Swift standard library.
