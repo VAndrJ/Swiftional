@@ -101,6 +101,7 @@ func aF5T(_ a : Int, _ b : Int, _ c: Int, _ d: Int, _ e: Int) async throws -> In
     await aF5(a, b, c, d, e)
 }
 
+@Sendable
 func getString(_ a: Any) -> String {
     "\(a)"
 }
@@ -110,6 +111,7 @@ func aGetString(_ a: Any) async -> String {
     "\(a)"
 }
 
+@Sendable
 func mul(_ a: Int) -> Int {
     a * a
 }
@@ -119,7 +121,8 @@ func aMul(_ a: Int) async -> Int {
     a * a
 }
 
-func mult(_ a: Int) throws -> Int {
+@Sendable
+func mulT(_ a: Int) throws -> Int {
     mul(a)
 }
 
@@ -128,6 +131,7 @@ func aMulT(_ a: Int) async throws -> Int {
     await aMul(a)
 }
 
+@Sendable
 func getInt() -> Int {
     42
 }
@@ -137,7 +141,8 @@ func aGetInt() async -> Int {
     42
 }
 
-func getIntt() throws -> Int {
+@Sendable
+func getIntT() throws -> Int {
     getInt()
 }
 
