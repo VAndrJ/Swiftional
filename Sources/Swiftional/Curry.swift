@@ -15,7 +15,7 @@ public func curry<A, B, R>(_ fn: @escaping (A, B) -> R) -> (A) -> (B) -> R {
     { a in { b in fn(a, b) } }
 }
 
-/// Converts an uncurried throws function with 2 arguments to a curried throws function.
+/// Converts an uncurried throwing function with 2 arguments to a curried throwing function.
 ///
 /// - Parameter fn: Function to be curried.
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> R
@@ -32,7 +32,7 @@ public func curry<A, B, R>(_ fn: @escaping @Sendable (A, B) async -> R) -> @Send
     { a in { b in await fn(a, b) } }
 }
 
-/// Converts an uncurried async throws function with 2 arguments to a curried async throws function.
+/// Converts an uncurried async throwing function with 2 arguments to a curried async throwing function.
 ///
 /// - Parameter fn: Function to be curried.
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> R
@@ -49,7 +49,7 @@ public func curry<A, B, C, R>(_ fn: @escaping (A, B, C) -> R) -> (A) -> (B) -> (
     { a in { b in { c in fn(a, b, c) } } }
 }
 
-/// Converts an uncurried throws function with 3 arguments to a curried throws function.
+/// Converts an uncurried throwing function with 3 arguments to a curried throwing function.
 ///
 /// - Parameter fn: Function to be curried.
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> R
@@ -62,11 +62,11 @@ public func curry<A, B, C, R>(_ fn: @escaping (A, B, C) throws -> R) -> (A) -> (
 /// - Parameter fn: Function to be curried.
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func curry<A, B, C, R>(_ fn: @escaping @Sendable (A, B, C) async -> R) -> (A) -> (B) -> (C) async -> R {
+public func curry<A, B, C, R>(_ fn: @escaping @Sendable (A, B, C) async -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) async -> R {
     { a in { b in { c in await fn(a, b, c) } } }
 }
 
-/// Converts an uncurried async throws function with 3 arguments to a curried async throws function.
+/// Converts an uncurried async throwing function with 3 arguments to a curried async throwing function.
 ///
 /// - Parameter fn: Function to be curried.
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> R
@@ -83,7 +83,7 @@ public func curry<A, B, C, D, R>(_ fn: @escaping (A, B, C, D) -> R) -> (A) -> (B
     { a in { b in { c in { d in fn(a, b, c, d) } } } }
 }
 
-/// Converts an uncurried throws function with 4 arguments to a curried throws function.
+/// Converts an uncurried throwing function with 4 arguments to a curried throwing function.
 ///
 /// - Parameter fn: Function to be curried.
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> (D) -> R
@@ -100,7 +100,7 @@ public func curry<A, B, C, D, R>(_ fn: @escaping @Sendable (A, B, C, D) async ->
     { a in { b in { c in { d in await fn(a, b, c, d) } } } }
 }
 
-/// Converts an uncurried async throws function with 4 arguments to a curried async throws function.
+/// Converts an uncurried async throwing function with 4 arguments to a curried async throwing function.
 ///
 /// - Parameter fn: Function to be curried.
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> (D) -> R
@@ -117,7 +117,7 @@ public func curry<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) -> R) -> (A)
     { a in { b in { c in { d in { e in fn(a, b, c, d, e) } } } } }
 }
 
-/// Converts an uncurried throws function with 5 arguments to a curried throws function.
+/// Converts an uncurried throwing function with 5 arguments to a curried throwing function.
 ///
 /// - Parameter fn: Function to be curried.
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> (D) -> (E) -> R
@@ -134,7 +134,7 @@ public func curry<A, B, C, D, E, R>(_ fn: @escaping @Sendable (A, B, C, D, E) as
     { a in { b in { c in { d in { e in await fn(a, b, c, d, e) } } } } }
 }
 
-/// Converts an uncurried async throws function with 5 arguments to a curried async throws function.
+/// Converts an uncurried async throwing function with 5 arguments to a curried async throwing function.
 ///
 /// - Parameter fn: Function to be curried.
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> (D) -> (E) -> R
@@ -168,7 +168,7 @@ public func curry<A, B, C, D, E, F, R>(_ fn: @escaping @Sendable (A, B, C, D, E,
     { a in { b in { c in { d in { e in { f in await fn(a, b, c, d, e, f) } } } } } }
 }
 
-/// Converts an uncurried async throws function with 6 arguments to a curried async throws function.
+/// Converts an uncurried async throwing function with 6 arguments to a curried async throwing function.
 ///
 /// - Parameter fn: Function to be curried.
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> (D) -> (E) -> (F) -> R
