@@ -110,6 +110,7 @@ infix operator ?>> : ForwardComposition
 public func ?>> <T: AnyObject>(_ obj: T?, _ block: @escaping (T) -> () -> Void) -> () -> Void {
     return { [weak obj] in
         guard let obj else { return }
+        
         block(obj)()
     }
 }
@@ -123,6 +124,7 @@ public func ?>> <T: AnyObject>(_ obj: T?, _ block: @escaping (T) -> () -> Void) 
 public func ?>> <T: AnyObject>(_ obj: T?, _ block: @escaping (T) -> (() -> Void)?) -> () -> Void {
     return { [weak obj] in
         guard let obj else { return }
+
         block(obj)?()
     }
 }
@@ -136,6 +138,7 @@ public func ?>> <T: AnyObject>(_ obj: T?, _ block: @escaping (T) -> (() -> Void)
 public func ?>> <T: AnyObject, U>(_ obj: T?, _ block: @escaping (T) -> (U) -> Void) -> (U) -> Void {
     return { [weak obj] in
         guard let obj else { return }
+
         block(obj)($0)
     }
 }
@@ -149,6 +152,7 @@ public func ?>> <T: AnyObject, U>(_ obj: T?, _ block: @escaping (T) -> (U) -> Vo
 public func ?>> <T: AnyObject, U>(_ obj: T?, _ block: @escaping (T) -> ((U) -> Void)?) -> (U) -> Void {
     return { [weak obj] in
         guard let obj else { return }
+
         block(obj)?($0)
     }
 }
@@ -162,6 +166,7 @@ public func ?>> <T: AnyObject, U>(_ obj: T?, _ block: @escaping (T) -> ((U) -> V
 public func ?>> <T: AnyObject, U>(_ obj: T?, _ block: @escaping (T) -> () -> Void) -> (U) -> Void {
     return { [weak obj] _ in
         guard let obj else { return }
+
         block(obj)()
     }
 }
@@ -175,6 +180,7 @@ public func ?>> <T: AnyObject, U>(_ obj: T?, _ block: @escaping (T) -> () -> Voi
 public func ?>> <T: AnyObject, U>(_ obj: T?, _ block: @escaping (T) -> (() -> Void)?) -> (U) -> Void {
     return { [weak obj] _ in
         guard let obj else { return }
+
         block(obj)?()
     }
 }
@@ -188,6 +194,7 @@ public func ?>> <T: AnyObject, U>(_ obj: T?, _ block: @escaping (T) -> (() -> Vo
 public func ?>> <T: AnyObject, U, V>(_ obj: T?, _ block: @escaping (T) -> (U, V) -> Void) -> (U, V) -> Void {
     return { [weak obj] in
         guard let obj else { return }
+
         block(obj)($0, $1)
     }
 }
@@ -201,6 +208,7 @@ public func ?>> <T: AnyObject, U, V>(_ obj: T?, _ block: @escaping (T) -> (U, V)
 public func ?>> <T: AnyObject, U, V>(_ obj: T?, _ block: @escaping (T) -> () -> Void) -> (U, V) -> Void {
     return { [weak obj] _, _ in
         guard let obj else { return }
+
         block(obj)()
     }
 }
@@ -214,6 +222,7 @@ public func ?>> <T: AnyObject, U, V>(_ obj: T?, _ block: @escaping (T) -> () -> 
 public func ?>> <T: AnyObject, U, V>(_ obj: T?, _ block: @escaping (T) -> (() -> Void)?) -> (U, V) -> Void {
     return { [weak obj] _, _ in
         guard let obj else { return }
+
         block(obj)?()
     }
 }
@@ -229,6 +238,7 @@ public func ?>> <T: AnyObject, R>(_ obj: T?, _ block: @escaping (T) -> () -> R?)
         guard let obj else {
             return nil
         }
+
         return block(obj)()
     }
 }
@@ -244,6 +254,7 @@ public func ?>> <T: AnyObject, R>(_ obj: T?, _ block: @escaping (T) -> (() -> R?
         guard let obj else {
             return nil
         }
+
         return block(obj)?()
     }
 }
@@ -259,6 +270,7 @@ public func ?>> <T: AnyObject, U, R>(_ obj: T?, _ block: @escaping (T) -> (U) ->
         guard let obj else {
             return nil
         }
+
         return block(obj)($0)
     }
 }
@@ -274,6 +286,7 @@ public func ?>> <T: AnyObject, U, R>(_ obj: T?, _ block: @escaping (T) -> ((U) -
         guard let obj else {
             return nil
         }
+
         return block(obj)?($0)
     }
 }
@@ -289,6 +302,7 @@ public func ?>> <T: AnyObject, U, V, R>(_ obj: T?, _ block: @escaping (T) -> (U,
         guard let obj else {
             return nil
         }
+
         return block(obj)($0, $1)
     }
 }
@@ -304,6 +318,7 @@ public func ?>> <T: AnyObject, U, V, R>(_ obj: T?, _ block: @escaping (T) -> ((U
         guard let obj else {
             return nil
         }
+
         return block(obj)?($0, $1)
     }
 }
@@ -320,6 +335,7 @@ public func ?>> <T: AnyObject, U, V, R>(_ obj: T?, _ block: @escaping (T) -> () 
         guard let obj else {
             return nil
         }
+
         return block(obj)()
     }
 }
@@ -335,6 +351,7 @@ public func ?>> <T: AnyObject, U, V, R>(_ obj: T?, _ block: @escaping (T) -> (()
         guard let obj else {
             return nil
         }
+
         return block(obj)?()
     }
 }
