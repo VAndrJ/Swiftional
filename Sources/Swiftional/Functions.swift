@@ -67,6 +67,7 @@ public func ignored<R>(_ fn: @escaping () -> R) -> () -> Void {
 public func weakify<T: AnyObject>(_ obj: T?, _ block: @escaping (T) -> Void) -> () -> Void {
     return { [weak obj] in
         guard let obj else { return }
+        
         block(obj)
     }
 }
@@ -80,6 +81,7 @@ public func weakify<T: AnyObject>(_ obj: T?, _ block: @escaping (T) -> Void) -> 
 public func weakify<T: AnyObject, U>(_ obj: T?, _ block: @escaping (T) -> Void) -> (U) -> Void {
     return { [weak obj] _ in
         guard let obj else { return }
+
         block(obj)
     }
 }
@@ -93,6 +95,7 @@ public func weakify<T: AnyObject, U>(_ obj: T?, _ block: @escaping (T) -> Void) 
 public func weakify<T: AnyObject, U>(_ obj: T?, _ block: @escaping (T, U) -> Void) -> (U) -> Void {
     return { [weak obj] in
         guard let obj else { return }
+
         block(obj, $0)
     }
 }
@@ -106,6 +109,7 @@ public func weakify<T: AnyObject, U>(_ obj: T?, _ block: @escaping (T, U) -> Voi
 public func weakify<T: AnyObject, U, V>(_ obj: T?, _ block: @escaping (T, U, V) -> Void) -> (U, V) -> Void {
     return { [weak obj] in
         guard let obj else { return }
+
         block(obj, $0, $1)
     }
 }
@@ -121,6 +125,7 @@ public func weakify<T: AnyObject, R>(_ obj: T?, _ block: @escaping (T) -> R?) ->
         guard let obj else {
             return nil
         }
+
         return block(obj)
     }
 }
@@ -136,6 +141,7 @@ public func weakify<T: AnyObject, U, R>(_ obj: T?, _ block: @escaping (T) -> R?)
         guard let obj else {
             return nil
         }
+
         return block(obj)
     }
 }
@@ -151,6 +157,7 @@ public func weakify<T: AnyObject, U, R>(_ obj: T?, _ block: @escaping (T, U) -> 
         guard let obj else {
             return nil
         }
+
         return block(obj, $0)
     }
 }
@@ -166,6 +173,7 @@ public func weakify<T: AnyObject, U, V, R>(_ obj: T?, _ block: @escaping (T, U, 
         guard let obj else {
             return nil
         }
+
         return block(obj, $0, $1)
     }
 }
@@ -181,6 +189,7 @@ public func weakify<T: AnyObject, U, V, R>(_ obj: T?, _ block: @escaping (T) -> 
         guard let obj else {
             return nil
         }
+
         return block(obj)
     }
 }

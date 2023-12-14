@@ -18,6 +18,7 @@ public extension Applyable where Self: AnyObject {
     @discardableResult
     func apply(_ f: (Self) throws -> Void) rethrows -> Self {
         try f(self)
+        
         return self
     }
 
@@ -38,6 +39,7 @@ public extension Applyable where Self: Any {
     func applied(_ f: (inout Self) throws -> Void) rethrows -> Self {
         var mutableCopy = self
         try f(&mutableCopy)
+
         return mutableCopy
     }
 }
