@@ -20,9 +20,8 @@ jobs:
       run: swift build -v
     - name: Run tests
       run: swift test --enable-code-coverage
-    - name: Test coverage
-      uses: maxep/spm-lcov-action@0.3.1
-      with:
-        output-file: ./coverage/lcov.info
+    - name: Swift Coverage Conversion
+      uses: sersoft-gmbh/swift-coverage-action@v4.0.0
+      id: coverage-files
     - name: Coveralls GitHub Action
       uses: coverallsapp/github-action@v2.2.3

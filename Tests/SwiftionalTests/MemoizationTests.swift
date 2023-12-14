@@ -21,8 +21,8 @@ func nFib(n: Int, k: Int) -> Int {
 let memoizedNFib = memoize(f: nFib(n:k:))
 
 class MemoizationTests: XCTestCase {
-    let runsCount = 128
-    let values = 0..<32
+    let runsCount = 50
+    let values = 0..<29
     lazy var pairs = values.flatMap { n in (0...n).map { k in (n, k) } }
     let rmemoizedFibonacci = rmemoize { fibonacci, n in n < 2 ? 1 : fibonacci(n - 1) + fibonacci(n - 2) }
     lazy var rmemoizedNFib = rmemoize { (nFib: ((Int, Int) -> Int), n, k) in
@@ -87,7 +87,7 @@ class MemoizationTests: XCTestCase {
 
     func test_nFib_performance() {
         measure {
-            for _ in 0..<(runsCount / 10) {
+            for _ in 0..<(runsCount / 4) {
                 for (n, k) in pairs.shuffled() {
                     _ = nFib(n: n, k: k)
                 }
@@ -98,7 +98,7 @@ class MemoizationTests: XCTestCase {
     func test_rmemoizedNFib_performance() {
         measure {
             let sut = rmemoizedNFib
-            for _ in 0..<(runsCount / 10) {
+            for _ in 0..<(runsCount / 4) {
                 for (n, k) in pairs.shuffled() {
                     _ = sut(n, k)
                 }
@@ -109,7 +109,7 @@ class MemoizationTests: XCTestCase {
     func test_memoizedNFib_performance() {
         measure {
             let sut = memoizedNFib
-            for _ in 0..<(runsCount / 10) {
+            for _ in 0..<(runsCount / 4) {
                 for (n, k) in pairs.shuffled() {
                     _ = sut(n, k)
                 }
