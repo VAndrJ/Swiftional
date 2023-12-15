@@ -5,6 +5,7 @@
 //  Created by Volodymyr Andriienko on 07.02.2022.
 //
 
+import XCTest
 import Foundation
 
 func generateTestIntArray(length: Int) -> [Int] {
@@ -169,4 +170,43 @@ enum TestError: Error {
 
 func getIntInput() -> Int {
     Int.random(in: 0...128)
+}
+
+@Sendable
+public func aConst<R>(_ value: R) -> @Sendable () async -> R {
+    { value }
+}
+
+@Sendable
+public func const<R>(_ value: R) -> @Sendable () -> R {
+    { value }
+}
+
+extension XCTestCase {
+
+    @Sendable
+    func aXCTFail(
+        _ message: String = "",
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) async {
+        XCTFail(message, file: file, line: line)
+    }
+
+    @Sendable
+    func aXCTSuccess(
+        _ message: String = "",
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) async {
+        XCTAssertTrue(true, message, file: file, line: line)
+    }
+
+    func XCTSuccess(
+        _ message: String = "",
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        XCTAssertTrue(true, message, file: file, line: line)
+    }
 }
