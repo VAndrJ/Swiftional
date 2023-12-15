@@ -11,10 +11,13 @@ on:
 
 jobs:
   build:
-    runs-on: macos-13
+    runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v3
+    - uses: sersoft-gmbh/swifty-linux-action@v3
+      with:
+        release-version: '5.8'
     - name: Build
       run: swift build -v
     - name: Run tests
