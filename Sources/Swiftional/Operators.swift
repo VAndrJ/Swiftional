@@ -382,28 +382,6 @@ public func >>> <A, R>(_ f: @escaping @Sendable () async -> A, _ g: @escaping @S
     { await g(f()) }
 }
 
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f` async.
-///
-/// - Parameters:
-///   - f: Left-hand side.
-///   - g: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func >>> <A, R>(_ f: @escaping @Sendable () -> A, _ g: @escaping @Sendable (A) async -> R) -> @Sendable () async -> R {
-    { await g(f()) }
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f` async.
-///
-/// - Parameters:
-///   - f: Left-hand side.
-///   - g: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func >>> <A, R>(_ f: @escaping @Sendable () async -> A, _ g: @escaping @Sendable (A) -> R) -> @Sendable () async -> R {
-    { await g(f()) }
-}
-
 /// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
 ///
 /// - Parameters:
@@ -422,28 +400,6 @@ public func >>> <A, R>(_ f: @escaping () throws -> A, _ g: @escaping (A) -> R) -
 /// - Returns: A function that applies `g` to the output of `f`.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 public func >>> <A, R>(_ f: @escaping @Sendable () async throws -> A, _ g: @escaping @Sendable (A) async -> R) -> @Sendable () async throws -> R {
-    { await g(try f()) }
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f` async.
-///
-/// - Parameters:
-///   - f: Left-hand side.
-///   - g: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func >>> <A, R>(_ f: @escaping @Sendable () throws -> A, _ g: @escaping @Sendable (A) async -> R) -> @Sendable () async throws -> R {
-    { await g(try f()) }
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f` async.
-///
-/// - Parameters:
-///   - f: Left-hand side.
-///   - g: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func >>> <A, R>(_ f: @escaping @Sendable () async throws -> A, _ g: @escaping @Sendable (A) -> R) -> @Sendable () async throws -> R {
     { await g(try f()) }
 }
 
@@ -474,28 +430,6 @@ public func >>> <A, R>(_ f: @escaping @Sendable () async -> A, _ g: @escaping @S
 ///   - f: Left-hand side.
 ///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func >>> <A, R>(_ f: @escaping @Sendable () -> A, _ g: @escaping @Sendable (A) async throws -> R) -> @Sendable () async throws -> R {
-    { try await g(f()) }
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - f: Left-hand side.
-///   - g: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func >>> <A, R>(_ f: @escaping @Sendable () async -> A, _ g: @escaping @Sendable (A) throws -> R) -> @Sendable () async throws -> R {
-    { try await g(f()) }
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - f: Left-hand side.
-///   - g: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
 public func >>> <A, R>(_ f: @escaping () throws -> A, _ g: @escaping (A) throws -> R) -> () throws -> R {
     { try g(try f()) }
 }
@@ -508,28 +442,6 @@ public func >>> <A, R>(_ f: @escaping () throws -> A, _ g: @escaping (A) throws 
 /// - Returns: A function that applies `g` to the output of `f`.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 public func >>> <A, R>(_ f: @escaping @Sendable () async throws -> A, _ g: @escaping @Sendable (A) async throws -> R) -> @Sendable () async throws -> R {
-    { try await g(try f()) }
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - f: Left-hand side.
-///   - g: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func >>> <A, R>(_ f: @escaping @Sendable () throws -> A, _ g: @escaping @Sendable (A) async throws -> R) -> @Sendable () async throws -> R {
-    { try await g(try f()) }
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - f: Left-hand side.
-///   - g: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func >>> <A, R>(_ f: @escaping @Sendable () async throws -> A, _ g: @escaping @Sendable (A) throws -> R) -> @Sendable () async throws -> R {
     { try await g(try f()) }
 }
 
@@ -560,28 +472,6 @@ public func >>> <A, B, R>(_ f: @escaping @Sendable (A) async -> B, _ g: @escapin
 ///   - f: Left-hand side.
 ///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func >>> <A, B, R>(_ f: @escaping @Sendable (A) -> B, _ g: @escaping @Sendable (B) async -> R) -> @Sendable (A) async -> R {
-    { a in await g(f(a)) }
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - f: Left-hand side.
-///   - g: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func >>> <A, B, R>(_ f: @escaping @Sendable (A) async -> B, _ g: @escaping @Sendable (B) -> R) -> @Sendable (A) async -> R {
-    { a in await g(f(a)) }
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - f: Left-hand side.
-///   - g: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
 public func >>> <A, B, R>(_ f: @escaping (A) throws -> B, _ g: @escaping (B) -> R) -> (A) throws -> R {
     { a in g(try f(a)) }
 }
@@ -594,28 +484,6 @@ public func >>> <A, B, R>(_ f: @escaping (A) throws -> B, _ g: @escaping (B) -> 
 /// - Returns: A function that applies `g` to the output of `f`.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 public func >>> <A, B, R>(_ f: @escaping @Sendable (A) async throws -> B, _ g: @escaping @Sendable (B) async -> R) -> @Sendable (A) async throws -> R {
-    { a in await g(try f(a)) }
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - f: Left-hand side.
-///   - g: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func >>> <A, B, R>(_ f: @escaping @Sendable (A) throws -> B, _ g: @escaping @Sendable (B) async -> R) -> @Sendable (A) async throws -> R {
-    { a in await g(try f(a)) }
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - f: Left-hand side.
-///   - g: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func >>> <A, B, R>(_ f: @escaping @Sendable (A) async throws -> B, _ g: @escaping @Sendable (B) -> R) -> @Sendable (A) async throws -> R {
     { a in await g(try f(a)) }
 }
 
@@ -646,28 +514,6 @@ public func >>> <A, B, R>(_ f: @escaping @Sendable (A) async -> B, _ g: @escapin
 ///   - f: Left-hand side.
 ///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func >>> <A, B, R>(_ f: @escaping @Sendable (A) -> B, _ g: @escaping @Sendable (B) async throws -> R) -> @Sendable (A) async throws -> R {
-    { a in try await g(f(a)) }
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - f: Left-hand side.
-///   - g: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func >>> <A, B, R>(_ f: @escaping @Sendable (A) async -> B, _ g: @escaping @Sendable (B) throws -> R) -> @Sendable (A) async throws -> R {
-    { a in try await g(f(a)) }
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - f: Left-hand side.
-///   - g: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
 public func >>> <A, B, R>(_ f: @escaping (A) throws -> B, _ g: @escaping (B) throws -> R) -> (A) throws -> R {
     { a in try g(try f(a)) }
 }
@@ -680,28 +526,6 @@ public func >>> <A, B, R>(_ f: @escaping (A) throws -> B, _ g: @escaping (B) thr
 /// - Returns: A function that applies `g` to the output of `f`.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 public func >>> <A, B, R>(_ f: @escaping @Sendable (A) async throws -> B, _ g: @escaping @Sendable (B) async throws -> R) -> @Sendable (A) async throws -> R {
-    { a in try await g(try f(a)) }
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - f: Left-hand side.
-///   - g: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func >>> <A, B, R>(_ f: @escaping @Sendable (A) throws -> B, _ g: @escaping @Sendable (B) async throws -> R) -> @Sendable (A) async throws -> R {
-    { a in try await g(try f(a)) }
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - f: Left-hand side.
-///   - g: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func >>> <A, B, R>(_ f: @escaping @Sendable (A) async throws -> B, _ g: @escaping @Sendable (B) throws -> R) -> @Sendable (A) async throws -> R {
     { a in try await g(try f(a)) }
 }
 
@@ -734,28 +558,6 @@ public func <<< <A, R>(_ g: @escaping @Sendable (A) async -> R, _ f: @escaping @
 ///   - g: Left-hand side.
 ///   - f: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func <<< <A, R>(_ g: @escaping @Sendable (A) -> R, _ f: @escaping @Sendable () async -> A) -> @Sendable () async -> R {
-    f >>> g
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func <<< <A, R>(_ g: @escaping @Sendable (A) async -> R, _ f: @escaping @Sendable () -> A) -> @Sendable () async -> R {
-    f >>> g
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
 public func <<< <A, R>(_ g: @escaping (A) throws -> R, _ f: @escaping () -> A) -> () throws -> R {
     f >>> g
 }
@@ -768,28 +570,6 @@ public func <<< <A, R>(_ g: @escaping (A) throws -> R, _ f: @escaping () -> A) -
 /// - Returns: A function that applies `g` to the output of `f`.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 public func <<< <A, R>(_ g: @escaping @Sendable (A) async throws -> R, _ f: @escaping @Sendable () async -> A) -> @Sendable () async throws -> R {
-    f >>> g
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func <<< <A, R>(_ g: @escaping @Sendable (A) throws -> R, _ f: @escaping @Sendable () async -> A) -> @Sendable () async throws -> R {
-    f >>> g
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func <<< <A, R>(_ g: @escaping @Sendable (A) async throws -> R, _ f: @escaping @Sendable () -> A) -> @Sendable () async throws -> R {
     f >>> g
 }
 
@@ -820,28 +600,6 @@ public func <<< <A, R>(_ g: @escaping @Sendable (A) async -> R, _ f: @escaping @
 ///   - g: Left-hand side.
 ///   - f: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func <<< <A, R>(_ g: @escaping @Sendable (A) -> R, _ f: @escaping @Sendable () async throws -> A) -> @Sendable () async throws -> R {
-    f >>> g
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func <<< <A, R>(_ g: @escaping @Sendable (A) async -> R, _ f: @escaping @Sendable () throws -> A) -> @Sendable () async throws -> R {
-    f >>> g
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
 public func <<< <A, R>(_ g: @escaping (A) throws -> R, _ f: @escaping () throws -> A) -> () throws -> R {
     f >>> g
 }
@@ -854,28 +612,6 @@ public func <<< <A, R>(_ g: @escaping (A) throws -> R, _ f: @escaping () throws 
 /// - Returns: A function that applies `g` to the output of `f`.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 public func <<< <A, R>(_ g: @escaping @Sendable (A) async throws -> R, _ f: @escaping @Sendable () async throws -> A) -> @Sendable () async throws -> R {
-    f >>> g
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func <<< <A, R>(_ g: @escaping @Sendable (A) throws -> R, _ f: @escaping @Sendable () async throws -> A) -> @Sendable () async throws -> R {
-    f >>> g
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func <<< <A, R>(_ g: @escaping @Sendable (A) async throws -> R, _ f: @escaping @Sendable () throws -> A) -> @Sendable () async throws -> R {
     f >>> g
 }
 
@@ -906,28 +642,6 @@ public func <<< <A, B, R>(_ g: @escaping @Sendable (B) async -> R, _ f: @escapin
 ///   - g: Left-hand side.
 ///   - f: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func <<< <A, B, R>(_ g: @escaping @Sendable (B) -> R, _ f: @escaping @Sendable (A) async -> B) -> @Sendable (A) async -> R {
-    f >>> g
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func <<< <A, B, R>(_ g: @escaping @Sendable (B) async -> R, _ f: @escaping @Sendable (A) -> B) -> @Sendable (A) async -> R {
-    f >>> g
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
 public func <<< <A, B, R>(_ g: @escaping (B) throws -> R, _ f: @escaping (A) -> B) -> (A) throws -> R {
     f >>> g
 }
@@ -940,28 +654,6 @@ public func <<< <A, B, R>(_ g: @escaping (B) throws -> R, _ f: @escaping (A) -> 
 /// - Returns: A function that applies `g` to the output of `f`.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 public func <<< <A, B, R>(_ g: @escaping @Sendable (B) async throws -> R, _ f: @escaping @Sendable (A) async -> B) -> @Sendable (A) async throws -> R {
-    f >>> g
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func <<< <A, B, R>(_ g: @escaping @Sendable (B) throws -> R, _ f: @escaping @Sendable (A) async -> B) -> @Sendable (A) async throws -> R {
-    f >>> g
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func <<< <A, B, R>(_ g: @escaping @Sendable (B) async throws -> R, _ f: @escaping @Sendable (A) -> B) -> @Sendable (A) async throws -> R {
     f >>> g
 }
 
@@ -992,28 +684,6 @@ public func <<< <A, B, R>(_ g: @escaping @Sendable (B) async -> R, _ f: @escapin
 ///   - g: Left-hand side.
 ///   - f: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func <<< <A, B, R>(_ g: @escaping @Sendable (B) -> R, _ f: @escaping @Sendable (A) async throws -> B) -> @Sendable (A) async throws -> R {
-    f >>> g
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func <<< <A, B, R>(_ g: @escaping @Sendable (B) async -> R, _ f: @escaping @Sendable (A) throws -> B) -> @Sendable (A) async throws -> R {
-    f >>> g
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
 public func <<< <A, B, R>(_ g: @escaping (B) throws -> R, _ f: @escaping (A) throws -> B) -> (A) throws -> R {
     f >>> g
 }
@@ -1026,28 +696,6 @@ public func <<< <A, B, R>(_ g: @escaping (B) throws -> R, _ f: @escaping (A) thr
 /// - Returns: A function that applies `g` to the output of `f`.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 public func <<< <A, B, R>(_ g: @escaping @Sendable (B) async throws -> R, _ f: @escaping @Sendable (A) async throws -> B) -> @Sendable (A) async throws -> R {
-    f >>> g
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func <<< <A, B, R>(_ g: @escaping @Sendable (B) throws -> R, _ f: @escaping @Sendable (A) async throws -> B) -> @Sendable (A) async throws -> R {
-    f >>> g
-}
-
-/// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
-///
-/// - Parameters:
-///   - g: Left-hand side.
-///   - f: Right-hand side.
-/// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-public func <<< <A, B, R>(_ g: @escaping @Sendable (B) async throws -> R, _ f: @escaping @Sendable (A) throws -> B) -> @Sendable (A) async throws -> R {
     f >>> g
 }
 
