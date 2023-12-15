@@ -106,6 +106,10 @@ func getString(_ a: Any) -> String {
     "\(a)"
 }
 
+func getStringOptional(_ a: Any) -> String? {
+    "\(a)"
+}
+
 @Sendable
 func aGetString(_ a: Any) async -> String {
     "\(a)"

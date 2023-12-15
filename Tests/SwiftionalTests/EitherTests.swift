@@ -79,18 +79,14 @@ class EitherTests: XCTestCase {
         let value = 1
         let either = Either<Int, Int>.right(value)
         let expected = Either<Int, String>.right(getString(value))
-        XCTAssertEqual(expected, either.flatMap {
-            Either<Int, String>.right(getString($0))
-        })
+        XCTAssertEqual(expected, either.flatMap { Either<Int, String>.right(getString($0)) })
     }
 
     func test_eitherFlatMap_left() {
         let value = 1
         let either = Either<Int, Int>.left(value)
         let expected = Either<Int, String>.left(value)
-        XCTAssertEqual(expected, either.flatMap {
-            Either<Int, String>.right(getString($0))
-        })
+        XCTAssertEqual(expected, either.flatMap { Either<Int, String>.right(getString($0)) })
     }
 
     func test_eitherSwap_rightToLeft() {

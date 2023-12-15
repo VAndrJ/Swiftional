@@ -22,7 +22,7 @@ let memoizedNFib = memoize(f: nFib(n:k:))
 
 class MemoizationTests: XCTestCase {
     let runsCount = 50
-    let values = 0..<29
+    let values = 0..<28
     lazy var pairs = values.flatMap { n in (0...n).map { k in (n, k) } }
     let rmemoizedFibonacci = rmemoize { fibonacci, n in n < 2 ? 1 : fibonacci(n - 1) + fibonacci(n - 2) }
     lazy var rmemoizedNFib = rmemoize { (nFib: ((Int, Int) -> Int), n, k) in

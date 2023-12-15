@@ -408,9 +408,6 @@ private class MockObject {
         self?.block($0)
         return $0
     }
-    private(set) lazy var executeClosureWithTwoParameters: ((Bool, Bool) -> Void)? = { [weak self]in
-        self?.block($0 && $1)
-    }
     private(set) lazy var executeClosureWithTwoParametersAndReturn: ((Bool, Bool) -> Bool)? = { [weak self] in
         self?.block($0 && $1)
         return $0 && $1

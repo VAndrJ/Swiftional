@@ -718,13 +718,10 @@ class OperatorsTest: XCTestCase {
         func f(_ a: Int) -> Int? {
             a + a
         }
-        func g(_ a: Int) -> String? {
-            "\(a)"
-        }
 
         let input = getIntInput()
-        let expected = g(f(input)!)
-        let sut = f >=> g
+        let expected = getStringOptional(f(input)!)
+        let sut = f >=> getStringOptional
         XCTAssertEqual(expected, sut(input))
     }
 
@@ -732,12 +729,9 @@ class OperatorsTest: XCTestCase {
         func f(_ a: Int) -> Int? {
             nil
         }
-        func g(_ a: Int) -> String? {
-            "\(a)"
-        }
 
         let input = getIntInput()
-        let sut = f >=> g
+        let sut = f >=> getStringOptional
         XCTAssertNil(sut(input))
     }
 }
