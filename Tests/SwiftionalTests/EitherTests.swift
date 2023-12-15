@@ -12,8 +12,26 @@ class EitherTests: XCTestCase {
 
     func test_eitherLeft_foldIdentityEquals() {
         let expected = "test"
-        let either = Either<String, Never>.left(expected)
+        let either = Either<String, Void>.left(expected)
         XCTAssertEqual(expected, either.fold(identity, constant("fail")))
+    }
+
+    func test_async_1_2_eitherLeft_foldIdentityEquals() async {
+        let expected = "test"
+        let either = Either<String, Void>.left(expected)
+        await aXCTAssertEqual(expected, await either.fold(aId, aConst("fail")))
+    }
+
+    func test_async_1_eitherLeft_foldIdentityEquals() async {
+        let expected = "test"
+        let either = Either<String, Void>.left(expected)
+        await aXCTAssertEqual(expected, await either.fold(aId, const("fail")))
+    }
+
+    func test_async_2_eitherLeft_foldIdentityEquals() async {
+        let expected = "test"
+        let either = Either<String, Void>.left(expected)
+        await aXCTAssertEqual(expected, await either.fold(id, aConst("fail")))
     }
 
     func test_eitherLeft_valueEquals() {
@@ -30,8 +48,14 @@ class EitherTests: XCTestCase {
 
     func test_eitherRight_foldIdentityEquals() {
         let expected = "test"
-        let either = Either<Never, String>.right(expected)
+        let either = Either<Void, String>.right(expected)
         XCTAssertEqual(expected, either.fold(constant("fail"), identity))
+    }
+
+    func test_async_eitherRight_foldIdentityEquals() async {
+        let expected = "test"
+        let either = Either<Void, String>.right(expected)
+        await aXCTAssertEqual(expected, await either.fold(aConst("fail"), aId))
     }
 
     func test_eitherRight_valueEquals() {
@@ -110,11 +134,25 @@ class EitherTests: XCTestCase {
         XCTAssertEqual(expected, Either<Int, String>.right("").foldLeft(getString, expected))
     }
 
+    func test_async_eitherFoldLeft_expectedConstResultEquals() async {
+        let value = 1
+        let expected = getString(value)
+        await aXCTAssertEqual(expected, await Either<Int, String>.left(value).foldLeft(aGetString, expected))
+        await aXCTAssertEqual(expected, await Either<Int, String>.right("").foldLeft(aGetString, expected))
+    }
+
     func test_eitherFoldRight_expectedConstResultEquals() {
         let value = 1
         let expected = getString(value)
         XCTAssertEqual(expected, Either<String, Int>.right(value).foldRight(expected, getString))
         XCTAssertEqual(expected, Either<String, Int>.left("").foldRight(expected, getString))
+    }
+
+    func test_async_eitherFoldRight_expectedConstResultEquals() async {
+        let value = 1
+        let expected = getString(value)
+        await aXCTAssertEqual(expected, await Either<String, Int>.right(value).foldRight(expected, aGetString))
+        await aXCTAssertEqual(expected, await Either<String, Int>.left("").foldRight(expected, aGetString))
     }
 
     func test_eitherFoldRun() {
@@ -126,6 +164,18 @@ class EitherTests: XCTestCase {
         Either<Int, Int>.right(expected).foldRun(
             { _ in XCTFail() },
             { XCTAssertEqual(expected, $0) }
+        )
+    }
+
+    func test_async_eitherFoldRun() async {
+        let expected = 1
+        await Either<Int, Int>.left(expected).foldRun(
+            { await aXCTAssertEqual(expected, $0) },
+            { _ in await aXCTFail() }
+        )
+        await Either<Int, Int>.right(expected).foldRun(
+            { _ in await aXCTFail() },
+            { await aXCTAssertEqual(expected, $0) }
         )
     }
 

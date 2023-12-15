@@ -16,12 +16,34 @@ public func identity<R>(_ value: R) -> R {
     value
 }
 
+/// Identity combinator function.
+/// Returns the input without changing it.
+///
+/// - Parameter value: Output value.
+/// - Returns: The value received as input, with no modifications.
+@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@Sendable
+public func id<R>(_ value: R) -> R {
+    value
+}
+
 /// The constant combinator function.
 /// Always returns the provided value.
 ///
 /// - Parameter value: Constant value to return.
 /// - Returns: Function that constantly return the `value` provided as argument.
 public func constant<R>(_ value: R) -> () -> R {
+    { value }
+}
+
+/// The constant combinator function.
+/// Always returns the provided value.
+///
+/// - Parameter value: Constant value to return.
+/// - Returns: Function that constantly return the `value` provided as argument.
+@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@Sendable
+public func const<R>(_ value: R) -> @Sendable () -> R {
     { value }
 }
 
@@ -34,12 +56,51 @@ public func constant<A, R>(_ value: R) -> (A) -> R {
     { _ in value }
 }
 
+/// The constant combinator function.
+/// Ignores the function arguments and always returns the provided value.
+///
+/// - Parameter value: Constant value to return.
+/// - Returns: Function that constantly return the `value` provided as argument.
+@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@Sendable
+public func const<A, R>(_ value: R) -> @Sendable (A) -> R {
+    { _ in value }
+}
+
 /// Flips the arguments of a function.
 ///
 /// - Parameter f: Function whose arguments must be flipped.
 /// - Returns: A function with the same behavior as the input, but with arguments flipped.
 public func flip<A, B, R>(_ f: @escaping (A, B) -> R) -> (B, A) -> R {
     { f($1, $0) }
+}
+
+/// Flips the arguments of a function.
+///
+/// - Parameter f: Function whose arguments must be flipped.
+/// - Returns: A function with the same behavior as the input, but with arguments flipped.
+@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@Sendable
+public func flip<A, B, R>(_ f: @escaping @Sendable (A, B) async -> R) -> @Sendable (B, A) async -> R {
+    { await f($1, $0) }
+}
+
+/// Flips the arguments of a function.
+///
+/// - Parameter f: Function whose arguments must be flipped.
+/// - Returns: A function with the same behavior as the input, but with arguments flipped.
+public func flip<A, B, R>(_ f: @escaping (A, B) throws -> R) -> (B, A) throws -> R {
+    { try f($1, $0) }
+}
+
+/// Flips the arguments of a function.
+///
+/// - Parameter f: Function whose arguments must be flipped.
+/// - Returns: A function with the same behavior as the input, but with arguments flipped.
+@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@Sendable
+public func flip<A, B, R>(_ f: @escaping @Sendable (A, B) async throws -> R) -> @Sendable (B, A) async throws -> R {
+    { try await f($1, $0) }
 }
 
 
@@ -50,12 +111,32 @@ public func with<A, R>(_ a: A, _ f: (A) throws -> R) rethrows -> R {
     try f(a)
 }
 
+
+/// Calls the specified closure with the given attrubute as its receiver and returns its result.
+///
+/// - Returns: Closure result.
+@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@Sendable
+public func with<A, R>(_ a: A, _ f: @Sendable (A) async throws -> R) async rethrows -> R {
+    try await f(a)
+}
+
 /// Ignores the function return and always returns `Void`.
 ///
 /// - Parameter fn: Function to ignore return.
 /// - Returns: Function that constantly return the `Void`.
 public func ignored<R>(_ fn: @escaping () -> R) -> () -> Void {
     { _ = fn() }
+}
+
+/// Ignores the function return and always returns `Void`.
+///
+/// - Parameter fn: Function to ignore return.
+/// - Returns: Function that constantly return the `Void`.
+@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@Sendable
+public func ignored<R>(_ fn: @escaping @Sendable () async -> R) -> @Sendable () async -> Void {
+    { _ = await fn() }
 }
 
 /// Weakifying function.

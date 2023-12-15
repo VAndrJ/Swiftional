@@ -38,20 +38,74 @@ class FunctionsTests: XCTestCase {
         XCTAssertEqual(expected, flip(f)(secondArgument, firstArgument))
     }
 
+    func test_async_flipFunction_argumentsFlipped() async {
+        let f: @Sendable (String, Int) async -> String = { $0 + "\($1)" }
+        let firstArgument = "Test"
+        let secondArgument = generateTestIntArray(length: 1)[0]
+        let expected = await f(firstArgument, secondArgument)
+        await aXCTAssertEqual(expected, await flip(f)(secondArgument, firstArgument))
+    }
+
+    func test_throws_flipFunction_argumentsFlipped() throws {
+        let f: (String, Int) throws -> String = { $0 + "\($1)" }
+        let firstArgument = "Test"
+        let secondArgument = generateTestIntArray(length: 1)[0]
+        let expected = try f(firstArgument, secondArgument)
+        XCTAssertEqual(expected, try flip(f)(secondArgument, firstArgument))
+    }
+
+    func test_async_throws_flipFunction_argumentsFlipped() async throws {
+        let f: @Sendable (String, Int) async throws -> String = { $0 + "\($1)" }
+        let firstArgument = "Test"
+        let secondArgument = generateTestIntArray(length: 1)[0]
+        let expected = try await f(firstArgument, secondArgument)
+        try await aXCTAssertEqual(expected, try await flip(f)(secondArgument, firstArgument))
+    }
+
     func test_withFunction_closureApplied() {
         let input = 2
         let expected = getString(input)
-        XCTAssertEqual(expected, with(input, getString(_:)))
+        XCTAssertEqual(expected, with(input, getString))
+    }
+
+    func test_async_withFunction_closureApplied() async {
+        let input = 2
+        let expected = await aGetString(input)
+        await aXCTAssertEqual(expected, await with(input, aGetString))
     }
     
     func test_ignoredFunction() {
         let expected = "expected"
         var result = ""
+
         func assignExpectedToResult() -> Bool {
             result = expected
             return true
         }
+
         ignored(assignExpectedToResult)()
         XCTAssertEqual(expected, result)
+    }
+
+    func test_async_ignoredFunction() async {
+        let expected = "expected"
+        let result = Ignored()
+
+        @Sendable
+        func assignExpectedToResult() async -> Bool {
+            await result.update(result: expected)
+            return true
+        }
+
+        await ignored(assignExpectedToResult)()
+        await aXCTAssertEqual(expected, await result.result)
+    }
+}
+
+private actor Ignored {
+    var result = ""
+
+    func update(result: String) {
+        self.result = result
     }
 }

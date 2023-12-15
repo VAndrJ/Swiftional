@@ -178,8 +178,8 @@ public func aConst<R>(_ value: R) -> @Sendable () async -> R {
 }
 
 @Sendable
-public func const<R>(_ value: R) -> @Sendable () -> R {
-    { value }
+public func aId<R>(_ value: R) async -> R {
+    value
 }
 
 extension XCTestCase {
@@ -208,5 +208,18 @@ extension XCTestCase {
         line: UInt = #line
     ) {
         XCTAssertTrue(true, message, file: file, line: line)
+    }
+
+    @Sendable
+    func aXCTAssertEqual<T>(
+        _ expression1: @autoclosure () async throws -> T,
+        _ expression2: @autoclosure () async throws -> T,
+        _ message: @autoclosure () -> String = "",
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) async rethrows where T : Equatable {
+        let result1 = try await expression1()
+        let result2 = try await expression2()
+        XCTAssertEqual(result1, result2, message(), file: file, line: line)
     }
 }

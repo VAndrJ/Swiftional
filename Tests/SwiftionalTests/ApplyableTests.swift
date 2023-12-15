@@ -124,7 +124,7 @@ class ApplyableTests: XCTestCase {
         let input = TestError.general
         let sut = MockStruct()
         do {
-            try await sut.applied { _ in
+            _ = try await sut.applied { _ in
                 try? await Task.sleep(nanoseconds: 1)
                 throw input
             }
