@@ -10,9 +10,9 @@ on:
     branches: [ "main" ]
 
 jobs:
-  xcode14:
-    name: "Xcode 14"
-    runs-on: macos-latest
+  build:
+    runs-on: macos-13
+    
     steps:
     - uses: actions/checkout@v3
     - name: Setup Swift
