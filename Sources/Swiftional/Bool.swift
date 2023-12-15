@@ -29,6 +29,7 @@ extension Bool {
     ///   - onTrue: Closure to apply if true.
     /// - Returns: Result of applying the corresponding closure to this value.
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @Sendable
     public func fold<R>(_ onFalse: @Sendable () async throws -> R, _ onTrue: @Sendable () async throws -> R) async rethrows -> R {
         try await self ? onTrue() : onFalse()
     }
@@ -48,6 +49,7 @@ extension Bool {
     ///   - onFalse: Closure to apply if false.
     ///   - onTrue: Closure to apply if true.
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @Sendable
     public func foldRun(_ onFalse: @Sendable () async throws -> Void, _ onTrue: @Sendable () async throws -> Void) async rethrows {
         try await self ? onTrue() : onFalse()
     }
@@ -75,6 +77,7 @@ extension Bool {
     ///   - onTrue: Closure to apply if true.
     /// - Returns: The result of `Ether` applying the appropriate closure to this value.
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+    @Sendable
     public func foldEither<L, R>(_ onFalse: @Sendable () async throws -> L, _ onTrue: @Sendable () async throws -> R) async rethrows -> Either<L, R> {
         try await self ? .right(onTrue()) : .left(onFalse())
     }
