@@ -21,11 +21,11 @@ class ApplyableTests: XCTestCase {
 
     func test_async_apply_closureApplied() async {
         let input = 2
-        let sut = MockObject()
+        let sut = MockObjectActor()
         let result = await sut.apply {
-            $0.number = await aConst(input)()
+            await $0.update(number: await aConst(input)())
         }
-        XCTAssertEqual(input, result.number)
+        await aXCTAssertEqual(input, await result.number)
     }
 
     func test_applyThrows_closureApplied() {
@@ -40,7 +40,7 @@ class ApplyableTests: XCTestCase {
 
     func test_async_applyThrows_closureApplied() async {
         let input = TestError.general
-        let sut = MockObject()
+        let sut = MockObjectActor()
         do {
             try await sut.apply { _ in
                 try? await Task.sleep(nanoseconds: 1)
@@ -62,7 +62,7 @@ class ApplyableTests: XCTestCase {
 
     func test_async_let_closureApplied() async {
         let input = 2
-        let sut = MockObject()
+        let sut = MockObjectActor()
         let result = await sut.let { _ in
             await aConst(input)()
         }
@@ -81,7 +81,7 @@ class ApplyableTests: XCTestCase {
 
     func test_async_letThrows_closureApplied() async {
         let input = TestError.general
-        let sut = MockObject()
+        let sut = MockObjectActor()
         do {
             try await sut.let { _ in
                 try? await Task.sleep(nanoseconds: 1)
@@ -138,6 +138,14 @@ private class MockObject: Applyable {
     var number: Int?
 }
 
-private struct MockStruct: Applyable {
+private actor MockObjectActor: Applyable, Sendable {
+    var number: Int?
+
+    func update(number: Int?) {
+        self.number = number
+    }
+}
+
+private struct MockStruct: Applyable, Sendable {
     var number: Int?
 }

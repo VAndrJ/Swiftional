@@ -87,7 +87,7 @@ public func |> <A, B, R>(_ a: A, _ f: @escaping (A, B) -> R) -> (B) -> R {
 /// - Returns: A function with the same behavior of the input function where the first argument is fixed to the value of the provided argument.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func |> <A, B, R>(_ a: A, _ f: @escaping @Sendable (A, B) async -> R) -> @Sendable (B) async -> R {
+public func |> <A: Sendable, B: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A, B) async -> R) -> @Sendable (B) async -> R {
     { b in await f(a, b) }
 }
 
@@ -109,7 +109,7 @@ public func |> <A, B, R>(_ a: A, _ f: @escaping (A, B) throws -> R) -> (B) throw
 /// - Returns: A function with the same behavior of the input function where the first argument is fixed to the value of the provided argument.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func |> <A, B, R>(_ a: A, _ f: @escaping @Sendable (A, B) async throws -> R) -> @Sendable (B) async throws -> R {
+public func |> <A: Sendable, B: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A, B) async throws -> R) -> @Sendable (B) async throws -> R {
     { b in try await f(a, b) }
 }
 
@@ -131,7 +131,7 @@ public func |> <A, B, C, R>(_ a: A, _ f: @escaping (A, B, C) -> R) -> (B, C) -> 
 /// - Returns: A function with the same behavior of the input function where the first argument is fixed to the value of the provided argument.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func |> <A, B, C, R>(_ a: A, _ f: @escaping @Sendable (A, B, C) async -> R) -> @Sendable (B, C) async -> R {
+public func |> <A: Sendable, B: Sendable, C: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A, B, C) async -> R) -> @Sendable (B, C) async -> R {
     { b, c in await f(a, b, c) }
 }
 
@@ -153,7 +153,7 @@ public func |> <A, B, C, R>(_ a: A, _ f: @escaping (A, B, C) throws -> R) -> (B,
 /// - Returns: A function with the same behavior of the input function where the first argument is fixed to the value of the provided argument.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func |> <A, B, C, R>(_ a: A, _ f: @escaping @Sendable (A, B, C) async throws -> R) -> @Sendable (B, C) async throws -> R {
+public func |> <A: Sendable, B: Sendable, C: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A, B, C) async throws -> R) -> @Sendable (B, C) async throws -> R {
     { b, c in try await f(a, b, c) }
 }
 
@@ -175,7 +175,7 @@ public func |> <A, B, C, D, R>(_ a: A, _ f: @escaping (A, B, C, D) -> R) -> (B, 
 /// - Returns: A function with the same behavior of the input function where the first argument is fixed to the value of the provided argument.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func |> <A, B, C, D, R>(_ a: A, _ f: @escaping @Sendable (A, B, C, D) async -> R) -> @Sendable (B, C, D) async -> R {
+public func |> <A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A, B, C, D) async -> R) -> @Sendable (B, C, D) async -> R {
     { b, c, d in await f(a, b, c, d) }
 }
 
@@ -197,7 +197,7 @@ public func |> <A, B, C, D, R>(_ a: A, _ f: @escaping (A, B, C, D) throws -> R) 
 /// - Returns: A function with the same behavior of the input function where the first argument is fixed to the value of the provided argument.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func |> <A, B, C, D, R>(_ a: A, _ f: @escaping @Sendable (A, B, C, D) async throws -> R) -> @Sendable (B, C, D) async throws -> R {
+public func |> <A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A, B, C, D) async throws -> R) -> @Sendable (B, C, D) async throws -> R {
     { b, c, d in try await f(a, b, c, d) }
 }
 
@@ -219,7 +219,7 @@ public func |> <A, B, C, D, E, R>(_ a: A, _ f: @escaping (A, B, C, D, E) -> R) -
 /// - Returns: A function with the same behavior of the input function where the first argument is fixed to the value of the provided argument.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func |> <A, B, C, D, E, R>(_ a: A, _ f: @escaping @Sendable (A, B, C, D, E) async -> R) -> @Sendable (B, C, D, E) async -> R {
+public func |> <A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A, B, C, D, E) async -> R) -> @Sendable (B, C, D, E) async -> R {
     { b, c, d, e in await f(a, b, c, d, e) }
 }
 
@@ -241,7 +241,7 @@ public func |> <A, B, C, D, E, R>(_ a: A, _ f: @escaping (A, B, C, D, E) throws 
 /// - Returns: A function with the same behavior of the input function where the first argument is fixed to the value of the provided argument.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func |> <A, B, C, D, E, R>(_ a: A, _ f: @escaping @Sendable (A, B, C, D, E) async throws -> R) -> @Sendable (B, C, D, E) async throws -> R {
+public func |> <A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A, B, C, D, E) async throws -> R) -> @Sendable (B, C, D, E) async throws -> R {
     { b, c, d, e in try await f(a, b, c, d, e) }
 }
 
@@ -325,7 +325,7 @@ public func <<| <A, R>(_ f: @escaping (A) -> R, _ a: A) -> () -> R {
 /// - Returns: Result of running the function with the argument as input.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func <<| <A, R>(_ f: @escaping @Sendable (A) async -> R, _ a: A) -> @Sendable () async -> R {
+public func <<| <A: Sendable, R>(_ f: @escaping @Sendable (A) async -> R, _ a: A) -> @Sendable () async -> R {
     { await f(a) }
 }
 
@@ -367,7 +367,7 @@ public func |>> <A, R>(_ a: A, _ f: @escaping (A) -> R) -> () -> R {
 /// - Returns: Result of running the function with the argument as input.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func |>> <A, R>(_ a: A, _ f: @escaping @Sendable (A) async -> R) -> @Sendable () async -> R {
+public func |>> <A: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A) async -> R) -> @Sendable () async -> R {
     { await f(a) }
 }
 

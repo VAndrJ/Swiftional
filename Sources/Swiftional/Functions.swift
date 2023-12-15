@@ -43,7 +43,7 @@ public func constant<R>(_ value: R) -> () -> R {
 /// - Returns: Function that constantly return the `value` provided as argument.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func const<R>(_ value: R) -> @Sendable () -> R {
+public func const<R: Sendable>(_ value: R) -> @Sendable () -> R {
     { value }
 }
 
@@ -63,7 +63,7 @@ public func constant<A, R>(_ value: R) -> (A) -> R {
 /// - Returns: Function that constantly return the `value` provided as argument.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func const<A, R>(_ value: R) -> @Sendable (A) -> R {
+public func const<A: Sendable, R: Sendable>(_ value: R) -> @Sendable (A) -> R {
     { _ in value }
 }
 

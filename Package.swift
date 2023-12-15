@@ -1,6 +1,10 @@
-// swift-tools-version:5.7
+// swift-tools-version:5.8
 
 import PackageDescription
+
+let settings: [SwiftSetting] = [
+    .enableExperimentalFeature("StrictConcurrency")
+]
 
 let package = Package(
     name: "Swiftional",
@@ -21,11 +25,13 @@ let package = Package(
     targets: [
         .target(
             name: "Swiftional",
-            dependencies: []
+            dependencies: [],
+            swiftSettings: settings
         ),
         .testTarget(
             name: "SwiftionalTests",
-            dependencies: ["Swiftional"]
+            dependencies: ["Swiftional"],
+            swiftSettings: settings
         ),
     ]
 )

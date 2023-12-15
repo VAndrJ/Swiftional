@@ -29,7 +29,7 @@ public func curry<A, B, R>(_ fn: @escaping (A, B) throws -> R) -> (A) -> (B) thr
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func curry<A, B, R>(_ fn: @escaping @Sendable (A, B) async -> R) -> @Sendable (A) -> @Sendable (B) async -> R {
+public func curry<A: Sendable, B: Sendable, R>(_ fn: @escaping @Sendable (A, B) async -> R) -> @Sendable (A) -> @Sendable (B) async -> R {
     { a in { b in await fn(a, b) } }
 }
 
@@ -39,7 +39,7 @@ public func curry<A, B, R>(_ fn: @escaping @Sendable (A, B) async -> R) -> @Send
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func curry<A, B, R>(_ fn: @escaping @Sendable (A, B) async throws -> R) -> @Sendable (A) -> @Sendable (B) async throws -> R {
+public func curry<A: Sendable, B: Sendable, R>(_ fn: @escaping @Sendable (A, B) async throws -> R) -> @Sendable (A) -> @Sendable (B) async throws -> R {
     { a in { b in try await fn(a, b) } }
 }
 
@@ -65,7 +65,7 @@ public func curry<A, B, C, R>(_ fn: @escaping (A, B, C) throws -> R) -> (A) -> (
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func curry<A, B, C, R>(_ fn: @escaping @Sendable (A, B, C) async -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) async -> R {
+public func curry<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @Sendable (A, B, C) async -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) async -> R {
     { a in { b in { c in await fn(a, b, c) } } }
 }
 
@@ -75,7 +75,7 @@ public func curry<A, B, C, R>(_ fn: @escaping @Sendable (A, B, C) async -> R) ->
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func curry<A, B, C, R>(_ fn: @escaping @Sendable (A, B, C) async throws -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) async throws -> R {
+public func curry<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @Sendable (A, B, C) async throws -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) async throws -> R {
     { a in { b in { c in try await fn(a, b, c) } } }
 }
 
@@ -101,7 +101,7 @@ public func curry<A, B, C, D, R>(_ fn: @escaping (A, B, C, D) throws -> R) -> (A
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> (D) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func curry<A, B, C, D, R>(_ fn: @escaping @Sendable (A, B, C, D) async -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) async -> R {
+public func curry<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) async -> R {
     { a in { b in { c in { d in await fn(a, b, c, d) } } } }
 }
 
@@ -111,7 +111,7 @@ public func curry<A, B, C, D, R>(_ fn: @escaping @Sendable (A, B, C, D) async ->
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> (D) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func curry<A, B, C, D, R>(_ fn: @escaping @Sendable (A, B, C, D) async throws -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) async throws -> R {
+public func curry<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async throws -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) async throws -> R {
     { a in { b in { c in { d in try await fn(a, b, c, d) } } } }
 }
 
@@ -137,7 +137,7 @@ public func curry<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> R)
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> (D) -> (E) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func curry<A, B, C, D, E, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) -> @Sendable (E) async -> R {
+public func curry<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) -> @Sendable (E) async -> R {
     { a in { b in { c in { d in { e in await fn(a, b, c, d, e) } } } } }
 }
 
@@ -147,7 +147,7 @@ public func curry<A, B, C, D, E, R>(_ fn: @escaping @Sendable (A, B, C, D, E) as
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> (D) -> (E) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func curry<A, B, C, D, E, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) -> @Sendable (E) async throws -> R {
+public func curry<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) -> @Sendable (E) async throws -> R {
     { a in { b in { c in { d in { e in try await fn(a, b, c, d, e) } } } } }
 }
 
@@ -173,7 +173,7 @@ public func curry<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) throws
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> (D) -> (E) -> (F) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func curry<A, B, C, D, E, F, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) -> @Sendable (E) -> @Sendable (F) async -> R {
+public func curry<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) -> @Sendable (E) -> @Sendable (F) async -> R {
     { a in { b in { c in { d in { e in { f in await fn(a, b, c, d, e, f) } } } } } }
 }
 
@@ -183,6 +183,6 @@ public func curry<A, B, C, D, E, F, R>(_ fn: @escaping @Sendable (A, B, C, D, E,
 /// - Returns: Curried form of an argument function `fn`: (A) -> (B) -> (C) -> (D) -> (E) -> (F) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func curry<A, B, C, D, E, F, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) -> @Sendable (E) -> @Sendable (F) async throws -> R {
+public func curry<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) -> @Sendable (E) -> @Sendable (F) async throws -> R {
     { a in { b in { c in { d in { e in { f in try await fn(a, b, c, d, e, f) } } } } } }
 }

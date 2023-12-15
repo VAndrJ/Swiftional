@@ -1,6 +1,6 @@
 //
 //  Either.swift
-//  
+//
 //
 //  Created by Volodymyr Andriienko on 09.02.2022.
 //
@@ -100,6 +100,48 @@ public extension Either {
     }
 
     /// Case analysis for the `Either` type.
+    /// Much like the ?? operator for `Optional` types, takes a value and a function, and if the
+    /// receiver is `.right`, returns the value, otherwise maps the function over the value in
+    /// `.left` and returns that value.
+    ///
+    /// - Parameters:
+    ///   - fl: Closure to apply if the contained value in this `Either` is a member of the `.left` type.
+    ///   - value: Constant value to return if the contained value in this `Either` is a member of the `.right` type.
+    /// - Returns: Result of applying the corresponding closure to this value or constant.
+    func foldLeft<R>(_ fl: (Left) throws -> R, _ value: R) rethrows -> R {
+        try fold(fl, constant(value))
+    }
+
+    /// Case analysis for the `Either` type.
+    /// Much like the ?? operator for `Optional` types, takes a value and a function, and if the
+    /// receiver is `.left`, returns the value, otherwise maps the function over the value in
+    /// `.right` and returns that value.
+    ///
+    /// - Parameters:
+    ///   - value: Constant value to return if the contained value in this `Either` is a member of the `.left` type.
+    ///   - fr: Closure to apply if the contained value in this `Either` is a member of the `.right` type.
+    /// - Returns: Result of applying the corresponding closure to this value or constant.
+    func foldRight<R>(_ value: R, _ fr: (Right) throws -> R) rethrows -> R {
+        try fold(constant(value), fr)
+    }
+
+    /// Runs the provided closures based on the content of this `Either` value.
+    ///
+    /// - Parameters:
+    ///   - fl: Closure to run if the contained value in this `Either` is a member of the `.left` type.
+    ///   - fr: Closure to run if the contained value in this `Either` is a member of the `.right` type.
+    func foldRun(_ fl: (Left) throws -> Void, _ fr: (Right) throws -> Void) rethrows {
+        switch self {
+        case let .left(l):
+            try fl(l)
+        case let .right(r):
+            try fr(r)
+        }
+    }
+}
+
+public extension Either where Left: Sendable, Right: Sendable {
+    /// Case analysis for the `Either` type.
     /// Applies the provided closures based on the content of this `Either` value.
     ///
     /// - Parameters:
@@ -126,22 +168,9 @@ public extension Either {
     ///   - fl: Closure to apply if the contained value in this `Either` is a member of the `.left` type.
     ///   - value: Constant value to return if the contained value in this `Either` is a member of the `.right` type.
     /// - Returns: Result of applying the corresponding closure to this value or constant.
-    func foldLeft<R>(_ fl: (Left) throws -> R, _ value: R) rethrows -> R {
-        try fold(fl, constant(value))
-    }
-
-    /// Case analysis for the `Either` type.
-    /// Much like the ?? operator for `Optional` types, takes a value and a function, and if the
-    /// receiver is `.right`, returns the value, otherwise maps the function over the value in
-    /// `.left` and returns that value.
-    ///
-    /// - Parameters:
-    ///   - fl: Closure to apply if the contained value in this `Either` is a member of the `.left` type.
-    ///   - value: Constant value to return if the contained value in this `Either` is a member of the `.right` type.
-    /// - Returns: Result of applying the corresponding closure to this value or constant.
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @Sendable
-    func foldLeft<R>(_ fl: @Sendable (Left) async throws -> R, _ value: R) async rethrows -> R {
+    func foldLeft<R: Sendable>(_ fl: @Sendable (Left) async throws -> R, _ value: R) async rethrows -> R {
         try await fold(fl, const(value))
     }
 
@@ -154,37 +183,10 @@ public extension Either {
     ///   - value: Constant value to return if the contained value in this `Either` is a member of the `.left` type.
     ///   - fr: Closure to apply if the contained value in this `Either` is a member of the `.right` type.
     /// - Returns: Result of applying the corresponding closure to this value or constant.
-    func foldRight<R>(_ value: R, _ fr: (Right) throws -> R) rethrows -> R {
-        try fold(constant(value), fr)
-    }
-
-    /// Case analysis for the `Either` type.
-    /// Much like the ?? operator for `Optional` types, takes a value and a function, and if the
-    /// receiver is `.left`, returns the value, otherwise maps the function over the value in
-    /// `.right` and returns that value.
-    ///
-    /// - Parameters:
-    ///   - value: Constant value to return if the contained value in this `Either` is a member of the `.left` type.
-    ///   - fr: Closure to apply if the contained value in this `Either` is a member of the `.right` type.
-    /// - Returns: Result of applying the corresponding closure to this value or constant.
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @Sendable
-    func foldRight<R>(_ value: R, _ fr: @Sendable (Right) async throws -> R) async rethrows -> R {
+    func foldRight<R: Sendable>(_ value: R, _ fr: @Sendable (Right) async throws -> R) async rethrows -> R {
         try await fold(const(value), fr)
-    }
-
-    /// Runs the provided closures based on the content of this `Either` value.
-    ///
-    /// - Parameters:
-    ///   - fl: Closure to run if the contained value in this `Either` is a member of the `.left` type.
-    ///   - fr: Closure to run if the contained value in this `Either` is a member of the `.right` type.
-    func foldRun(_ fl: (Left) throws -> Void, _ fr: (Right) throws -> Void) rethrows {
-        switch self {
-        case let .left(l):
-            try fl(l)
-        case let .right(r):
-            try fr(r)
-        }
     }
 
     /// Runs the provided closures based on the content of this `Either` value.
