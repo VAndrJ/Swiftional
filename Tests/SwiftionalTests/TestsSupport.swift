@@ -173,6 +173,11 @@ func getIntInput() -> Int {
 }
 
 @Sendable
+public func aConst<T, R>(_ value: R) -> @Sendable (T) async -> R {
+    { _ in value }
+}
+
+@Sendable
 public func aConst<R>(_ value: R) -> @Sendable () async -> R {
     { value }
 }
