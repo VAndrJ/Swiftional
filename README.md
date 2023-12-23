@@ -8,10 +8,11 @@
 
 [![Version](https://img.shields.io/cocoapods/v/Swiftional.svg?style=flat)](https://cocoapods.org/pods/Swiftional)
 [![SPM](https://img.shields.io/badge/SPM-compatible-limegreen.svg?style=flat)](https://github.com/apple/swift-package-manager)
-&nbsp;[![Coverage Status](https://coveralls.io/repos/github/VAndrJ/Swiftional/badge.svg?branch=main)](https://coveralls.io/github/VAndrJ/Swiftional?branch=main)
+&nbsp;[![Swiftional](https://github.com/VAndrJ/Swiftional/actions/workflows/swift.yml/badge.svg)](https://github.com/VAndrJ/Swiftional/actions/workflows/swift.yml)
+[![Coverage Status](https://coveralls.io/repos/github/VAndrJ/Swiftional/badge.svg?branch=main)](https://coveralls.io/github/VAndrJ/Swiftional?branch=main)
 
 
-Swiftional introduce some functional primitives that complement the Swift standard library.
+Swiftional introduces some functional primitives that complement the Swift standard library.
 
 Created for writing Swift code with a slight touch of functional programming.
 
@@ -125,7 +126,7 @@ becomes
 <details><summary> with</summary>
 
   
-Calls the specified closure with the given attribute as its receiver and returns its result.
+It calls the specified closure with the given attribute as its receiver and returns its result.
 
 
 </details>
@@ -177,7 +178,7 @@ print(memoizedSomeFunc(2)) // result fetched from memory
 <details><summary> rmemoize</summary>
 
   
-Standard memoization is not very good at memoizing recursive functions. Here is recursive memoization function. It represented as a primitive recursive function, where the memoization done at each step of the recursion.
+Standard memoization is not very good at memoizing recursive functions. Here is the recursive memoization function. It is represented as a primitive recursive function, where the memoization is done at each step of the recursion.
 
 
 Example:
@@ -222,11 +223,11 @@ Case analysis for the `Optional` type. Applies the provided closures based on th
 
   
   * `apply`
-Calls the specified closure with Self value as its receiver and returns Self value.
+Calls the specified closure with the `Self` value as its receiver and returns the `Self` value.
 
 
   * `applied`
-Calls the specified closure with Self value as its receiver and returns a copy of Self value.
+Calls the specified closure with the `Self` value as its receiver and returns a copy of the `Self` value.
 </details>
 
 
