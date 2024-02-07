@@ -87,6 +87,19 @@ class FunctionsTests: XCTestCase {
         XCTAssertEqual(expected, result)
     }
 
+    func test_ignoredPackFunction() {
+        let expected = "expected"
+        var result = ""
+
+        func assignExpectedToResult() -> (Bool, Bool) {
+            result = expected
+            return (true, true)
+        }
+
+        ignored(assignExpectedToResult)()
+        XCTAssertEqual(expected, result)
+    }
+
     func test_async_ignoredFunction() async {
         let expected = "expected"
         let result = Ignored()
@@ -95,6 +108,20 @@ class FunctionsTests: XCTestCase {
         func assignExpectedToResult() async -> Bool {
             await result.update(result: expected)
             return true
+        }
+
+        await ignored(assignExpectedToResult)()
+        await aXCTAssertEqual(expected, await result.result)
+    }
+
+    func test_async_ignoredPackFunction() async {
+        let expected = "expected"
+        let result = Ignored()
+
+        @Sendable
+        func assignExpectedToResult() async -> (Bool, Bool) {
+            await result.update(result: expected)
+            return (true, true)
         }
 
         await ignored(assignExpectedToResult)()
