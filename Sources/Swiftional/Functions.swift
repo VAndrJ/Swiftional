@@ -28,32 +28,12 @@ public func id<R>(_ value: R) -> R {
 }
 
 /// The constant combinator function.
-/// Always returns the provided value.
-///
-/// - Parameter value: Constant value to return.
-/// - Returns: Function that constantly return the `value` provided as argument.
-public func constant<R>(_ value: R) -> () -> R {
-    { value }
-}
-
-/// The constant combinator function.
-/// Always returns the provided value.
-///
-/// - Parameter value: Constant value to return.
-/// - Returns: Function that constantly return the `value` provided as argument.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-@Sendable
-public func const<R: Sendable>(_ value: R) -> @Sendable () -> R {
-    { value }
-}
-
-/// The constant combinator function.
 /// Ignores the function arguments and always returns the provided value.
 ///
 /// - Parameter value: Constant value to return.
 /// - Returns: Function that constantly return the `value` provided as argument.
-public func constant<A, R>(_ value: R) -> (A) -> R {
-    { _ in value }
+public func constant<each A, R>(_ value: R) -> (repeat each A) -> R {
+    { (_: repeat each A) in value }
 }
 
 /// The constant combinator function.
@@ -63,8 +43,8 @@ public func constant<A, R>(_ value: R) -> (A) -> R {
 /// - Returns: Function that constantly return the `value` provided as argument.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func const<A: Sendable, R: Sendable>(_ value: R) -> @Sendable (A) -> R {
-    { _ in value }
+public func const<each A: Sendable, R: Sendable>(_ value: R) -> @Sendable (repeat each A) -> R {
+    { (_: repeat each A) in value }
 }
 
 /// Flips the arguments of a function.

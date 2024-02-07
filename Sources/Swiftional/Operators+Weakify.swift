@@ -35,7 +35,7 @@ public func ?> <T: AnyObject, each U>(_ obj: T?, _ block: @escaping (T, repeat e
 ///   - obj: Object to weakify.
 ///   - block: Block to apply.
 /// - Returns: A function with argument to apply.
-public func ?><T: AnyObject, each U, R>(_ obj: T?, _ block: @escaping (T) -> R?) -> (repeat each U) -> R? {
+public func ?> <T: AnyObject, each U, R>(_ obj: T?, _ block: @escaping (T) -> R?) -> (repeat each U) -> R? {
     weakify(obj, block)
 }
 
@@ -45,7 +45,7 @@ public func ?><T: AnyObject, each U, R>(_ obj: T?, _ block: @escaping (T) -> R?)
 ///   - obj: Object to weakify.
 ///   - block: Block to apply.
 /// - Returns: A function with argument to apply.
-public func ?><T: AnyObject, each U, R>(_ obj: T?, _ block: @escaping (T, repeat each U) -> R?) -> (repeat each U) -> R? {
+public func ?> <T: AnyObject, each U, R>(_ obj: T?, _ block: @escaping (T, repeat each U) -> R?) -> (repeat each U) -> R? {
     weakify(obj, block)
 }
 
