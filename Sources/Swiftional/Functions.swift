@@ -105,7 +105,7 @@ public func with<A, R>(_ a: A, _ f: @Sendable (A) async throws -> R) async rethr
 ///
 /// - Parameter fn: Function to ignore return.
 /// - Returns: Function that constantly return the `Void`.
-public func ignored<each R>(_ fn: @escaping  () -> (repeat each R)) -> () -> Void {
+public func ignored<each R>(_ fn: @escaping () -> (repeat each R)) -> () -> Void {
     { _ = fn() }
 }
 

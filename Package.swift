@@ -9,10 +9,10 @@ let settings: [SwiftSetting] = [
 let package = Package(
     name: "Swiftional",
     platforms: [
-        .iOS(.v11),
-        .watchOS(.v4),
-        .tvOS(.v11),
-        .macOS(.v10_13),
+        .iOS(.v12),
+        .watchOS(.v5),
+        .tvOS(.v12),
+        .macOS(.v10_14),
     ],
     products: [
         .library(
