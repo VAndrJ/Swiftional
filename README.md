@@ -16,8 +16,11 @@ Swiftional introduces some functional primitives that complement the Swift stand
 
 Created for writing Swift code with a slight touch of functional programming.
 
+
 1.2.0 – Swift 5.8
+
 2.0.0 – Swift 5.9
+
 
 * [Functions](#functions)
 * [Extensions](#extensions)
