@@ -28,6 +28,7 @@ public func uncurry<A, B, R>(_ fn: @escaping (A) -> (B) throws -> R) -> (A, B) t
 /// - Parameter fn: Function to uncurry.
 /// - Returns: Uncurried form of an argument function `fn`: (A, B) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@Sendable
 public func uncurry<A, B, R>(_ fn: @escaping @Sendable (A) -> @Sendable (B) async -> R) -> @Sendable (A, B) async -> R {
     { a, b in await fn(a)(b) }
 }
@@ -37,6 +38,7 @@ public func uncurry<A, B, R>(_ fn: @escaping @Sendable (A) -> @Sendable (B) asyn
 /// - Parameter fn: Function to uncurry.
 /// - Returns: Uncurried form of an argument function `fn`: (A, B) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@Sendable
 public func uncurry<A, B, R>(_ fn: @escaping @Sendable (A) -> @Sendable (B) async throws -> R) -> @Sendable (A, B) async throws -> R {
     { a, b in try await fn(a)(b) }
 }
@@ -62,6 +64,7 @@ public func uncurry<A, B, C, R>(_ fn: @escaping (A) -> (B) -> (C) throws -> R) -
 /// - Parameter fn: Function to uncurry.
 /// - Returns: Uncurried form of an argument function `fn`: (A, B, C) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@Sendable
 public func uncurry<A, B, C, R>(_ fn: @escaping @Sendable (A) -> @Sendable (B) -> @Sendable (C) async -> R) -> @Sendable (A, B, C) async -> R {
     { a, b, c in await fn(a)(b)(c) }
 }
@@ -71,6 +74,7 @@ public func uncurry<A, B, C, R>(_ fn: @escaping @Sendable (A) -> @Sendable (B) -
 /// - Parameter fn: Function to uncurry.
 /// - Returns: Uncurried form of an argument function `fn`: (A, B, C) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@Sendable
 public func uncurry<A, B, C, R>(_ fn: @escaping @Sendable (A) -> @Sendable (B) -> @Sendable (C) async throws -> R) -> @Sendable (A, B, C) async throws -> R {
     { a, b, c in try await fn(a)(b)(c) }
 }
@@ -96,6 +100,7 @@ public func uncurry<A, B, C, D, R>(_ fn: @escaping (A) -> (B) -> (C) -> (D) thro
 /// - Parameter fn: Function to uncurry.
 /// - Returns: Uncurried form of an argument function `fn`: (A, B, C, D) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@Sendable
 public func uncurry<A, B, C, D, R>(_ fn: @escaping @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) async -> R) -> @Sendable (A, B, C, D) async -> R {
     { a, b, c, d in await fn(a)(b)(c)(d) }
 }
@@ -105,6 +110,7 @@ public func uncurry<A, B, C, D, R>(_ fn: @escaping @Sendable (A) -> @Sendable (B
 /// - Parameter fn: Function to uncurry.
 /// - Returns: Uncurried form of an argument function `fn`: (A, B, C, D) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@Sendable
 public func uncurry<A, B, C, D, R>(_ fn: @escaping @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) async throws -> R) -> @Sendable (A, B, C, D) async throws -> R {
     { a, b, c, d in try await fn(a)(b)(c)(d) }
 }
@@ -130,6 +136,7 @@ public func uncurry<A, B, C, D, E, R>(_ fn: @escaping (A) -> (B) -> (C) -> (D) -
 /// - Parameter fn: Function to uncurry.
 /// - Returns: Uncurried form of an argument function `fn`: (A, B, C, D, E) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@Sendable
 public func uncurry<A, B, C, D, E, R>(_ fn: @escaping @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) -> @Sendable (E) async -> R) -> @Sendable (A, B, C, D, E) async -> R {
     { a, b, c, d, e in await fn(a)(b)(c)(d)(e) }
 }
@@ -139,6 +146,7 @@ public func uncurry<A, B, C, D, E, R>(_ fn: @escaping @Sendable (A) -> @Sendable
 /// - Parameter fn: Function to uncurry.
 /// - Returns: Uncurried form of an argument function `fn`: (A, B, C, D, E) -> R
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@Sendable
 public func uncurry<A, B, C, D, E, R>(_ fn: @escaping @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) -> @Sendable (E) async throws -> R) -> @Sendable (A, B, C, D, E) async throws -> R {
     { a, b, c, d, e in try await fn(a)(b)(c)(d)(e) }
 }
@@ -163,6 +171,8 @@ public func uncurry<A, B, C, D, E, F, R>(_ fn: @escaping (A) -> (B) -> (C) -> (D
 ///
 /// - Parameter fn: Function to uncurry.
 /// - Returns: Uncurried form of an argument function `fn`: (A, B, C, D, E, F) -> R
+@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@Sendable
 public func uncurry<A, B, C, D, E, F, R>(_ fn: @escaping @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) -> @Sendable (E) -> @Sendable (F) async -> R) -> @Sendable (A, B, C, D, E, F) async -> R {
     { a, b, c, d, e, f in await fn(a)(b)(c)(d)(e)(f) }
 }
@@ -171,6 +181,8 @@ public func uncurry<A, B, C, D, E, F, R>(_ fn: @escaping @Sendable (A) -> @Senda
 ///
 /// - Parameter fn: Function to uncurry.
 /// - Returns: Uncurried form of an argument function `fn`: (A, B, C, D, E, F) -> R
+@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
+@Sendable
 public func uncurry<A, B, C, D, E, F, R>(_ fn: @escaping @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) -> @Sendable (E) -> @Sendable (F) async throws -> R) -> @Sendable (A, B, C, D, E, F) async throws -> R {
     { a, b, c, d, e, f in try await fn(a)(b)(c)(d)(e)(f) }
 }
