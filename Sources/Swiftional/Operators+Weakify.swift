@@ -58,10 +58,10 @@ infix operator ?>> : ForwardComposition
 ///   - block: Block to apply.
 /// - Returns: A function with argument to apply.
 public func ?>> <T: AnyObject, each U>(_ obj: T?, _ block: @escaping (T) -> (repeat each U) -> Void) -> (repeat each U) -> Void {
-    return { [weak obj] (values: repeat each U) in
+    return { [weak obj] (param: repeat each U) in
         guard let obj else { return }
 
-        block(obj)(repeat each values)
+        block(obj)(repeat each param)
     }
 }
 
@@ -72,10 +72,10 @@ public func ?>> <T: AnyObject, each U>(_ obj: T?, _ block: @escaping (T) -> (rep
 ///   - block: Block to apply.
 /// - Returns: A function with argument to apply.
 public func ?>> <T: AnyObject, each U>(_ obj: T?, _ block: @escaping (T) -> ((repeat each U) -> Void)?) -> (repeat each U) -> Void {
-    return { [weak obj] (values: repeat each U) in
+    return { [weak obj] (param: repeat each U) in
         guard let obj else { return }
 
-        block(obj)?(repeat each values)
+        block(obj)?(repeat each param)
     }
 }
 
@@ -114,12 +114,12 @@ public func ?>> <T: AnyObject, each U>(_ obj: T?, _ block: @escaping (T) -> (() 
 ///   - block: Block to apply.
 /// - Returns: A function with argument to apply.
 public func ?>> <T: AnyObject, each U, R>(_ obj: T?, _ block: @escaping (T) -> (repeat each U) -> R?) -> (repeat each U) -> R? {
-    return { [weak obj] (values: repeat each U) in
+    return { [weak obj] (param: repeat each U) in
         guard let obj else {
             return nil
         }
 
-        return block(obj)(repeat each values)
+        return block(obj)(repeat each param)
     }
 }
 
@@ -130,12 +130,12 @@ public func ?>> <T: AnyObject, each U, R>(_ obj: T?, _ block: @escaping (T) -> (
 ///   - block: Block to apply.
 /// - Returns: A function with argument to apply.
 public func ?>> <T: AnyObject, each U, R>(_ obj: T?, _ block: @escaping (T) -> ((repeat each U) -> R?)?) -> (repeat each U) -> R? {
-    return { [weak obj] (values: repeat each U) in
+    return { [weak obj] (param: repeat each U) in
         guard let obj else {
             return nil
         }
 
-        return block(obj)?(repeat each values)
+        return block(obj)?(repeat each param)
     }
 }
 
