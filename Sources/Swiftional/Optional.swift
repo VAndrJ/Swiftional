@@ -32,7 +32,6 @@ extension Optional {
     ///   - onValue: Closure to apply if the contained value in this `Optional` is `.some(Wrapped)`.
     /// - Returns: Result of applying the corresponding closure to this value.
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-    @Sendable
     public func fold<T>(_ onNone: @Sendable () async throws -> T, _ onValue: @Sendable (Wrapped) async throws -> T) async rethrows -> T {
         switch self {
         case .none:

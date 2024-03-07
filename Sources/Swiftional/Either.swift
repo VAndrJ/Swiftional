@@ -140,7 +140,7 @@ public extension Either {
     }
 }
 
-public extension Either where Left: Sendable, Right: Sendable {
+extension Either: Sendable where Left: Sendable, Right: Sendable {
     /// Case analysis for the `Either` type.
     /// Applies the provided closures based on the content of this `Either` value.
     ///
@@ -150,7 +150,7 @@ public extension Either where Left: Sendable, Right: Sendable {
     /// - Returns: Result of applying the corresponding closure to this value.
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @Sendable
-    func fold<R>(_ fl: @Sendable (Left) async throws -> R, _ fr: @Sendable (Right) async throws -> R) async rethrows -> R {
+    public func fold<R>(_ fl: @Sendable (Left) async throws -> R, _ fr: @Sendable (Right) async throws -> R) async rethrows -> R {
         switch self {
         case let .left(l):
             return try await fl(l)
@@ -170,7 +170,7 @@ public extension Either where Left: Sendable, Right: Sendable {
     /// - Returns: Result of applying the corresponding closure to this value or constant.
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @Sendable
-    func foldLeft<R: Sendable>(_ fl: @Sendable (Left) async throws -> R, _ value: R) async rethrows -> R {
+    public func foldLeft<R: Sendable>(_ fl: @Sendable (Left) async throws -> R, _ value: R) async rethrows -> R {
         try await fold(fl, const(value))
     }
 
@@ -185,7 +185,7 @@ public extension Either where Left: Sendable, Right: Sendable {
     /// - Returns: Result of applying the corresponding closure to this value or constant.
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @Sendable
-    func foldRight<R: Sendable>(_ value: R, _ fr: @Sendable (Right) async throws -> R) async rethrows -> R {
+    public func foldRight<R: Sendable>(_ value: R, _ fr: @Sendable (Right) async throws -> R) async rethrows -> R {
         try await fold(const(value), fr)
     }
 
@@ -196,7 +196,7 @@ public extension Either where Left: Sendable, Right: Sendable {
     ///   - fr: Closure to run if the contained value in this `Either` is a member of the `.right` type.
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @Sendable
-    func foldRun(_ fl: @Sendable (Left) async throws -> Void, _ fr: @Sendable (Right) async throws -> Void) async rethrows {
+    public func foldRun(_ fl: @Sendable (Left) async throws -> Void, _ fr: @Sendable (Right) async throws -> Void) async rethrows {
         switch self {
         case let .left(l):
             try await fl(l)

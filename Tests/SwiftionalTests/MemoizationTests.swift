@@ -12,13 +12,9 @@ func fibonacci(_ n: Int) -> Int {
     n < 2 ? 1 : fibonacci(n - 1) + fibonacci(n - 2)
 }
 
-let memoizedFibonacci = memoize(f: fibonacci(_:))
-
 func nFib(n: Int, k: Int) -> Int {
     n < 2 || k < 2 ? 1 : nFib(n: n - 1, k: k - 1) + nFib(n: n - 2, k: k - 2)
 }
-
-let memoizedNFib = memoize(f: nFib(n:k:))
 
 class MemoizationTests: XCTestCase {
     let runsCount = 50
@@ -28,6 +24,8 @@ class MemoizationTests: XCTestCase {
     lazy var rmemoizedNFib = rmemoize { (nFib: ((Int, Int) -> Int), n, k) in
         n < 2 || k < 2 ? 1 : nFib(n - 1, k - 1) + nFib(n - 2, k - 2)
     }
+    let memoizedNFib = memoize(f: nFib(n:k:))
+    let memoizedFibonacci = memoize(f: fibonacci(_:))
 
     func test_memoization_fibonacci() {
         for i in values.shuffled() {
