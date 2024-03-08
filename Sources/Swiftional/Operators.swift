@@ -27,7 +27,7 @@ precedencegroup BackwardComposition {
     higherThan: ForwardApplication
 }
 
-infix operator |>: ForwardApplication
+infix operator |> : ForwardApplication
 
 /// Pipe forward. Applies an argument to a function.
 ///
@@ -245,7 +245,7 @@ public func |> <A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable,
     { b, c, d, e in try await f(a, b, c, d, e) }
 }
 
-infix operator <|: BackwardApplication
+infix operator <| : BackwardApplication
 
 /// Pipe backward. Applies a function to an argument.
 ///
@@ -287,7 +287,7 @@ public func <| <A, R>(_ f: @Sendable (A) async throws -> R, _ a: A) async rethro
     try await f(a)
 }
 
-infix operator <<|: BackwardApplication
+infix operator <<| : BackwardApplication
 
 /// Applies a function to an argument and returns callable function.
 ///
@@ -329,7 +329,7 @@ public func <<| <A: Sendable, R>(_ f: @escaping @Sendable (A) async -> R, _ a: A
     { await f(a) }
 }
 
-infix operator |>>: ForwardApplication
+infix operator |>> : ForwardApplication
 
 /// Applies a function to an argument and returns callable function.
 ///
@@ -371,7 +371,7 @@ public func |>> <A: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A) async -> R
     { await f(a) }
 }
 
-infix operator >>>: ForwardComposition
+infix operator >>> : ForwardComposition
 
 /// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
 ///
@@ -549,7 +549,7 @@ public func >>> <A, B, R>(_ f: @escaping @Sendable (A) async throws -> B, _ g: @
     { a in try await g(try f(a)) }
 }
 
-infix operator <<<: BackwardComposition
+infix operator <<< : BackwardComposition
 
 /// Composes a functions and return a function that is the result of applying `g` to the output of `f`.
 ///
@@ -727,7 +727,7 @@ public func <<< <A, B, R>(_ g: @escaping @Sendable (B) async throws -> R, _ f: @
     f >>> g
 }
 
-infix operator ~~>: ForwardComposition
+infix operator ~~> : ForwardComposition
 
 /// Asynchronous function composition
 ///
@@ -758,7 +758,7 @@ public func ~~> <A, E, R>(
     }
 }
 
-infix operator >=>: ForwardComposition
+infix operator >=> : ForwardComposition
 
 /// Effectful function composition
 ///
