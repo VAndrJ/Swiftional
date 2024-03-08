@@ -734,4 +734,88 @@ class OperatorsTest: XCTestCase {
         let sut = f >=> getStringOptional
         XCTAssertNil(sut(input))
     }
+
+    func test_optionalUnwrappingSum() {
+        let a: Int? = 1
+        let b = 2
+        let sut = a ??+ b
+        XCTAssertEqual((a ?? 0) + b, sut)
+    }
+
+    func test_optionalUnwrappingSum_nil() {
+        let a: Int? = nil
+        let b = 2
+        let sut = a ??+ b
+        XCTAssertEqual((a ?? 0) + b, sut)
+    }
+
+    func test_optionalUnwrappingSubstraction() {
+        let a: Int? = 1
+        let b = 2
+        let sut = a ??- b
+        XCTAssertEqual((a ?? 0) - b, sut)
+    }
+
+    func test_optionalUnwrappingSubstraction_nil() {
+        let a: Int? = nil
+        let b = 2
+        let sut = a ??- b
+        XCTAssertEqual((a ?? 0) - b, sut)
+    }
+
+    func test_optionalSum() {
+        let a: Int? = 1
+        let b = 2
+        let sut = a ?+ b
+        XCTAssertEqual((a ?? 0) + b, sut)
+    }
+
+    func test_optionalSum_nil() {
+        let a: Int? = nil
+        let b = 2
+        let sut = a ?+ b
+        XCTAssertNil(sut)
+    }
+
+    func test_optionalSumBoth() {
+        let a: Int? = 1
+        let b: Int? = 2
+        let sut = a ?+ b
+        XCTAssertEqual((a ?? 0) + (b ?? 0), sut)
+    }
+
+    func test_optionalSumBoth_secondNil() {
+        let a: Int? = 1
+        let b: Int? = nil
+        let sut = a ?+ b
+        XCTAssertEqual(a, sut)
+    }
+
+    func test_optionalSubstraction() {
+        let a: Int? = 1
+        let b = 2
+        let sut = a ?- b
+        XCTAssertEqual((a ?? 0) - b, sut)
+    }
+
+    func test_test_optionalSubstraction_nil() {
+        let a: Int? = nil
+        let b = 2
+        let sut = a ?- b
+        XCTAssertNil(sut)
+    }
+
+    func test_optionalSubstractionBoth() {
+        let a: Int? = 1
+        let b: Int? = 2
+        let sut = a ?- b
+        XCTAssertEqual((a ?? 0) - (b ?? 0), sut)
+    }
+
+    func test_test_optionalSubstractionBoth_secondNil() {
+        let a: Int? = 1
+        let b: Int? = nil
+        let sut = a ?- b
+        XCTAssertEqual((a ?? 0) - (b ?? 0), sut)
+    }
 }

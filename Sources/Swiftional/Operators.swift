@@ -769,3 +769,36 @@ infix operator >=> : ForwardComposition
 public func >=> <A, B, R>(_ f: @escaping (A) -> B?, _ g: @escaping (B) -> R?) -> (A) -> R? {
     { a in f(a).flatMap(g) }
 }
+
+// TODO: - Documentation
+infix operator ??+ : AdditionPrecedence
+
+public func ??+ <A: AdditiveArithmetic>(_ lhs: A?, _ rhs: A) -> A {
+    (lhs ?? .zero) + rhs
+}
+
+infix operator ??- : AdditionPrecedence
+
+public func ??- <A: AdditiveArithmetic>(_ lhs: A?, _ rhs: A) -> A {
+    (lhs ?? .zero) - rhs
+}
+
+infix operator ?+ : AdditionPrecedence
+
+public func ?+ <A: AdditiveArithmetic>(_ lhs: A?, _ rhs: A) -> A? {
+    lhs.flatMap { $0 + rhs }
+}
+
+public func ?+ <A: AdditiveArithmetic>(_ lhs: A?, _ rhs: A?) -> A? {
+    lhs.flatMap { $0 + (rhs ?? .zero) }
+}
+
+infix operator ?- : AdditionPrecedence
+
+public func ?- <A: AdditiveArithmetic>(_ lhs: A?, _ rhs: A) -> A? {
+    lhs.flatMap { $0 - rhs }
+}
+
+public func ?- <A: AdditiveArithmetic>(_ lhs: A?, _ rhs: A?) -> A? {
+    lhs.flatMap { $0 - (rhs ?? .zero) }
+}
