@@ -186,9 +186,3 @@ public func curry<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendabl
 public func curry<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R) -> @Sendable (A) -> @Sendable (B) -> @Sendable (C) -> @Sendable (D) -> @Sendable (E) -> @Sendable (F) async throws -> R {
     { a in { b in { c in { d in { e in { f in try await fn(a, b, c, d, e, f) } } } } } }
 }
-
-// TODO: - Replace after Swift issue fix
-// https://github.com/apple/swift/issues/72114
-// func curry<F, each T, R>(_ fn: @escaping (F, repeat each T) -> R) -> (F) -> (repeat each T) -> R {
-//    { (first: F) in { (remaning: repeat each T) -> R in fn(first, repeat each remaning) } }
-// }
