@@ -1,6 +1,6 @@
 # Swiftional
 
-
+[![Support Ukraine](https://img.shields.io/badge/Support-Ukraine-FFD500?style=flat&labelColor=005BBB)](https://opensource.fb.com/support-ukraine)
 [![License](https://img.shields.io/cocoapods/l/Swiftional.svg?style=flat)](https://cocoapods.org/pods/Swiftional)
 [![Platform](https://img.shields.io/cocoapods/p/Swiftional.svg?style=flat)](https://cocoapods.org/pods/Swiftional)
 [![Language](https://img.shields.io/badge/language-Swift-orangered.svg?style=flat)](https://cocoapods.org/pods/Swiftional)
@@ -17,9 +17,9 @@ Swiftional introduces some functional primitives that complement the Swift stand
 Created for writing Swift code with a slight touch of functional programming.
 
 
-1.2.0 – Swift 5.8
+1.x.x – Swift 5.8
 
-2.0.0 – Swift 5.9
+2.x.x – Swift 5.9
 
 
 * [Functions](#functions)
@@ -403,3 +403,13 @@ Wordplay: "Right" also means "Correct".
 
 
 </details>
+
+
+## Author
+
+Volodymyr Andriienko, vandrjios@gmail.com
+
+
+## License
+
+VANavigator is available under the MIT license. See the LICENSE file for more info.
