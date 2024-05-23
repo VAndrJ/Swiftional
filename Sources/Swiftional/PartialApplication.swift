@@ -2247,7 +2247,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
     { a in try await fn(a, b, c, d, e, f) }
 }
 
-
 public enum Deferred {
     case deferred
 }

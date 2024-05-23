@@ -65,10 +65,8 @@ public extension Either {
     /// - Returns: Result of applying the closure to the right value in this `Either`.
     func flatMap<R>(_ fr: (Right) -> Either<Left, R>) -> Either<Left, R> {
         switch self {
-        case let .left(l):
-            return .left(l)
-        case let .right(r):
-            return fr(r)
+        case let .left(l): .left(l)
+        case let .right(r): fr(r)
         }
     }
 
@@ -92,10 +90,8 @@ public extension Either {
     /// - Returns: Result of applying the corresponding closure to this value.
     func fold<R>(_ fl: (Left) throws -> R, _ fr: (Right) throws -> R) rethrows -> R {
         switch self {
-        case let .left(l):
-            return try fl(l)
-        case let .right(r):
-            return try fr(r)
+        case let .left(l): try fl(l)
+        case let .right(r): try fr(r)
         }
     }
 
@@ -132,10 +128,8 @@ public extension Either {
     ///   - fr: Closure to run if the contained value in this `Either` is a member of the `.right` type.
     func foldRun(_ fl: (Left) throws -> Void, _ fr: (Right) throws -> Void) rethrows {
         switch self {
-        case let .left(l):
-            try fl(l)
-        case let .right(r):
-            try fr(r)
+        case let .left(l): try fl(l)
+        case let .right(r): try fr(r)
         }
     }
 }
@@ -152,10 +146,8 @@ extension Either: Sendable where Left: Sendable, Right: Sendable {
     @Sendable
     public func fold<R>(_ fl: @Sendable (Left) async throws -> R, _ fr: @Sendable (Right) async throws -> R) async rethrows -> R {
         switch self {
-        case let .left(l):
-            return try await fl(l)
-        case let .right(r):
-            return try await fr(r)
+        case let .left(l): try await fl(l)
+        case let .right(r): try await fr(r)
         }
     }
 
@@ -198,10 +190,8 @@ extension Either: Sendable where Left: Sendable, Right: Sendable {
     @Sendable
     public func foldRun(_ fl: @Sendable (Left) async throws -> Void, _ fr: @Sendable (Right) async throws -> Void) async rethrows {
         switch self {
-        case let .left(l):
-            try await fl(l)
-        case let .right(r):
-            try await fr(r)
+        case let .left(l): try await fl(l)
+        case let .right(r): try await fr(r)
         }
     }
 }
