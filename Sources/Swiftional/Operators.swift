@@ -770,47 +770,98 @@ public func >=> <A, B, R>(_ f: @escaping (A) -> B?, _ g: @escaping (B) -> R?) ->
     { a in f(a).flatMap(g) }
 }
 
-// TODO: - Documentation
 infix operator ??+ : AdditionPrecedence
 
+/// Adds an optional value and a value together.
+/// If the left-hand side (optional value) is `nil`, it defaults to `0` before performing the addition.
+///
+/// - Parameters:
+///   - lhs: The optional value on the left-hand side of the operator.
+///   - rhs: The non-optional value on the right-hand side of the operator.
+/// - Returns: The sum of the two values.
 public func ??+ <A: AdditiveArithmetic>(_ lhs: A?, _ rhs: A) -> A {
     (lhs ?? .zero) + rhs
 }
 
 infix operator ??- : AdditionPrecedence
 
+/// Subtracts a value from an optional value.
+/// If the left-hand side (optional value) is `nil`, it defaults to `0` before performing the subtraction.
+///
+/// - Parameters:
+///   - lhs: The optional value on the left-hand side of the operator.
+///   - rhs: The non-optional value on the right-hand side of the operator.
+/// - Returns: The result of subtracting the value from the optional value.
 public func ??- <A: AdditiveArithmetic>(_ lhs: A?, _ rhs: A) -> A {
     (lhs ?? .zero) - rhs
 }
 
 infix operator ?+ : AdditionPrecedence
 
+/// Adds a value to an optional value, returning an optional result.
+/// If the left-hand side (optional value) is `nil`, the result is also `nil`.
+///
+/// - Parameters:
+///   - lhs: The optional value on the left-hand side of the operator.
+///   - rhs: The non-optional value on the right-hand side of the operator.
+/// - Returns: The optional result of adding the value to the optional value, or `nil` if left value is `nil`.
 public func ?+ <A: AdditiveArithmetic>(_ lhs: A?, _ rhs: A) -> A? {
     lhs.flatMap { $0 + rhs }
 }
 
+/// Adds a value to an optional value, returning an optional result.
+/// If the left-hand side (optional value) is `nil`, the result is also `nil`.
+///
+/// - Parameters:
+///   - lhs: The optional value on the left-hand side of the operator.
+///   - rhs: The non-optional value on the right-hand side of the operator.
+/// - Returns: The optional result of adding the value to the optional value, or `nil` if left value is `nil`.
 public func ?+ <A: AdditiveArithmetic>(_ lhs: A?, _ rhs: A?) -> A? {
     lhs.flatMap { $0 + (rhs ?? .zero) }
 }
 
 infix operator ?- : AdditionPrecedence
 
+/// Subtracts a value from an optional value, returning an optional result.
+/// If the left-hand side (optional value) is `nil`, the result is also `nil`.
+///
+/// - Parameters:
+///   - lhs: The optional value on the left-hand side of the operator.
+///   - rhs: The non-optional value on the right-hand side of the operator.
+/// - Returns: The optional result of subtracting the value from the optional value, or `nil` if left value is `nil`.
 public func ?- <A: AdditiveArithmetic>(_ lhs: A?, _ rhs: A) -> A? {
     lhs.flatMap { $0 - rhs }
 }
 
+/// Subtracts a value from an optional value, returning an optional result.
+/// If the left-hand side (optional value) is `nil`, the result is also `nil`.
+///
+/// - Parameters:
+///   - lhs: The optional value on the left-hand side of the operator.
+///   - rhs: The non-optional value on the right-hand side of the operator.
+/// - Returns: The optional result of subtracting the value from the optional value, or `nil` if left value is `nil`.
 public func ?- <A: AdditiveArithmetic>(_ lhs: A?, _ rhs: A?) -> A? {
     lhs.flatMap { $0 - (rhs ?? .zero) }
 }
 
 infix operator ??= : AssignmentPrecedence
 
+/// Assigns a value to an optional variable if the variable is currently `nil`.
+///
+/// - Parameters:
+///   - lhs: The optional variable to be assigned a value.
+///   - rhs: A closure that provides the value to be assigned, executed only if the left-hand side is `nil`.
 public func ??= <A>(_ lhs: inout A?, _ rhs: @autoclosure () throws -> A) rethrows {
     guard lhs == nil else { return }
 
     lhs = try rhs()
 }
 
+/// Assigns a value to an optional variable if the variable is currently `nil`.
+///
+/// - Parameters:
+///   - lhs: The optional variable to be assigned a value.
+///   - rhs: A closure that provides the value to be assigned, executed only if the left-hand side is `nil`.
 public func ??= <A>(_ lhs: inout A?, _ rhs: @autoclosure () throws -> A?) rethrows {
     guard lhs == nil else { return }
 
@@ -819,12 +870,22 @@ public func ??= <A>(_ lhs: inout A?, _ rhs: @autoclosure () throws -> A?) rethro
 
 infix operator ?= : AssignmentPrecedence
 
+/// Assigns a value to an optional variable if the variable is currently not `nil`.
+///
+/// - Parameters:
+///   - lhs: The optional variable to be assigned a value.
+///   - rhs: A closure that provides the value to be assigned, executed only if the left-hand side is not `nil`.
 public func ?= <A>(_ lhs: inout A?, _ rhs: @autoclosure () throws -> A) rethrows {
     guard lhs != nil else { return }
 
     lhs = try rhs()
 }
 
+/// Assigns a value to an optional variable if the variable is currently not `nil`.
+///
+/// - Parameters:
+///   - lhs: The optional variable to be assigned a value.
+///   - rhs: A closure that provides the value to be assigned, executed only if the left-hand side is not `nil`.
 public func ?= <A>(_ lhs: inout A?, _ rhs: @autoclosure () throws -> A?) rethrows {
     guard lhs != nil else { return }
 
