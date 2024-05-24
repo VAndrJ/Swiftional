@@ -802,3 +802,31 @@ public func ?- <A: AdditiveArithmetic>(_ lhs: A?, _ rhs: A) -> A? {
 public func ?- <A: AdditiveArithmetic>(_ lhs: A?, _ rhs: A?) -> A? {
     lhs.flatMap { $0 - (rhs ?? .zero) }
 }
+
+infix operator ??= : AssignmentPrecedence
+
+public func ??= <A>(_ lhs: inout A?, _ rhs: @autoclosure () throws -> A) rethrows {
+    guard lhs == nil else { return }
+
+    lhs = try rhs()
+}
+
+public func ??= <A>(_ lhs: inout A?, _ rhs: @autoclosure () throws -> A?) rethrows {
+    guard lhs == nil else { return }
+
+    lhs = try rhs()
+}
+
+infix operator ?= : AssignmentPrecedence
+
+public func ?= <A>(_ lhs: inout A?, _ rhs: @autoclosure () throws -> A) rethrows {
+    guard lhs != nil else { return }
+
+    lhs = try rhs()
+}
+
+public func ?= <A>(_ lhs: inout A?, _ rhs: @autoclosure () throws -> A?) rethrows {
+    guard lhs != nil else { return }
+
+    lhs = try rhs()
+}
