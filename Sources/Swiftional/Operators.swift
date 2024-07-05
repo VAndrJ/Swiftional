@@ -63,7 +63,6 @@ public func |> <A, R>(_ a: A, _ f: (A) throws -> R) rethrows -> R {
 ///   - a: Argument to apply.
 ///   - f: Function receiving the argument.
 /// - Returns: Result of running the function with the argument as input.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func |> <A, R>(_ a: A, _ f: @Sendable (A) async throws -> R) async rethrows -> R {
     try await f(a)
@@ -85,7 +84,6 @@ public func |> <A, B, R>(_ a: A, _ f: @escaping (A, B) -> R) -> (B) -> R {
 ///   - a: Input to the first argument of the function
 ///   - f: Function receiving the argument.
 /// - Returns: A function with the same behavior of the input function where the first argument is fixed to the value of the provided argument.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func |> <A: Sendable, B: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A, B) async -> R) -> @Sendable (B) async -> R {
     { b in await f(a, b) }
@@ -107,7 +105,6 @@ public func |> <A, B, R>(_ a: A, _ f: @escaping (A, B) throws -> R) -> (B) throw
 ///   - a: Input to the first argument of the function
 ///   - f: Function receiving the argument.
 /// - Returns: A function with the same behavior of the input function where the first argument is fixed to the value of the provided argument.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func |> <A: Sendable, B: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A, B) async throws -> R) -> @Sendable (B) async throws -> R {
     { b in try await f(a, b) }
@@ -129,7 +126,6 @@ public func |> <A, B, C, R>(_ a: A, _ f: @escaping (A, B, C) -> R) -> (B, C) -> 
 ///   - a: Input to the first argument of the function
 ///   - f: Function receiving the argument.
 /// - Returns: A function with the same behavior of the input function where the first argument is fixed to the value of the provided argument.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func |> <A: Sendable, B: Sendable, C: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A, B, C) async -> R) -> @Sendable (B, C) async -> R {
     { b, c in await f(a, b, c) }
@@ -151,7 +147,6 @@ public func |> <A, B, C, R>(_ a: A, _ f: @escaping (A, B, C) throws -> R) -> (B,
 ///   - a: Input to the first argument of the function
 ///   - f: Function receiving the argument.
 /// - Returns: A function with the same behavior of the input function where the first argument is fixed to the value of the provided argument.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func |> <A: Sendable, B: Sendable, C: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A, B, C) async throws -> R) -> @Sendable (B, C) async throws -> R {
     { b, c in try await f(a, b, c) }
@@ -173,7 +168,6 @@ public func |> <A, B, C, D, R>(_ a: A, _ f: @escaping (A, B, C, D) -> R) -> (B, 
 ///   - a: Input to the first argument of the function
 ///   - f: Function receiving the argument.
 /// - Returns: A function with the same behavior of the input function where the first argument is fixed to the value of the provided argument.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func |> <A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A, B, C, D) async -> R) -> @Sendable (B, C, D) async -> R {
     { b, c, d in await f(a, b, c, d) }
@@ -195,7 +189,6 @@ public func |> <A, B, C, D, R>(_ a: A, _ f: @escaping (A, B, C, D) throws -> R) 
 ///   - a: Input to the first argument of the function
 ///   - f: Function receiving the argument.
 /// - Returns: A function with the same behavior of the input function where the first argument is fixed to the value of the provided argument.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func |> <A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A, B, C, D) async throws -> R) -> @Sendable (B, C, D) async throws -> R {
     { b, c, d in try await f(a, b, c, d) }
@@ -217,7 +210,6 @@ public func |> <A, B, C, D, E, R>(_ a: A, _ f: @escaping (A, B, C, D, E) -> R) -
 ///   - a: Input to the first argument of the function
 ///   - f: Function receiving the argument.
 /// - Returns: A function with the same behavior of the input function where the first argument is fixed to the value of the provided argument.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func |> <A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A, B, C, D, E) async -> R) -> @Sendable (B, C, D, E) async -> R {
     { b, c, d, e in await f(a, b, c, d, e) }
@@ -239,7 +231,6 @@ public func |> <A, B, C, D, E, R>(_ a: A, _ f: @escaping (A, B, C, D, E) throws 
 ///   - a: Input to the first argument of the function
 ///   - f: Function receiving the argument.
 /// - Returns: A function with the same behavior of the input function where the first argument is fixed to the value of the provided argument.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func |> <A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A, B, C, D, E) async throws -> R) -> @Sendable (B, C, D, E) async throws -> R {
     { b, c, d, e in try await f(a, b, c, d, e) }
@@ -281,7 +272,6 @@ public func <| <A, R>(_ f: (A) throws -> R, _ a: A) rethrows -> R {
 ///   - f: Function receiving the argument.
 ///   - a: Argument to apply.
 /// - Returns: Result of running the function with the argument as input.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func <| <A, R>(_ f: @Sendable (A) async throws -> R, _ a: A) async rethrows -> R {
     try await f(a)
@@ -323,7 +313,6 @@ public func <<| <A, R>(_ f: @escaping (A) -> R, _ a: A) -> () -> R {
 ///   - f: Function receiving the argument.
 ///   - a: Argument to apply.
 /// - Returns: Result of running the function with the argument as input.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func <<| <A: Sendable, R>(_ f: @escaping @Sendable (A) async -> R, _ a: A) -> @Sendable () async -> R {
     { await f(a) }
@@ -365,7 +354,6 @@ public func |>> <A, R>(_ a: A, _ f: @escaping (A) -> R) -> () -> R {
 ///   - f: Function receiving the argument.
 ///   - a: Argument to apply.
 /// - Returns: Result of running the function with the argument as input.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func |>> <A: Sendable, R>(_ a: A, _ f: @escaping @Sendable (A) async -> R) -> @Sendable () async -> R {
     { await f(a) }
@@ -389,7 +377,6 @@ public func >>> <A, R>(_ f: @escaping () -> A, _ g: @escaping (A) -> R) -> () ->
 ///   - f: Left-hand side.
 ///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func >>> <A, R>(_ f: @escaping @Sendable () async -> A, _ g: @escaping @Sendable (A) async -> R) -> @Sendable () async -> R {
     { await g(f()) }
@@ -411,7 +398,6 @@ public func >>> <A, R>(_ f: @escaping () throws -> A, _ g: @escaping (A) -> R) -
 ///   - f: Left-hand side.
 ///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func >>> <A, R>(_ f: @escaping @Sendable () async throws -> A, _ g: @escaping @Sendable (A) async -> R) -> @Sendable () async throws -> R {
     { await g(try f()) }
@@ -433,7 +419,6 @@ public func >>> <A, R>(_ f: @escaping () -> A, _ g: @escaping (A) throws -> R) -
 ///   - f: Left-hand side.
 ///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func >>> <A, R>(_ f: @escaping @Sendable () async -> A, _ g: @escaping @Sendable (A) async throws -> R) -> @Sendable () async throws -> R {
     { try await g(f()) }
@@ -455,7 +440,6 @@ public func >>> <A, R>(_ f: @escaping () throws -> A, _ g: @escaping (A) throws 
 ///   - f: Left-hand side.
 ///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func >>> <A, R>(_ f: @escaping @Sendable () async throws -> A, _ g: @escaping @Sendable (A) async throws -> R) -> @Sendable () async throws -> R {
     { try await g(try f()) }
@@ -477,7 +461,6 @@ public func >>> <A, B, R>(_ f: @escaping (A) -> B, _ g: @escaping (B) -> R) -> (
 ///   - f: Left-hand side.
 ///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func >>> <A, B, R>(_ f: @escaping @Sendable (A) async -> B, _ g: @escaping @Sendable (B) async -> R) -> @Sendable (A) async -> R {
     { a in await g(f(a)) }
@@ -499,7 +482,6 @@ public func >>> <A, B, R>(_ f: @escaping (A) throws -> B, _ g: @escaping (B) -> 
 ///   - f: Left-hand side.
 ///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func >>> <A, B, R>(_ f: @escaping @Sendable (A) async throws -> B, _ g: @escaping @Sendable (B) async -> R) -> @Sendable (A) async throws -> R {
     { a in await g(try f(a)) }
@@ -521,7 +503,6 @@ public func >>> <A, B, R>(_ f: @escaping (A) -> B, _ g: @escaping (B) throws -> 
 ///   - f: Left-hand side.
 ///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func >>> <A, B, R>(_ f: @escaping @Sendable (A) async -> B, _ g: @escaping @Sendable (B) async throws -> R) -> @Sendable (A) async throws -> R {
     { a in try await g(f(a)) }
@@ -543,7 +524,6 @@ public func >>> <A, B, R>(_ f: @escaping (A) throws -> B, _ g: @escaping (B) thr
 ///   - f: Left-hand side.
 ///   - g: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func >>> <A, B, R>(_ f: @escaping @Sendable (A) async throws -> B, _ g: @escaping @Sendable (B) async throws -> R) -> @Sendable (A) async throws -> R {
     { a in try await g(try f(a)) }
@@ -567,7 +547,6 @@ public func <<< <A, R>(_ g: @escaping (A) -> R, _ f: @escaping () -> A) -> () ->
 ///   - g: Left-hand side.
 ///   - f: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func <<< <A, R>(_ g: @escaping @Sendable (A) async -> R, _ f: @escaping @Sendable () async -> A) -> @Sendable () async -> R {
     f >>> g
@@ -589,7 +568,6 @@ public func <<< <A, R>(_ g: @escaping (A) throws -> R, _ f: @escaping () -> A) -
 ///   - g: Left-hand side.
 ///   - f: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func <<< <A, R>(_ g: @escaping @Sendable (A) async throws -> R, _ f: @escaping @Sendable () async -> A) -> @Sendable () async throws -> R {
     f >>> g
@@ -611,7 +589,6 @@ public func <<< <A, R>(_ g: @escaping (A) -> R, _ f: @escaping () throws -> A) -
 ///   - g: Left-hand side.
 ///   - f: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func <<< <A, R>(_ g: @escaping @Sendable (A) async -> R, _ f: @escaping @Sendable () async throws -> A) -> @Sendable () async throws -> R {
     f >>> g
@@ -633,7 +610,6 @@ public func <<< <A, R>(_ g: @escaping (A) throws -> R, _ f: @escaping () throws 
 ///   - g: Left-hand side.
 ///   - f: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func <<< <A, R>(_ g: @escaping @Sendable (A) async throws -> R, _ f: @escaping @Sendable () async throws -> A) -> @Sendable () async throws -> R {
     f >>> g
@@ -655,7 +631,6 @@ public func <<< <A, B, R>(_ g: @escaping (B) -> R, _ f: @escaping (A) -> B) -> (
 ///   - g: Left-hand side.
 ///   - f: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func <<< <A, B, R>(_ g: @escaping @Sendable (B) async -> R, _ f: @escaping @Sendable (A) async -> B) -> @Sendable (A) async -> R {
     f >>> g
@@ -677,7 +652,6 @@ public func <<< <A, B, R>(_ g: @escaping (B) throws -> R, _ f: @escaping (A) -> 
 ///   - g: Left-hand side.
 ///   - f: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func <<< <A, B, R>(_ g: @escaping @Sendable (B) async throws -> R, _ f: @escaping @Sendable (A) async -> B) -> @Sendable (A) async throws -> R {
     f >>> g
@@ -699,7 +673,6 @@ public func <<< <A, B, R>(_ g: @escaping (B) -> R, _ f: @escaping (A) throws -> 
 ///   - g: Left-hand side.
 ///   - f: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func <<< <A, B, R>(_ g: @escaping @Sendable (B) async -> R, _ f: @escaping @Sendable (A) async throws -> B) -> @Sendable (A) async throws -> R {
     f >>> g
@@ -721,7 +694,6 @@ public func <<< <A, B, R>(_ g: @escaping (B) throws -> R, _ f: @escaping (A) thr
 ///   - g: Left-hand side.
 ///   - f: Right-hand side.
 /// - Returns: A function that applies `g` to the output of `f`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func <<< <A, B, R>(_ g: @escaping @Sendable (B) async throws -> R, _ f: @escaping @Sendable (A) async throws -> B) -> @Sendable (A) async throws -> R {
     f >>> g

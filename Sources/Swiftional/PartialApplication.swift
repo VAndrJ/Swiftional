@@ -24,7 +24,6 @@ public func partial<A, B, R>(_ fn: @escaping (A, B) throws -> R, _ a: Deferred, 
 /// Partial application. Applies an argument to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, R>(_ fn: @escaping @Sendable (A, B) async -> R, _ a: Deferred, _ b: B) -> @Sendable (A) async -> R {
     { a in await fn(a, b) }
@@ -33,7 +32,6 @@ public func partial<A: Sendable, B: Sendable, R>(_ fn: @escaping @Sendable (A, B
 /// Partial application. Applies an argument to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, R>(_ fn: @escaping @Sendable (A, B) async throws -> R, _ a: Deferred, _ b: B) -> @Sendable (A) async throws -> R {
     { a in try await fn(a, b) }
@@ -56,7 +54,6 @@ public func partial<A, B, R>(_ fn: @escaping (A, B) throws -> R, _ a: A, _ b: De
 /// Partial application. Applies an argument to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, R>(_ fn: @escaping @Sendable (A, B) async -> R, _ a: A, _ b: Deferred) -> @Sendable (B) async -> R {
     { b in await fn(a, b) }
@@ -65,7 +62,6 @@ public func partial<A: Sendable, B: Sendable, R>(_ fn: @escaping @Sendable (A, B
 /// Partial application. Applies an argument to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, R>(_ fn: @escaping @Sendable (A, B) async throws -> R, _ a: A, _ b: Deferred) -> @Sendable (B) async throws -> R {
     { b in try await fn(a, b) }
@@ -88,7 +84,6 @@ public func partial<A, B, C, R>(_ fn: @escaping (A, B, C) throws -> R, _ a: Defe
 /// Partial application. Applies an argument to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @Sendable (A, B, C) async -> R, _ a: Deferred, _ b: B, _ c: C) -> @Sendable (A) async -> R {
     { a in await fn(a, b, c) }
@@ -97,7 +92,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @S
 /// Partial application. Applies an argument to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @Sendable (A, B, C) async throws -> R, _ a: Deferred, _ b: B, _ c: C) -> @Sendable (A) async throws -> R {
     { a in try await fn(a, b, c) }
@@ -120,7 +114,6 @@ public func partial<A, B, C, R>(_ fn: @escaping (A, B, C) throws -> R, _ a: A, _
 /// Partial application. Applies an argument to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @Sendable (A, B, C) async -> R, _ a: A, _ b: Deferred, _ c: C) -> @Sendable (B) async -> R {
     { b in await fn(a, b, c) }
@@ -129,7 +122,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @S
 /// Partial application. Applies an argument to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @Sendable (A, B, C) async throws -> R, _ a: A, _ b: Deferred, _ c: C) -> @Sendable (B) async throws -> R {
     { b in try await fn(a, b, c) }
@@ -152,7 +144,6 @@ public func partial<A, B, C, R>(_ fn: @escaping (A, B, C) throws -> R, _ a: A, _
 /// Partial application. Applies an argument to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @Sendable (A, B, C) async -> R, _ a: A, _ b: B, _ c: Deferred) -> @Sendable (C) async -> R {
     { c in await fn(a, b, c) }
@@ -161,7 +152,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @S
 /// Partial application. Applies an argument to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @Sendable (A, B, C) async throws -> R, _ a: A, _ b: B, _ c: Deferred) -> @Sendable (C) async throws -> R {
     { c in try await fn(a, b, c) }
@@ -184,7 +174,6 @@ public func partial<A, B, C, R>(_ fn: @escaping (A, B, C) throws -> R, _ a: Defe
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @Sendable (A, B, C) async -> R, _ a: Deferred, _ b: Deferred, _ c: C) -> @Sendable (A, B) async -> R {
     { a, b in await fn(a, b, c) }
@@ -193,7 +182,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @S
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @Sendable (A, B, C) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: C) -> @Sendable (A, B) async throws -> R {
     { a, b in try await fn(a, b, c) }
@@ -216,7 +204,6 @@ public func partial<A, B, C, R>(_ fn: @escaping (A, B, C) throws -> R, _ a: Defe
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @Sendable (A, B, C) async -> R, _ a: Deferred, _ b: B, _ c: Deferred) -> @Sendable (A, C) async -> R {
     { a, c in await fn(a, b, c) }
@@ -225,7 +212,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @S
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @Sendable (A, B, C) async throws -> R, _ a: Deferred, _ b: B, _ c: Deferred) -> @Sendable (A, C) async throws -> R {
     { a, c in try await fn(a, b, c) }
@@ -248,7 +234,6 @@ public func partial<A, B, C, R>(_ fn: @escaping (A, B, C) throws -> R, _ a: A, _
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @Sendable (A, B, C) async -> R, _ a: A, _ b: Deferred, _ c: Deferred) -> @Sendable (B, C) async -> R {
     { b, c in await fn(a, b, c) }
@@ -257,7 +242,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @S
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, R>(_ fn: @escaping @Sendable (A, B, C) async throws -> R, _ a: A, _ b: Deferred, _ c: Deferred) -> @Sendable (B, C) async throws -> R {
     { b, c in try await fn(a, b, c) }
@@ -280,7 +264,6 @@ public func partial<A, B, C, D, R>(_ fn: @escaping (A, B, C, D) throws -> R, _ a
 /// Partial application. Applies an argument to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async -> R, _ a: Deferred, _ b: B, _ c: C, _ d: D) -> @Sendable (A) async -> R {
     { a in await fn(a, b, c, d) }
@@ -289,7 +272,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn:
 /// Partial application. Applies an argument to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async throws -> R, _ a: Deferred, _ b: B, _ c: C, _ d: D) -> @Sendable (A) async throws -> R {
     { a in try await fn(a, b, c, d) }
@@ -312,7 +294,6 @@ public func partial<A, B, C, D, R>(_ fn: @escaping (A, B, C, D) throws -> R, _ a
 /// Partial application. Applies an argument to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async -> R, _ a: A, _ b: Deferred, _ c: C, _ d: D) -> @Sendable (B) async -> R {
     { b in await fn(a, b, c, d) }
@@ -321,7 +302,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn:
 /// Partial application. Applies an argument to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async throws -> R, _ a: A, _ b: Deferred, _ c: C, _ d: D) -> @Sendable (B) async throws -> R {
     { b in try await fn(a, b, c, d) }
@@ -344,7 +324,6 @@ public func partial<A, B, C, D, R>(_ fn: @escaping (A, B, C, D) throws -> R, _ a
 /// Partial application. Applies an argument to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async -> R, _ a: A, _ b: B, _ c: Deferred, _ d: D) -> @Sendable (C) async -> R {
     { c in await fn(a, b, c, d) }
@@ -353,7 +332,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn:
 /// Partial application. Applies an argument to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async throws -> R, _ a: A, _ b: B, _ c: Deferred, _ d: D) -> @Sendable (C) async throws -> R {
     { c in try await fn(a, b, c, d) }
@@ -376,7 +354,6 @@ public func partial<A, B, C, D, R>(_ fn: @escaping (A, B, C, D) throws -> R, _ a
 /// Partial application. Applies an argument to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async -> R, _ a: A, _ b: B, _ c: C, _ d: Deferred) -> @Sendable (D) async -> R {
     { d in await fn(a, b, c, d) }
@@ -385,7 +362,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn:
 /// Partial application. Applies an argument to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async throws -> R, _ a: A, _ b: B, _ c: C, _ d: Deferred) -> @Sendable (D) async throws -> R {
     { d in try await fn(a, b, c, d) }
@@ -408,7 +384,6 @@ public func partial<A, B, C, D, R>(_ fn: @escaping (A, B, C, D) throws -> R, _ a
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async -> R, _ a: A, _ b: B, _ c: Deferred, _ d: Deferred) -> @Sendable (C, D) async -> R {
     { c, d in await fn(a, b, c, d) }
@@ -417,7 +392,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn:
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async throws -> R, _ a: A, _ b: B, _ c: Deferred, _ d: Deferred) -> @Sendable (C, D) async throws -> R {
     { c, d in try await fn(a, b, c, d) }
@@ -440,7 +414,6 @@ public func partial<A, B, C, D, R>(_ fn: @escaping (A, B, C, D) throws -> R, _ a
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async -> R, _ a: A, _ b: Deferred, _ c: C, _ d: Deferred) -> @Sendable (B, D) async -> R {
     { b, d in await fn(a, b, c, d) }
@@ -449,7 +422,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn:
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async throws -> R, _ a: A, _ b: Deferred, _ c: C, _ d: Deferred) -> @Sendable (B, D) async throws -> R {
     { b, d in try await fn(a, b, c, d) }
@@ -472,7 +444,6 @@ public func partial<A, B, C, D, R>(_ fn: @escaping (A, B, C, D) throws -> R, _ a
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async -> R, _ a: Deferred, _ b: B, _ c: C, _ d: Deferred) -> @Sendable (A, D) async -> R {
     { a, d in await fn(a, b, c, d) }
@@ -481,7 +452,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn:
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async throws -> R, _ a: Deferred, _ b: B, _ c: C, _ d: Deferred) -> @Sendable (A, D) async throws -> R {
     { a, d in try await fn(a, b, c, d) }
@@ -504,7 +474,6 @@ public func partial<A, B, C, D, R>(_ fn: @escaping (A, B, C, D) throws -> R, _ a
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async -> R, _ a: Deferred, _ b: B, _ c: Deferred, _ d: D) -> @Sendable (A, C) async -> R {
     { a, c in await fn(a, b, c, d) }
@@ -513,7 +482,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn:
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async throws -> R, _ a: Deferred, _ b: B, _ c: Deferred, _ d: D) -> @Sendable (A, C) async throws -> R {
     { a, c in try await fn(a, b, c, d) }
@@ -536,7 +504,6 @@ public func partial<A, B, C, D, R>(_ fn: @escaping (A, B, C, D) throws -> R, _ a
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async -> R, _ a: Deferred, _ b: Deferred, _ c: C, _ d: D) -> @Sendable (A, B) async -> R {
     { a, b in await fn(a, b, c, d) }
@@ -545,7 +512,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn:
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: C, _ d: D) -> @Sendable (A, B) async throws -> R {
     { a, b in try await fn(a, b, c, d) }
@@ -568,7 +534,6 @@ public func partial<A, B, C, D, R>(_ fn: @escaping (A, B, C, D) throws -> R, _ a
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async -> R, _ a: A, _ b: Deferred, _ c: Deferred, _ d: D) -> @Sendable (B, C) async -> R {
     { b, c in await fn(a, b, c, d) }
@@ -577,7 +542,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn:
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async throws -> R, _ a: A, _ b: Deferred, _ c: Deferred, _ d: D) -> @Sendable (B, C) async throws -> R {
     { b, c in try await fn(a, b, c, d) }
@@ -600,7 +564,6 @@ public func partial<A, B, C, D, R>(_ fn: @escaping (A, B, C, D) throws -> R, _ a
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: D) -> @Sendable (A, B, C) async -> R {
     { a, b, c in await fn(a, b, c, d) }
@@ -609,7 +572,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn:
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: D) -> @Sendable (A, B, C) async throws -> R {
     { a, b, c in try await fn(a, b, c, d) }
@@ -632,7 +594,6 @@ public func partial<A, B, C, D, R>(_ fn: @escaping (A, B, C, D) throws -> R, _ a
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async -> R, _ a: Deferred, _ b: Deferred, _ c: C, _ d: Deferred) -> @Sendable (A, B, D) async -> R {
     { a, b, d in await fn(a, b, c, d) }
@@ -641,7 +602,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn:
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: C, _ d: Deferred) -> @Sendable (A, B, D) async throws -> R {
     { a, b, d in try await fn(a, b, c, d) }
@@ -664,7 +624,6 @@ public func partial<A, B, C, D, R>(_ fn: @escaping (A, B, C, D) throws -> R, _ a
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, C, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async -> R, _ a: Deferred, _ b: B, _ c: Deferred, _ d: Deferred) -> @Sendable (A, C, D) async -> R {
     { a, c, d in await fn(a, b, c, d) }
@@ -673,7 +632,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn:
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, C, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async throws -> R, _ a: Deferred, _ b: B, _ c: Deferred, _ d: Deferred) -> @Sendable (A, C, D) async throws -> R {
     { a, c, d in try await fn(a, b, c, d) }
@@ -696,7 +654,6 @@ public func partial<A, B, C, D, R>(_ fn: @escaping (A, B, C, D) throws -> R, _ a
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, C, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async -> R, _ a: A, _ b: Deferred, _ c: Deferred, _ d: Deferred) -> @Sendable (B, C, D) async -> R {
     { b, c, d in await fn(a, b, c, d) }
@@ -705,7 +662,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn:
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, C, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D) async throws -> R, _ a: A, _ b: Deferred, _ c: Deferred, _ d: Deferred) -> @Sendable (B, C, D) async throws -> R {
     { b, c, d in try await fn(a, b, c, d) }
@@ -728,7 +684,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies an argument to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: Deferred, _ b: B, _ c: C, _ d: D, _ e: E) -> @Sendable (A) async -> R {
     { a in await fn(a, b, c, d, e) }
@@ -737,7 +692,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies an argument to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: Deferred, _ b: B, _ c: C, _ d: D, _ e: E) -> @Sendable (A) async throws -> R {
     { a in try await fn(a, b, c, d, e) }
@@ -760,7 +714,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies an argument to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: A, _ b: Deferred, _ c: C, _ d: D, _ e: E) -> @Sendable (B) async -> R {
     { b in await fn(a, b, c, d, e) }
@@ -769,7 +722,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies an argument to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: A, _ b: Deferred, _ c: C, _ d: D, _ e: E) -> @Sendable (B) async throws -> R {
     { b in try await fn(a, b, c, d, e) }
@@ -792,7 +744,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies an argument to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: A, _ b: B, _ c: Deferred, _ d: D, _ e: E) -> @Sendable (C) async -> R {
     { c in await fn(a, b, c, d, e) }
@@ -801,7 +752,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies an argument to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: A, _ b: B, _ c: Deferred, _ d: D, _ e: E) -> @Sendable (C) async throws -> R {
     { c in try await fn(a, b, c, d, e) }
@@ -824,7 +774,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies an argument to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: A, _ b: B, _ c: C, _ d: Deferred, _ e: E) -> @Sendable (D) async -> R {
     { d in await fn(a, b, c, d, e) }
@@ -833,7 +782,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies an argument to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: A, _ b: B, _ c: C, _ d: Deferred, _ e: E) -> @Sendable (D) async throws -> R {
     { d in try await fn(a, b, c, d, e) }
@@ -856,7 +804,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: A, _ b: B, _ c: Deferred, _ d: Deferred, _ e: E) -> @Sendable (C, D) async -> R {
     { c, d in await fn(a, b, c, d, e) }
@@ -865,7 +812,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: A, _ b: B, _ c: Deferred, _ d: Deferred, _ e: E) -> @Sendable (C, D) async throws -> R {
     { c, d in try await fn(a, b, c, d, e) }
@@ -888,7 +834,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: A, _ b: Deferred, _ c: C, _ d: Deferred, _ e: E) -> @Sendable (B, D) async -> R {
     { b, d in await fn(a, b, c, d, e) }
@@ -897,7 +842,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: A, _ b: Deferred, _ c: C, _ d: Deferred, _ e: E) -> @Sendable (B, D) async throws -> R {
     { b, d in try await fn(a, b, c, d, e) }
@@ -920,7 +864,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: Deferred, _ b: B, _ c: C, _ d: Deferred, _ e: E) -> @Sendable (A, D) async -> R {
     { a, d in await fn(a, b, c, d, e) }
@@ -929,7 +872,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: Deferred, _ b: B, _ c: C, _ d: Deferred, _ e: E) -> @Sendable (A, D) async throws -> R {
     { a, d in try await fn(a, b, c, d, e) }
@@ -952,7 +894,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: Deferred, _ b: B, _ c: Deferred, _ d: D, _ e: E) -> @Sendable (A, C) async -> R {
     { a, c in await fn(a, b, c, d, e) }
@@ -961,7 +902,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: Deferred, _ b: B, _ c: Deferred, _ d: D, _ e: E) -> @Sendable (A, C) async throws -> R {
     { a, c in try await fn(a, b, c, d, e) }
@@ -984,7 +924,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: Deferred, _ b: Deferred, _ c: C, _ d: D, _ e: E) -> @Sendable (A, B) async -> R {
     { a, b in await fn(a, b, c, d, e) }
@@ -993,7 +932,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: C, _ d: D, _ e: E) -> @Sendable (A, B) async throws -> R {
     { a, b in try await fn(a, b, c, d, e) }
@@ -1016,7 +954,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: A, _ b: Deferred, _ c: Deferred, _ d: D, _ e: E) -> @Sendable (B, C) async -> R {
     { b, c in await fn(a, b, c, d, e) }
@@ -1025,7 +962,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: A, _ b: Deferred, _ c: Deferred, _ d: D, _ e: E) -> @Sendable (B, C) async throws -> R {
     { b, c in try await fn(a, b, c, d, e) }
@@ -1048,7 +984,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: D, _ e: E) -> @Sendable (A, B, C) async -> R {
     { a, b, c in await fn(a, b, c, d, e) }
@@ -1057,7 +992,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: D, _ e: E) -> @Sendable (A, B, C) async throws -> R {
     { a, b, c in try await fn(a, b, c, d, e) }
@@ -1080,7 +1014,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: Deferred, _ b: Deferred, _ c: C, _ d: Deferred, _ e: E) -> @Sendable (A, B, D) async -> R {
     { a, b, d in await fn(a, b, c, d, e) }
@@ -1089,7 +1022,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: C, _ d: Deferred, _ e: E) -> @Sendable (A, B, D) async throws -> R {
     { a, b, d in try await fn(a, b, c, d, e) }
@@ -1112,7 +1044,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, C, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: Deferred, _ b: B, _ c: Deferred, _ d: Deferred, _ e: E) -> @Sendable (A, C, D) async -> R {
     { a, c, d in await fn(a, b, c, d, e) }
@@ -1121,7 +1052,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, C, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: Deferred, _ b: B, _ c: Deferred, _ d: Deferred, _ e: E) -> @Sendable (A, C, D) async throws -> R {
     { a, c, d in try await fn(a, b, c, d, e) }
@@ -1144,7 +1074,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, C, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: A, _ b: Deferred, _ c: Deferred, _ d: Deferred, _ e: E) -> @Sendable (B, C, D) async -> R {
     { b, c, d in await fn(a, b, c, d, e) }
@@ -1153,7 +1082,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, C, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: A, _ b: Deferred, _ c: Deferred, _ d: Deferred, _ e: E) -> @Sendable (B, C, D) async throws -> R {
     { b, c, d in try await fn(a, b, c, d, e) }
@@ -1176,7 +1104,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: Deferred, _ e: E) -> @Sendable (A, B, C, D) async -> R {
     { a, b, c, d in await fn(a, b, c, d, e) }
@@ -1185,7 +1112,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: Deferred, _ e: E) -> @Sendable (A, B, C, D) async throws -> R {
     { a, b, c, d in try await fn(a, b, c, d, e) }
@@ -1208,7 +1134,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies an argument to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: Deferred, _ b: B, _ c: C, _ d: D, _ e: Deferred) -> @Sendable (A, E) async -> R {
     { a, e in await fn(a, b, c, d, e) }
@@ -1217,7 +1142,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies an argument to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: Deferred, _ b: B, _ c: C, _ d: D, _ e: Deferred) -> @Sendable (A, E) async throws -> R {
     { a, e in try await fn(a, b, c, d, e) }
@@ -1240,7 +1164,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies an argument to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: A, _ b: Deferred, _ c: C, _ d: D, _ e: Deferred) -> @Sendable (B, E) async -> R {
     { b, e in await fn(a, b, c, d, e) }
@@ -1249,7 +1172,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies an argument to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: A, _ b: Deferred, _ c: C, _ d: D, _ e: Deferred) -> @Sendable (B, E) async throws -> R {
     { b, e in try await fn(a, b, c, d, e) }
@@ -1272,7 +1194,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies an argument to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: A, _ b: B, _ c: Deferred, _ d: D, _ e: Deferred) -> @Sendable (C, E) async -> R {
     { c, e in await fn(a, b, c, d, e) }
@@ -1281,7 +1202,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies an argument to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: A, _ b: B, _ c: Deferred, _ d: D, _ e: Deferred) -> @Sendable (C, E) async throws -> R {
     { c, e in try await fn(a, b, c, d, e) }
@@ -1304,7 +1224,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies an argument to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (D, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: A, _ b: B, _ c: C, _ d: Deferred, _ e: Deferred) -> @Sendable (D, E) async -> R {
     { d, e in await fn(a, b, c, d, e) }
@@ -1313,7 +1232,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies an argument to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (D, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: A, _ b: B, _ c: C, _ d: Deferred, _ e: Deferred) -> @Sendable (D, E) async throws -> R {
     { d, e in try await fn(a, b, c, d, e) }
@@ -1336,7 +1254,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C, D, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: A, _ b: B, _ c: Deferred, _ d: Deferred, _ e: Deferred) -> @Sendable (C, D, E) async -> R {
     { c, d, e in await fn(a, b, c, d, e) }
@@ -1345,7 +1262,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C, D, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: A, _ b: B, _ c: Deferred, _ d: Deferred, _ e: Deferred) -> @Sendable (C, D, E) async throws -> R {
     { c, d, e in try await fn(a, b, c, d, e) }
@@ -1368,7 +1284,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, D, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: A, _ b: Deferred, _ c: C, _ d: Deferred, _ e: Deferred) -> @Sendable (B, D, E) async -> R {
     { b, d, e in await fn(a, b, c, d, e) }
@@ -1377,7 +1292,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, D, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: A, _ b: Deferred, _ c: C, _ d: Deferred, _ e: Deferred) -> @Sendable (B, D, E) async throws -> R {
     { b, d, e in try await fn(a, b, c, d, e) }
@@ -1400,7 +1314,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, D, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: Deferred, _ b: B, _ c: C, _ d: Deferred, _ e: Deferred) -> @Sendable (A, D, E) async -> R {
     { a, d, e in await fn(a, b, c, d, e) }
@@ -1409,7 +1322,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, D, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: Deferred, _ b: B, _ c: C, _ d: Deferred, _ e: Deferred) -> @Sendable (A, D, E) async throws -> R {
     { a, d, e in try await fn(a, b, c, d, e) }
@@ -1432,7 +1344,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, C, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: Deferred, _ b: B, _ c: Deferred, _ d: D, _ e: Deferred) -> @Sendable (A, C, E) async -> R {
     { a, c, e in await fn(a, b, c, d, e) }
@@ -1441,7 +1352,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, C, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: Deferred, _ b: B, _ c: Deferred, _ d: D, _ e: Deferred) -> @Sendable (A, C, E) async throws -> R {
     { a, c, e in try await fn(a, b, c, d, e) }
@@ -1464,7 +1374,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: Deferred, _ b: Deferred, _ c: C, _ d: D, _ e: Deferred) -> @Sendable (A, B, E) async -> R {
     { a, b, e in await fn(a, b, c, d, e) }
@@ -1473,7 +1382,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: C, _ d: D, _ e: Deferred) -> @Sendable (A, B, E) async throws -> R {
     { a, b, e in try await fn(a, b, c, d, e) }
@@ -1496,7 +1404,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, C, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: A, _ b: Deferred, _ c: Deferred, _ d: D, _ e: Deferred) -> @Sendable (B, C, E) async -> R {
     { b, c, e in await fn(a, b, c, d, e) }
@@ -1505,7 +1412,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, C, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: A, _ b: Deferred, _ c: Deferred, _ d: D, _ e: Deferred) -> @Sendable (B, C, E) async throws -> R {
     { b, c, e in try await fn(a, b, c, d, e) }
@@ -1528,7 +1434,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: D, _ e: Deferred) -> @Sendable (A, B, C, E) async -> R {
     { a, b, c, e in await fn(a, b, c, d, e) }
@@ -1537,7 +1442,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: D, _ e: Deferred) -> @Sendable (A, B, C, E) async throws -> R {
     { a, b, c, e in try await fn(a, b, c, d, e) }
@@ -1560,7 +1464,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, D, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: Deferred, _ b: Deferred, _ c: C, _ d: Deferred, _ e: Deferred) -> @Sendable (A, B, D, E) async -> R {
     { a, b, d, e in await fn(a, b, c, d, e) }
@@ -1569,7 +1472,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, D, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: C, _ d: Deferred, _ e: Deferred) -> @Sendable (A, B, D, E) async throws -> R {
     { a, b, d, e in try await fn(a, b, c, d, e) }
@@ -1592,7 +1494,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, C, D, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: Deferred, _ b: B, _ c: Deferred, _ d: Deferred, _ e: Deferred) -> @Sendable (A, C, D, E) async -> R {
     { a, c, d, e in await fn(a, b, c, d, e) }
@@ -1601,7 +1502,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, C, D, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: Deferred, _ b: B, _ c: Deferred, _ d: Deferred, _ e: Deferred) -> @Sendable (A, C, D, E) async throws -> R {
     { a, c, d, e in try await fn(a, b, c, d, e) }
@@ -1624,7 +1524,6 @@ public func partial<A, B, C, D, E, R>(_ fn: @escaping (A, B, C, D, E) throws -> 
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, C, D, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async -> R, _ a: A, _ b: Deferred, _ c: Deferred, _ d: Deferred, _ e: Deferred) -> @Sendable (B, C, D, E) async -> R {
     { b, c, d, e in await fn(a, b, c, d, e) }
@@ -1633,7 +1532,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, C, D, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E) async throws -> R, _ a: A, _ b: Deferred, _ c: Deferred, _ d: Deferred, _ e: Deferred) -> @Sendable (B, C, D, E) async throws -> R {
     { b, c, d, e in try await fn(a, b, c, d, e) }
@@ -1656,7 +1554,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, C, D, E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: A, _ b: Deferred, _ c: Deferred, _ d: Deferred, _ e: Deferred, _ f: Deferred) -> @Sendable (B, C, D, E, F) async -> R {
     { b, c, d, e, f in await fn(a, b, c, d, e, f) }
@@ -1665,7 +1562,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B, C, D, E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: A, _ b: Deferred, _ c: Deferred, _ d: Deferred, _ e: Deferred, _ f: Deferred) -> @Sendable (B, C, D, E, F) async throws -> R {
     { b, c, d, e, f in try await fn(a, b, c, d, e, f) }
@@ -1688,7 +1584,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, C, D, E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: Deferred, _ b: B, _ c: Deferred, _ d: Deferred, _ e: Deferred, _ f: Deferred) -> @Sendable (A, C, D, E, F) async -> R {
     { a, c, d, e, f in await fn(a, b, c, d, e, f) }
@@ -1697,7 +1592,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, C, D, E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: Deferred, _ b: B, _ c: Deferred, _ d: Deferred, _ e: Deferred, _ f: Deferred) -> @Sendable (A, C, D, E, F) async throws -> R {
     { a, c, d, e, f in try await fn(a, b, c, d, e, f) }
@@ -1720,7 +1614,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, D, E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: Deferred, _ b: Deferred, _ c: C, _ d: Deferred, _ e: Deferred, _ f: Deferred) -> @Sendable (A, B, D, E, F) async -> R {
     { a, b, d, e, f in await fn(a, b, c, d, e, f) }
@@ -1729,7 +1622,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, D, E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: C, _ d: Deferred, _ e: Deferred, _ f: Deferred) -> @Sendable (A, B, D, E, F) async throws -> R {
     { a, b, d, e, f in try await fn(a, b, c, d, e, f) }
@@ -1752,7 +1644,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C, E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: D, _ e: Deferred, _ f: Deferred) -> @Sendable (A, B, C, E, F) async -> R {
     { a, b, c, e, f in await fn(a, b, c, d, e, f) }
@@ -1761,7 +1652,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C, E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: D, _ e: Deferred, _ f: Deferred) -> @Sendable (A, B, C, E, F) async throws -> R {
     { a, b, c, e, f in try await fn(a, b, c, d, e, f) }
@@ -1784,7 +1674,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C, D, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: Deferred, _ e: E, _ f: Deferred) -> @Sendable (A, B, C, D, F) async -> R {
     { a, b, c, d, f in await fn(a, b, c, d, e, f) }
@@ -1793,7 +1682,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C, D, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: Deferred, _ e: E, _ f: Deferred) -> @Sendable (A, B, C, D, F) async throws -> R {
     { a, b, c, d, f in try await fn(a, b, c, d, e, f) }
@@ -1816,7 +1704,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C, D, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: Deferred, _ e: Deferred, _ f: F) -> @Sendable (A, B, C, D, E) async -> R {
     { a, b, c, d, e in await fn(a, b, c, d, e, f) }
@@ -1825,7 +1712,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C, D, E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: Deferred, _ e: Deferred, _ f: F) -> @Sendable (A, B, C, D, E) async throws -> R {
     { a, b, c, d, e in try await fn(a, b, c, d, e, f) }
@@ -1848,7 +1734,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C, D, E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: A, _ b: B, _ c: Deferred, _ d: Deferred, _ e: Deferred, _ f: Deferred) -> @Sendable (C, D, E, F) async -> R {
     { c, d, e, f in await fn(a, b, c, d, e, f) }
@@ -1857,7 +1742,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C, D, E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: A, _ b: B, _ c: Deferred, _ d: Deferred, _ e: Deferred, _ f: Deferred) -> @Sendable (C, D, E, F) async throws -> R {
     { c, d, e, f in try await fn(a, b, c, d, e, f) }
@@ -1880,7 +1764,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, D, E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: Deferred, _ b: B, _ c: C, _ d: Deferred, _ e: Deferred, _ f: Deferred) -> @Sendable (A, D, E, F) async -> R {
     { a, d, e, f in await fn(a, b, c, d, e, f) }
@@ -1889,7 +1772,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, D, E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: Deferred, _ b: B, _ c: C, _ d: Deferred, _ e: Deferred, _ f: Deferred) -> @Sendable (A, D, E, F) async throws -> R {
     { a, d, e, f in try await fn(a, b, c, d, e, f) }
@@ -1912,7 +1794,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: Deferred, _ b: Deferred, _ c: C, _ d: D, _ e: Deferred, _ f: Deferred) -> @Sendable (A, B, E, F) async -> R {
     { a, b, e, f in await fn(a, b, c, d, e, f) }
@@ -1921,7 +1802,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: C, _ d: D, _ e: Deferred, _ f: Deferred) -> @Sendable (A, B, E, F) async throws -> R {
     { a, b, e, f in try await fn(a, b, c, d, e, f) }
@@ -1944,7 +1824,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: D, _ e: E, _ f: Deferred) -> @Sendable (A, B, C, F) async -> R {
     { a, b, c, f in await fn(a, b, c, d, e, f) }
@@ -1953,7 +1832,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: D, _ e: E, _ f: Deferred) -> @Sendable (A, B, C, F) async throws -> R {
     { a, b, c, f in try await fn(a, b, c, d, e, f) }
@@ -1976,7 +1854,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: Deferred, _ e: E, _ f: F) -> @Sendable (A, B, C, D) async -> R {
     { a, b, c, d in await fn(a, b, c, d, e, f) }
@@ -1985,7 +1862,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A, B, C, D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: Deferred, _ b: Deferred, _ c: Deferred, _ d: Deferred, _ e: E, _ f: F) -> @Sendable (A, B, C, D) async throws -> R {
     { a, b, c, d in try await fn(a, b, c, d, e, f) }
@@ -2008,7 +1884,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (D, E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: A, _ b: B, _ c: C, _ d: Deferred, _ e: Deferred, _ f: Deferred) -> @Sendable (D, E, F) async -> R {
     { d, e, f in await fn(a, b, c, d, e, f) }
@@ -2017,7 +1892,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (D, E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: A, _ b: B, _ c: C, _ d: Deferred, _ e: Deferred, _ f: Deferred) -> @Sendable (D, E, F) async throws -> R {
     { d, e, f in try await fn(a, b, c, d, e, f) }
@@ -2040,7 +1914,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: A, _ b: B, _ c: C, _ d: D, _ e: Deferred, _ f: Deferred) -> @Sendable (E, F) async -> R {
     { e, f in await fn(a, b, c, d, e, f) }
@@ -2049,7 +1922,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (E, F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: A, _ b: B, _ c: C, _ d: D, _ e: Deferred, _ f: Deferred) -> @Sendable (E, F) async throws -> R {
     { e, f in try await fn(a, b, c, d, e, f) }
@@ -2072,7 +1944,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: Deferred) -> @Sendable (F) async -> R {
     { f in await fn(a, b, c, d, e, f) }
@@ -2081,7 +1952,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (F) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: Deferred) -> @Sendable (F) async throws -> R {
     { f in try await fn(a, b, c, d, e, f) }
@@ -2104,7 +1974,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: A, _ b: B, _ c: C, _ d: D, _ e: Deferred, _ f: F) -> @Sendable (E) async -> R {
     { e in await fn(a, b, c, d, e, f) }
@@ -2113,7 +1982,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (E) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: A, _ b: B, _ c: C, _ d: D, _ e: Deferred, _ f: F) -> @Sendable (E) async throws -> R {
     { e in try await fn(a, b, c, d, e, f) }
@@ -2136,7 +2004,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: A, _ b: B, _ c: C, _ d: Deferred, _ e: E, _ f: F) -> @Sendable (D) async -> R {
     { d in await fn(a, b, c, d, e, f) }
@@ -2145,7 +2012,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (D) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: A, _ b: B, _ c: C, _ d: Deferred, _ e: E, _ f: F) -> @Sendable (D) async throws -> R {
     { d in try await fn(a, b, c, d, e, f) }
@@ -2168,7 +2034,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: A, _ b: B, _ c: Deferred, _ d: D, _ e: E, _ f: F) -> @Sendable (C) async -> R {
     { c in await fn(a, b, c, d, e, f) }
@@ -2177,7 +2042,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (C) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: A, _ b: B, _ c: Deferred, _ d: D, _ e: E, _ f: F) -> @Sendable (C) async throws -> R {
     { c in try await fn(a, b, c, d, e, f) }
@@ -2200,7 +2064,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: A, _ b: Deferred, _ c: C, _ d: D, _ e: E, _ f: F) -> @Sendable (B) async -> R {
     { b in await fn(a, b, c, d, e, f) }
@@ -2209,7 +2072,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (B) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: A, _ b: Deferred, _ c: C, _ d: D, _ e: E, _ f: F) -> @Sendable (B) async throws -> R {
     { b in try await fn(a, b, c, d, e, f) }
@@ -2232,7 +2094,6 @@ public func partial<A, B, C, D, E, F, R>(_ fn: @escaping (A, B, C, D, E, F) thro
 /// Partial application. Applies arguments to an async function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async -> R, _ a: Deferred, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F) -> @Sendable (A) async -> R {
     { a in await fn(a, b, c, d, e, f) }
@@ -2241,7 +2102,6 @@ public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Senda
 /// Partial application. Applies arguments to an async throwing function.
 ///
 /// - Returns: Partially applied form of an argument function `fn`: (A) -> R
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func partial<A: Sendable, B: Sendable, C: Sendable, D: Sendable, E: Sendable, F: Sendable, R>(_ fn: @escaping @Sendable (A, B, C, D, E, F) async throws -> R, _ a: Deferred, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F) -> @Sendable (A) async throws -> R {
     { a in try await fn(a, b, c, d, e, f) }

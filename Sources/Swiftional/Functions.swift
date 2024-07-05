@@ -21,7 +21,6 @@ public func identity<R>(_ value: R) -> R {
 ///
 /// - Parameter value: Output value.
 /// - Returns: The value received as input, with no modifications.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func id<R>(_ value: R) -> R {
     value
@@ -41,7 +40,6 @@ public func constant<each A, R>(_ value: R) -> (repeat each A) -> R {
 ///
 /// - Parameter value: Constant value to return.
 /// - Returns: Function that constantly return the `value` provided as argument.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func const<each A: Sendable, R: Sendable>(_ value: R) -> @Sendable (repeat each A) -> R {
     { (_: repeat each A) in value }
@@ -59,7 +57,6 @@ public func flip<A, B, R>(_ f: @escaping (A, B) -> R) -> (B, A) -> R {
 ///
 /// - Parameter f: Function whose arguments must be flipped.
 /// - Returns: A function with the same behavior as the input, but with arguments flipped.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func flip<A, B, R>(_ f: @escaping @Sendable (A, B) async -> R) -> @Sendable (B, A) async -> R {
     { await f($1, $0) }
@@ -77,7 +74,6 @@ public func flip<A, B, R>(_ f: @escaping (A, B) throws -> R) -> (B, A) throws ->
 ///
 /// - Parameter f: Function whose arguments must be flipped.
 /// - Returns: A function with the same behavior as the input, but with arguments flipped.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func flip<A, B, R>(_ f: @escaping @Sendable (A, B) async throws -> R) -> @Sendable (B, A) async throws -> R {
     { try await f($1, $0) }
@@ -95,7 +91,6 @@ public func with<A, R>(_ a: A, _ f: (A) throws -> R) rethrows -> R {
 /// Calls the specified closure with the given attrubute as its receiver and returns its result.
 ///
 /// - Returns: Closure result.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func with<A, R>(_ a: A, _ f: @Sendable (A) async throws -> R) async rethrows -> R {
     try await f(a)
@@ -113,7 +108,6 @@ public func ignored<each R>(_ fn: @escaping () -> (repeat each R)) -> () -> Void
 ///
 /// - Parameter fn: Function to ignore return.
 /// - Returns: Function that constantly return the `Void`.
-@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
 public func ignored<each R>(_ fn: @escaping @Sendable () async -> (repeat each R)) -> @Sendable () async -> Void {
     { _ = await fn() }

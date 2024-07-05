@@ -36,7 +36,6 @@ public extension Applyable where Self: AnyObject & Sendable {
     ///
     /// - Parameter f: Closure to apply.
     /// - Returns: Return Self object.
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @Sendable
     @discardableResult
     func apply(_ f: @Sendable (Self) async throws -> Void) async rethrows -> Self {
@@ -49,7 +48,6 @@ public extension Applyable where Self: AnyObject & Sendable {
     ///
     /// - Parameter f: Closure to apply.
     /// - Returns: Closure result.
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @Sendable
     func `let`<R>(_ f: @Sendable (Self) async throws -> R) async rethrows -> R {
         try await f(self)
@@ -74,7 +72,6 @@ public extension Applyable where Self: Any & Sendable {
     ///
     /// - Parameter f: Closure to apply.
     /// - Returns: Return new Self with applied closure.
-    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     @Sendable
     func applied(_ f: @Sendable (inout Self) async throws -> Void) async rethrows -> Self {
         var mutableCopy = self
