@@ -1,4 +1,4 @@
-// swift-tools-version:5.9
+// swift-tools-version: 6.0
 
 import PackageDescription
 
@@ -9,10 +9,10 @@ let settings: [SwiftSetting] = [
 let package = Package(
     name: "Swiftional",
     platforms: [
-        .iOS(.v12),
-        .watchOS(.v5),
-        .tvOS(.v12),
-        .macOS(.v10_14),
+        .iOS(.v13),
+        .watchOS(.v6),
+        .tvOS(.v13),
+        .macOS(.v10_15),
         .visionOS(.v1),
     ],
     products: [
@@ -34,5 +34,6 @@ let package = Package(
             dependencies: ["Swiftional"],
             swiftSettings: settings
         ),
-    ]
+    ],
+    swiftLanguageVersions: [.version("6")]
 )
