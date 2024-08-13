@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Swiftional'
-  s.version          = '2.1.0'
+  s.version          = '3.0.0'
   s.summary          = 'Created for writing Swift code with a slight touch of functional programming.'
 
   s.description      = <<-DESC
@@ -13,13 +13,13 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/VAndrJ/Swiftional.git', :tag => s.version.to_s }
   s.social_media_url  = 'https://www.linkedin.com/in/vandrj/'
 
-  s.ios.deployment_target = '12.0'
-  s.tvos.deployment_target = '12.0'
-  s.watchos.deployment_target = '5.0'
-  s.osx.deployment_target = '10.14'
+  s.ios.deployment_target = '13.0'
+  s.tvos.deployment_target = '13.0'
+  s.watchos.deployment_target = '6.0'
+  s.osx.deployment_target = '10.15'
   s.visionos.deployment_target = '1.0'
 
   s.source_files = 'Sources/Swiftional/*'
 
-  s.swift_versions = '5.9'
+  s.swift_versions = '6.0'
 end
