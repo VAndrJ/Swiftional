@@ -21,8 +21,6 @@ let package = Package(
             targets: ["Swiftional"]
         ),
     ],
-    dependencies: [
-    ],
     targets: [
         .target(
             name: "Swiftional",
