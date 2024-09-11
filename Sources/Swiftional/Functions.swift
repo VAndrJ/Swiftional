@@ -125,7 +125,7 @@ public func with<A, R>(_ a: A, _ f: @Sendable (A) async throws -> R) async rethr
 ///
 /// - Parameter fn: Function to ignore return.
 /// - Returns: Function that constantly return the `Void`.
-public func ignored<each R>(_ fn: @escaping () -> (repeat each R)) -> () -> Void {
+public func ignored<R>(_ fn: @escaping () -> R) -> () -> Void {
     { _ = fn() }
 }
 
@@ -135,7 +135,7 @@ public func ignored<each R>(_ fn: @escaping () -> (repeat each R)) -> () -> Void
 /// - Returns: Function that constantly return the `Void`.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 @Sendable
-public func ignored<each R>(_ fn: @escaping @Sendable () async -> (repeat each R)) -> @Sendable () async -> Void {
+public func ignored<R>(_ fn: @escaping @Sendable () async -> R) -> @Sendable () async -> Void {
     { _ = await fn() }
 }
 
